@@ -1,0 +1,18 @@
+﻿<Page x:Class="HomeBudget.Panels.LoginPanel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HomeBudget.Panels"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="LoginPanel" Background="White">
+
+    <Grid>
+        <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="39" Margin="283,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254"/>
+        <TextBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="39" Margin="283,225,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254"/>
+        <Button x:Name="LoginButton" Content="Button" HorizontalAlignment="Left" Margin="283,288,0,0" VerticalAlignment="Top" Width="254" Height="50" Background="#FFF63131"/>
+        <Label x:Name="ConnectingLabel" Content="Label" HorizontalAlignment="Left" Margin="537,432,0,0" VerticalAlignment="Top" Height="32" Width="124"/>
+
+    </Grid>
+</Page>
