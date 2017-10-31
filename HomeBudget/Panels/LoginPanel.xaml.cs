@@ -1,7 +1,9 @@
-﻿using System;
+﻿using HomeBudget.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace HomeBudget.Panels
 {
     /// <summary>
@@ -25,40 +28,67 @@ namespace HomeBudget.Panels
         {
             InitializeComponent();
 
+          
+        }
 
-            using (SqlConnection conn = new SqlConnection())
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(!Validation.Validation.StringNotNull(EmailBox.Text))
             {
-                // Create the connectionString
-                // Trusted_Connection is used to denote the connection uses Windows Authentication
-                string connetionString = null;
-                //SqlConnection conn;
-                connetionString = "Data Source=homebudget.database.windows.net;Initial Catalog=HomeBudget;User ID=Bartas199;Password=QWERTY_1234";
-                conn.ConnectionString = connetionString;
-
-                //conn.ConnectionString = "Server=[homebudget.database.windows.net];Database=[HomeBudget];Trusted_Connection=true";
-                try
+                LoginFail.Content = "Wprowadź adres email";
+            }
+            else if (!Validation.Validation.StringNotNull(PasswordBox.Password))
+            {
+                LoginFail.Content = "Wprowadź hasło";
+            }
+            else if (!Validation.Validation.IsValidEmail(EmailBox.Text))
+            {
+                LoginFail.Content = "Niepoprawny adres email";
+            }
+            else
+            {
+                string hash = null;
+                DB db = new DB();
+                using (MD5 md5Hash = MD5.Create())
                 {
-                    conn.Open();
-                    ConnectingLabel.Content = "Connection Open ! ";
-                    SqlCommand command = new SqlCommand("SELECT * from test", conn);
-                    SqlDataReader dataReader;
-                    dataReader = command.ExecuteReader();
-                    while (dataReader.Read())
+                    hash = GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
+
+
+                    if (!Validation.Validation.VerifyMd5Hash(md5Hash, PasswordBox.Password.ToString(), hash))
                     {
-                        EmailBox.Text= dataReader.GetValue(0) + " - " + dataReader.GetValue(1);
+                        MessageBox.Show("Błąd funkcji skrótu.");
+                        return;
                     }
-                    conn.Close();
                 }
-                catch (Exception ex)
+                if(!db.ChechUserLogin(EmailBox.Text, hash))
                 {
-                    ConnectingLabel.Content = "Can not open connection ! ";
+                    LoginFail.Content = "Podany dane nieprawidłowe";
                 }
-
-                // SqlCommand command = new SqlCommand("SELECT * test", conn);
-
-
+                else
+                {
+                    this.NavigationService.Navigate(new StartSettingsPanel());
+                }
 
             }
+
+
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new RegisterPanel());
+        }
+
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
         }
     }
 }

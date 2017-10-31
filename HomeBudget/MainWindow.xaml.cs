@@ -1,5 +1,8 @@
-﻿using System;
+﻿using HomeBudget.Models;
+using HomeBudget.Panels;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +21,50 @@ namespace HomeBudget
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            Page p1 = new StartSettingsPanel();
+            //Page p1 = new LoginPanel();
+            myframe.NavigationService.Navigate(p1);
+            DB db = new DB();
+           // CheckConnecting();
+
         }
+
+        //sprawdzanie połączenia do bazy danych
+        private void CheckConnecting()
+        {
+            using (SqlConnection conn = new SqlConnection())
+            {
+                string connetionString = null;
+                connetionString = "Data Source=homebudget.database.windows.net;Initial Catalog=HomeBudget;User ID=Bartas199;Password=QWERTY_1234";
+                conn.ConnectionString = connetionString;
+
+                try
+                {
+                    conn.Open();
+                    //ConnectingLabel.Content = "Connection Open ! ";
+                    //SqlCommand command = new SqlCommand("SELECT * from test", conn);
+                    //SqlDataReader dataReader;
+                    //dataReader = command.ExecuteReader();
+                    //while (dataReader.Read())
+                    //{
+                    //    EmailBox.Text= dataReader.GetValue(0) + " - " + dataReader.GetValue(1);
+                    //}
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MyError.ConnectingFail();
+                }
+
+                // SqlCommand command = new SqlCommand("SELECT * test", conn);
+            }
+        }
+
+  
     }
 }

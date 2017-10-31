@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\App.xaml
-21507982363
+6700723269
 
-10599836974
+17-763308409
 13738642453
-MainWindow.xaml;Panels\LoginPanel.xaml;
+MainWindow.xaml;Panels\LoginPanel.xaml;Panels\MenuPanel.xaml;Panels\RegisterPanel.xaml;Panels\SettingsPanel.xaml;Panels\StartSettingsPanel.xaml;
 
-True
+False
 
