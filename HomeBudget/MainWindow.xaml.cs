@@ -26,8 +26,8 @@ namespace HomeBudget
         public MainWindow()
         {
             InitializeComponent();
-            Page p1 = new StartSettingsPanel();
-            //Page p1 = new LoginPanel();
+            //Page p1 = new StartSettingsPanel(1);
+            Page p1 = new LoginPanel();
             myframe.NavigationService.Navigate(p1);
             DB db = new DB();
            // CheckConnecting();
@@ -52,7 +52,7 @@ namespace HomeBudget
                     //dataReader = command.ExecuteReader();
                     //while (dataReader.Read())
                     //{
-                    //    EmailBox.Text= dataReader.GetValue(0) + " - " + dataReader.GetValue(1);
+                    //    EmailBox.Text = dataReader.GetValue(0) + " - " + dataReader.GetValue(1);
                     //}
                     conn.Close();
                 }

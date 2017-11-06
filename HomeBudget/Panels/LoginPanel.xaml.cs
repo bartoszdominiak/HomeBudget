@@ -60,13 +60,17 @@ namespace HomeBudget.Panels
                         return;
                     }
                 }
-                if(!db.ChechUserLogin(EmailBox.Text, hash))
+                if(db.GetUserRecid(EmailBox.Text, hash)==-2)
                 {
                     LoginFail.Content = "Podany dane nieprawidłowe";
                 }
                 else
                 {
-                    this.NavigationService.Navigate(new StartSettingsPanel());
+                    int UserId = db.GetUserRecid(EmailBox.Text, hash);
+                    if (!db.ChechUserSettings(UserId))
+                    this.NavigationService.Navigate(new StartSettingsPanel(UserId));
+                    else
+                        this.NavigationService.Navigate(new MenuPanel(UserId));
                 }
 
             }

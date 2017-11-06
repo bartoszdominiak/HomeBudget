@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HomeBudget.Validation
 {
     public class Validation
     {
+        public static bool IsDecimal(string text)
+        {
+            decimal value;
+            return decimal.TryParse(text, out value);
+        }
         public static bool IsValidEmail(string email)
         {
             try
@@ -21,7 +27,6 @@ namespace HomeBudget.Validation
                 return false;
             }
         }
-
         public static bool StringNotNull(string text)
         {
             if(text.Count()==0)
@@ -48,6 +53,39 @@ namespace HomeBudget.Validation
                 return true;
             }
         }
+        public static string GetNumberWithDot(string text)
+        {
+            if (!Regex.IsMatch(text, @"^[0-9]{1,10}([,][0-9]{1,2})?$"))
+            {
+                if (!Regex.IsMatch(text, @"^[0-9]{1,10}([.][0-9]{1,2})?$"))
+                {
+                    return "0,0";
+                }
+                else
+                {
+                    char[] delimiterChars = { '.' };
+                    string[] words = text.Split(delimiterChars);
+                    text = words[0] + ',' + words[1];
+                    return text;
+                }
+               
+            }
+            else
+            {
+                return text;
+            }
+        }
+        public static bool NotLongerThen(string text, int value)
+        {
+            if(text.Count()>value)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
         {
             // Hash the input.
@@ -65,7 +103,6 @@ namespace HomeBudget.Validation
                 return false;
             }
         }
-
         static string GetMd5Hash(MD5 md5Hash, string input)
         {
 
@@ -86,5 +123,6 @@ namespace HomeBudget.Validation
             // Return the hexadecimal string.
             return sBuilder.ToString();
         }
+
     }
 }

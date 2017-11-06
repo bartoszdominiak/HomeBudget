@@ -20,9 +20,12 @@ namespace HomeBudget.Panels
     /// </summary>
     public partial class MenuPanel : Page
     {
-        public MenuPanel()
+        private int UserId { get; }
+        public MenuPanel(int Id)
         {
             InitializeComponent();
+
+            UserId = Id;
         }
     }
 }

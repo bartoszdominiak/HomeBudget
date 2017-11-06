@@ -34,26 +34,42 @@ namespace HomeBudget.Panels
             if (!Validation.Validation.StringNotNull(NameBox.Text))
             {
                 RegisterFail.Content = "Wprowadź imię";
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(NameBox.Text,60))
+            {
+                RegisterFail.Content = "Imię może mieć do 60 znaków";
+                return;
             }
             if (!Validation.Validation.StringNotNull(EmailBox.Text))
             {
                 RegisterFail.Content = "Wprowadź adres email";
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(EmailBox.Text, 60))
+            {
+                RegisterFail.Content = "Email może mieć do 60 znaków";
+                return;
             }
             else if (PasswordBox.Password.Count() == 0)
             {
                 RegisterFail.Content = "Wprowadź hasło";
+                return;
             }
             else if (PasswordConfirmBox.Password.Count() == 0)
             {
                 RegisterFail.Content = "Wprowadź potwierdzenie hasła";
+                return;
             }
             else if (!Validation.Validation.TwoStringsEquals(PasswordConfirmBox.Password.ToString(), PasswordBox.Password.ToString()))
             {
                 RegisterFail.Content = "Hasła nie są równe";
+                return;
             }
             else if (!Validation.Validation.IsValidEmail(EmailBox.Text))
             {
                 RegisterFail.Content = "Niepoprawny adres email";
+                return;
             }
             else
             {
