@@ -37,6 +37,7 @@ namespace HomeBudget.Models
         }
 
 
+        //TWORZENIE WIERSZA Z NOWYM UŻYTKOWNIKIEM
         public bool InsertUser(string name, string email, string hash)
         {
             string query = "INSERT INTO Users VALUES('" + name + "','" + email + "','" + hash + "')";
@@ -59,6 +60,7 @@ namespace HomeBudget.Models
             }
         }
 
+        //TWORZENIE WIERSZA Z NOWĄ KATEGORIĄ
         public bool InsertCategory(int user, string name, string description, string color, bool parent)
         {
             string query = "";
@@ -89,6 +91,8 @@ namespace HomeBudget.Models
             }
         }
 
+
+        //TWORZENIE NOWEGO WIERSZA Z USTAWIENIAMI
         public bool InsertSettings(int userid, decimal saving, decimal earnings)
         {
             string a = saving.ToString().Replace(',','.');
@@ -114,6 +118,9 @@ namespace HomeBudget.Models
             }
         }
 
+
+
+        //SPRAWDZENIE CZY ISTNIEJE UŻYTKOWNIK O PODANYM ADRESIE EMAIL
         public bool CheckUniqueEmail(string email)
         {
 
@@ -143,6 +150,7 @@ namespace HomeBudget.Models
 
         }
 
+        
         public bool ChechUserLogin(string email, string hash)
         {
 
@@ -228,7 +236,7 @@ namespace HomeBudget.Models
                 else
                 {
                     Connection.Close();
-                    return -1;
+                    return -2;
                 }
             }
         }

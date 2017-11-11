@@ -9,7 +9,7 @@
       Title="LoginPanel" Background="White"
             FontFamily="Cambria">
 
-    <Grid Background="#FFB8C1CC" HorizontalAlignment="Left" Width="800">
+    <Grid Background="#FFD3D8DE" HorizontalAlignment="Left" Width="800">
         <Label x:Name="MainLabel" Content="Logowanie" HorizontalAlignment="Center" Margin="283,10,263,0" VerticalAlignment="Top" Width="254" Height="70" FontSize="48"/>
 
 

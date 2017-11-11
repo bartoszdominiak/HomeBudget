@@ -60,9 +60,11 @@ namespace HomeBudget.Panels
                         return;
                     }
                 }
+                
                 if(db.GetUserRecid(EmailBox.Text, hash)==-2)
                 {
                     LoginFail.Content = "Podany dane nieprawidłowe";
+                    return;
                 }
                 else
                 {

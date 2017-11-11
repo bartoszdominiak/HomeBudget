@@ -10,9 +10,11 @@
       FontFamily="Cambria"
       >
 
-    <Grid Background="#FFB8C1CC">
+    <Grid Background="#FFD3D8DE">
         <Label x:Name="MainLabel" Content="Rejestracja" HorizontalAlignment="Center" Margin="283,10,263,0" VerticalAlignment="Top" Width="254" Height="70" FontSize="48"/>
 
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="39" Margin="283,155,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" />
+        <Label x:Name="NameLabel" Content="Imię" HorizontalAlignment="Left" Margin="283,122,0,0" VerticalAlignment="Top" Width="80" FontSize="20" FontFamily="Cambria"/>
 
         <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="39" Margin="283,226,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" />
         <Label x:Name="EmailLabel" Content="Email" HorizontalAlignment="Left" Margin="283,193,0,0" VerticalAlignment="Top" Width="80" FontSize="20" FontFamily="Cambria"/>
@@ -24,10 +26,8 @@
         <Label x:Name="PasswordConfirmLabel" Content="Powtórz hasło" HorizontalAlignment="Left" Margin="283,335,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cambria"/>
 
         <Button  x:Name="RegisterButton" Content="Zarejestruj się" HorizontalAlignment="Left" Margin="283,412,0,0" VerticalAlignment="Top" Width="254" Height="50" Click="RegisterButton_Click" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" />
-
         <Label x:Name="RegisterFail" Content="" HorizontalAlignment="Left" Margin="542,412,0,0" VerticalAlignment="Top" Height="50" Width="248" FontSize="16" Foreground="#FF860000" FontFamily="Cambria" />
-        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="39" Margin="283,155,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" />
-        <Label x:Name="NameLabel" Content="Imię" HorizontalAlignment="Left" Margin="283,122,0,0" VerticalAlignment="Top" Width="80" FontSize="20" FontFamily="Cambria"/>
+
 
 
     </Grid>

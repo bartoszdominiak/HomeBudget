@@ -38,3 +38,15 @@ D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\SettingsPanel.g.c
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\SettingsPanel.baml
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\StartSettingsPanel.g.cs
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\StartSettingsPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\InterfacePanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\InterfacePanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\ExpensesPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\ExpensesPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\CategoriesPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\HistoryMonthPlansPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\IrregularBudgetPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\MonthPlansPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\CategoriesPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\HistoryMonthPlansPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\IrregularBudgetPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\MonthPlansPanel.baml

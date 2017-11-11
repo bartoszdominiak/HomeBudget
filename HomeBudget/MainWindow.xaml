@@ -8,6 +8,7 @@
         
         
       
-        Title="MainWindow" Height="600" Width="800" Background="#FF73797F">
-    <Frame x:Name="myframe" Content="" Margin="0,39,0.333,-0.333" NavigationUIVisibility="Hidden"/>
+        Title="Budżet domowy" Height="600" Width="800" Background="#FF73797F">
+    <Frame x:Name="myframe" Content="" Margin="0,0,0.333,-0.333" NavigationUIVisibility="Hidden"/>
+    
 </Window>

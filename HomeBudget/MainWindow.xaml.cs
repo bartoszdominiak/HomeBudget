@@ -25,11 +25,13 @@ namespace HomeBudget
     {
         public MainWindow()
         {
+            Global glob = new Global();
             InitializeComponent();
             //Page p1 = new StartSettingsPanel(1);
             Page p1 = new LoginPanel();
             myframe.NavigationService.Navigate(p1);
             DB db = new DB();
+         
            // CheckConnecting();
 
         }
@@ -65,6 +67,6 @@ namespace HomeBudget
             }
         }
 
-  
+
     }
 }
