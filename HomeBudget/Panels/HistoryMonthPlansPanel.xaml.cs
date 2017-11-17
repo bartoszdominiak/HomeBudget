@@ -24,6 +24,10 @@ namespace HomeBudget.Panels
         public HistoryMonthPlansPanel(int Id)
         {
             InitializeComponent();
+            Page p1 = new InterfacePanel();
+            InterfaceFrame.NavigationService.Navigate(p1);
+
+            UserId = Id;
         }
 
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
@@ -64,7 +68,7 @@ namespace HomeBudget.Panels
             IrregularBudgetButton.Visibility = Visibility.Hidden;
             SettingsButton.Visibility = Visibility.Hidden;
             LogOutButton.Visibility = Visibility.Hidden;
-            this.NavigationService.Navigate(new ExpensesPanel(UserId));
+            this.NavigationService.Navigate(new ExpensesPanel(UserId,false));
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)

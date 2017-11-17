@@ -13,7 +13,7 @@
         <Label x:Name="MainLabel" Content="Logowanie" HorizontalAlignment="Center" Margin="283,10,263,0" VerticalAlignment="Top" Width="254" Height="70" FontSize="48"/>
 
 
-        <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="39" Margin="283,153,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" />
+        <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="39" Margin="283,153,0,0" TextWrapping="NoWrap" Text="aaa@aaa.pl" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" />
         <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="39" Margin="283,225,0,0"   VerticalAlignment="Top" Width="254" FontSize="24" Background="#FFE6F2FF" BorderBrush="#FF73797F" Foreground="Black" FontFamily="Cambria" />
         <Button  x:Name="LoginButton" Content="Zaloguj się" HorizontalAlignment="Left" Margin="283,269,0,0" VerticalAlignment="Top" Width="254" Height="50" Click="LoginButton_Click" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" />
 

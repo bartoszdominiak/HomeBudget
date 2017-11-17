@@ -61,7 +61,7 @@ namespace HomeBudget.Panels
                     }
                 }
                 
-                if(db.GetUserRecid(EmailBox.Text, hash)==-2)
+                if(db.GetUserRecid(EmailBox.Text, hash)==-2|| db.GetUserRecid(EmailBox.Text, hash) == 0)
                 {
                     LoginFail.Content = "Podany dane nieprawidłowe";
                     return;

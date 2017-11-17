@@ -55,8 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\Global.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Panels\AddCategoryPanel.xaml.cs">
+      <DependentUpon>AddCategoryPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Panels\CategoriesPanel.xaml.cs">
       <DependentUpon>CategoriesPanel.xaml</DependentUpon>
     </Compile>
@@ -101,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Panels\AddCategoryPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Panels\CategoriesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

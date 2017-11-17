@@ -103,6 +103,7 @@ namespace HomeBudget.Panels
                                 else
                                 {
                                     MessageBox.Show("Konfiguracja zakończona");
+                                    this.NavigationService.Navigate(new MenuPanel(UserId));
                                 }
                             }
                         }

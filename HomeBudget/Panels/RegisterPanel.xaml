@@ -27,6 +27,7 @@
 
         <Button  x:Name="RegisterButton" Content="Zarejestruj się" HorizontalAlignment="Left" Margin="283,412,0,0" VerticalAlignment="Top" Width="254" Height="50" Click="RegisterButton_Click" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" />
         <Label x:Name="RegisterFail" Content="" HorizontalAlignment="Left" Margin="542,412,0,0" VerticalAlignment="Top" Height="50" Width="248" FontSize="16" Foreground="#FF860000" FontFamily="Cambria" />
+        <Button x:Name="LoginButton" Content="Powrót do okna logowania" HorizontalAlignment="Left" Margin="344,462,0,0" VerticalAlignment="Top" Width="193" Background="Transparent" BorderBrush="Transparent" Foreground="#FF4D657F" FontSize="16" Click="LoginButton_Click" />
 
 
 

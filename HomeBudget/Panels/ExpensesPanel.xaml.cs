@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeBudget.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +22,27 @@ namespace HomeBudget.Panels
     public partial class ExpensesPanel : Page
     {
         private int UserId { get; }
-        public ExpensesPanel(int Id)
+        public ExpensesPanel(int Id,bool added)
         {
             InitializeComponent();
 
+            UserId = Id;
             //global = new Global();
             Page p1 = new InterfacePanel();
             InterfaceFrame.NavigationService.Navigate(p1);
 
-            UserId = Id;
+            DB db = new DB();
+            List<string> categories = db.GetCategoriesName(UserId);
+            foreach(string cat in categories)
+            {
+                CategoryComboBox.Items.Add(cat);
+            }
+            CategoryComboBox.SelectedIndex = 0;
+            if(added==true)
+            {
+                Added.Content = "Dodano wydatek";
+            }
+
         }
 
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
@@ -70,7 +83,7 @@ namespace HomeBudget.Panels
             IrregularBudgetButton.Visibility = Visibility.Hidden;
             SettingsButton.Visibility = Visibility.Hidden;
             LogOutButton.Visibility = Visibility.Hidden;
-            this.NavigationService.Navigate(new ExpensesPanel(UserId));
+            this.NavigationService.Navigate(new ExpensesPanel(UserId,false));
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
@@ -101,6 +114,115 @@ namespace HomeBudget.Panels
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SettingsPanel(UserId));
+        }
+
+        private void DateBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Calendar.Visibility = Visibility.Visible;
+        }
+
+        private void DateBox_LostFocus(object sender, RoutedEventArgs e)
+        { 
+            Calendar.Visibility = Visibility.Hidden; 
+        }
+
+        private void Calendar_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Calendar.Visibility = Visibility.Visible;
+        }
+
+        private void Calendar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Calendar.Visibility = Visibility.Hidden;
+        }
+
+        private void Calendar_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Calendar.Visibility = Visibility.Hidden;
+        }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var calendar = sender as Calendar;
+            if (calendar.SelectedDate.HasValue)
+            {
+                DateTime date = calendar.SelectedDate.Value;
+                DateBox.Text=Validation.Validation.GetGoodDate(date.ToShortDateString().ToString());
+                Calendar.Visibility = Visibility.Hidden;
+            }
+
+        }
+
+        private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Added.Content = "";
+            if (!Validation.Validation.StringNotNull(NameBox.Text))
+            {
+                AddFail.Content = "Wprowadź opis";
+                return;
+            }
+            if (!Validation.Validation.StringNotNull(DateBox.Text))
+            {
+                AddFail.Content = "Wprowadź datę";
+                return;
+            }
+            if (!Validation.Validation.StringNotNull(AmountBox.Text))
+            {
+                AddFail.Content = "Wprowadź kwotę";
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(NameBox.Text, 100))
+            {
+                AddFail.Content = "Opis może mieć do 100 znaków";
+                return;
+            }
+            if (!Validation.Validation.IsValidDateFormat(DateBox.Text))
+            {
+                AddFail.Content = "Nieprawidłowy format daty";
+                return;
+            }
+            if (!Validation.Validation.IsGreaterOrEqualThenZero(Convert.ToDecimal(AmountBox.Text))) 
+            {
+                AddFail.Content = "Kwota nie może być ujemna";
+                return;
+            }
+            else
+            {
+                DB db = new DB();
+                int CategoryId = db.GetCategoryRecid(UserId, CategoryComboBox.Text);
+                if(CategoryId==-2)
+                {
+                    AddFail.Content = "Nieprawidłowy format dancyh";
+                    return;
+                }
+                else
+                {
+                    if(!db.InsertExpenditure(UserId,NameBox.Text,AmountBox.Text,DateBox.Text,CategoryId))
+                    {
+                        AddFail.Content = "Nieprawidłowy format dancyh";
+                        return;
+                    }
+                    else
+                    {
+                        this.NavigationService.Navigate(new ExpensesPanel(UserId,true));
+                    }
+                }
+            }
+        }
+
+        private void AmountBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void AmountBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            AmountBox.Text = Validation.Validation.GetNumberWithDot(AmountBox.Text.Trim());
         }
     }
 }

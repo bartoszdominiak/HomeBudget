@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HomeBudget.Panels"
       mc:Ignorable="d" 
-      d:DesignHeight="600"  d:DesignWidth="800"
+      Height="600"  Width="800"
       Title="LoginPanel" Background="White"
             FontFamily="Cambria">
 
@@ -19,6 +19,68 @@
         <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="IrregularBudgetButton_Click" />
         <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="SettingsButton_Click"  />
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="LogOutButton_Click" />
+
+        <Label x:Name="MainLabel" Content="Kategorie wydatków" HorizontalAlignment="Center" Margin="158,9,180,0" VerticalAlignment="Top" Width="462" Height="70" FontSize="48"/>
+        <DataGrid x:Name="CategoryGrid" HorizontalAlignment="Left" Margin="165,79,0,0" VerticalAlignment="Top" Height="254" Width="614">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Path=Descript}" MinWidth="300" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kolor" Binding="{Binding Path=Color}" MinWidth="80" Width="Auto" IsReadOnly="True"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="ModifyCategory_Click" MinWidth="60" Tag="aaa">Modyfikuj</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Tag="aaa" Click="DeleteCategory_Click" MinWidth="60">Usuń</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label x:Name="Info5Label" Content="Nazwa kategorii" HorizontalAlignment="Left" Margin="226,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
+        <Label x:Name="Info6Label" Content="Opis kategorii" HorizontalAlignment="Left" Margin="412,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
+        <Label x:Name="Info7Label" Content="Kolor" HorizontalAlignment="Left" Margin="165,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="56"/>
+
+
+        <TextBox x:Name="NameCategory1" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="226,360,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="163" FontSize="26"/>
+        <TextBox x:Name="DescriptionCategory1" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="412,360,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="367" FontSize="26"/>
+        <Button x:Name="ColorCategory1" Content="" HorizontalAlignment="Left" Margin="165,360,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFFFF00" Click="ColorCategory1_Click" />
+        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="165,398,561,95"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList1" SelectionChanged="colorList1_SelectionChanged" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.414"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Fill="{Binding Name}" Width="20" Height="20" Stroke="#FF211E1E" OpacityMask="Black" StrokeThickness="1" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+        <Button  x:Name="AddButton" Content="Dodaj nową kategorię" HorizontalAlignment="Left" Margin="525,425,0,0" VerticalAlignment="Top" Width="254" Height="50"  BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="AddButton_Click" />
+        <Button  x:Name="ModifyButton" Content="Zapisz modyfikację" HorizontalAlignment="Left" Margin="525,425,0,0" VerticalAlignment="Top" Width="254" Height="50"  BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="ModifyButton_Click" Visibility="Hidden" />
+
+        <Button  x:Name="ChangeButton" Content="Przywróć dodawanie" HorizontalAlignment="Left" Margin="243,425,0,0" VerticalAlignment="Top" Width="254" Height="50"  BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="ChangeButton_Click" Visibility="Hidden"/>
+
+
+
 
     </Grid>
 </Page>

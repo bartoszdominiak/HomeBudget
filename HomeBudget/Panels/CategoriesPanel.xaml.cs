@@ -1,6 +1,8 @@
-﻿using System;
+﻿using HomeBudget.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,13 +20,25 @@ namespace HomeBudget.Panels
     /// <summary>
     /// Interaction logic for CategoriesPanel.xaml
     /// </summary>
+    /// 
     public partial class CategoriesPanel : Page
     {
         private int UserId { get; }
+        private string TempName { get; set; }
+
         public CategoriesPanel(int Id)
         {
             InitializeComponent();
+            Page p1 = new InterfacePanel();
+            InterfaceFrame.NavigationService.Navigate(p1);
+
+            UserId = Id;
+
+            GetDataToGrid();
+            this.colorList1.ItemsSource = typeof(Brushes).GetProperties();
+
         }
+
 
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
         {
@@ -64,7 +78,7 @@ namespace HomeBudget.Panels
             IrregularBudgetButton.Visibility = Visibility.Hidden;
             SettingsButton.Visibility = Visibility.Hidden;
             LogOutButton.Visibility = Visibility.Hidden;
-            this.NavigationService.Navigate(new ExpensesPanel(UserId));
+            this.NavigationService.Navigate(new ExpensesPanel(UserId, false));
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
@@ -95,6 +109,128 @@ namespace HomeBudget.Panels
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SettingsPanel(UserId));
+        }
+
+        private void GetDataToGrid()
+        {
+            DB db = new DB();
+            List<Categories> cat = db.GetAllFromCategories(UserId);
+            foreach (Categories c in cat)
+            {
+                CategoryGrid.Items.Add(c);
+            }
+        }
+
+
+        private void DeleteCategory_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("TODO. Brak możliwości usunięcia rekordu");
+        }
+
+
+        private void ColorCategory1_Click(object sender, RoutedEventArgs e)
+        {
+            colorList1.Visibility = Visibility.Visible;
+        }
+        private void colorList1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Brush selectedColor = (Brush)(e.AddedItems[0] as PropertyInfo).GetValue(null, null);
+            ColorCategory1.Background = selectedColor;
+            colorList1.Visibility = Visibility.Hidden;
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Validation.Validation.StringNotNull(NameCategory1.Text))
+            {
+                MessageBox.Show("Uzupełnij nazwy kategorii");
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(NameCategory1.Text, 100))
+            {
+                MessageBox.Show("Nazwa kategorii może mieć do 100 znaków");
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(DescriptionCategory1.Text, 100))
+            {
+                MessageBox.Show("Opis kategorii może mieć do 100 znaków");
+                return;
+            }
+            DB db = new DB();
+            if (!db.InsertCategory(UserId, NameCategory1.Text, DescriptionCategory1.Text, ColorCategory1.Background.ToString(), false))
+            {
+                MessageBox.Show("UPS. Coś poszło nie tak :(");
+                return;
+            }
+            else
+            {
+                Categories cat = new Categories(NameCategory1.Text, DescriptionCategory1.Text, ColorCategory1.Background.ToString());
+                CategoryGrid.Items.Add(cat);
+            }
+        }
+        private void ModifyCategory_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyButton.Visibility = Visibility.Visible;
+            ChangeButton.Visibility = Visibility.Visible;
+            AddButton.Visibility = Visibility.Hidden;
+            Categories cat = (Categories)CategoryGrid.SelectedItem;
+            //MessageBox.Show("Zawartość wiersza "+cat.Name.ToString() +cat.Descript.ToString() + cat.Color.ToString());
+            NameCategory1.Text = cat.Name.ToString();
+            DescriptionCategory1.Text = cat.Descript.ToString();
+            TempName= cat.Name.ToString();
+
+            var bc = new BrushConverter();
+            ColorCategory1.Background = (Brush)bc.ConvertFrom(cat.Color.ToString());
+
+
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModifyButton.Visibility = Visibility.Hidden;
+            ChangeButton.Visibility = Visibility.Hidden;
+            AddButton.Visibility = Visibility.Visible;
+            NameCategory1.Text = "";
+            DescriptionCategory1.Text = "";
+            ColorCategory1.Background = Brushes.Yellow;
+        }
+
+        private void ModifyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Validation.Validation.StringNotNull(NameCategory1.Text))
+            {
+                MessageBox.Show("Uzupełnij nazwy kategorii");
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(NameCategory1.Text, 100))
+            {
+                MessageBox.Show("Nazwa kategorii może mieć do 100 znaków");
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(DescriptionCategory1.Text, 100))
+            {
+                MessageBox.Show("Opis kategorii może mieć do 100 znaków");
+                return;
+            }
+            DB db = new DB();
+            int recid = db.GetCategoryRecid(UserId, TempName);
+            if(recid==-2)
+            {
+                MessageBox.Show("UPS. Coś poszło nie tak :(");
+                return;
+            }
+            if (!db.UpdateCategory(UserId,recid, NameCategory1.Text, DescriptionCategory1.Text, ColorCategory1.Background.ToString()))
+            {
+                MessageBox.Show("UPS. Coś poszło nie tak :(");
+                return;
+            }
+            else
+            {
+                this.NavigationService.Navigate(new CategoriesPanel(UserId));
+            }
+            
+         
+            
         }
     }
 }

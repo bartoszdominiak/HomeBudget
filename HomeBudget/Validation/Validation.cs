@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,17 +11,88 @@ namespace HomeBudget.Validation
 {
     public class Validation
     {
+        public static bool IsGreaterOrEqualThenZero(decimal value)
+        {
+            if (value >= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static bool IsDecimal(string text)
         {
             decimal value;
             return decimal.TryParse(text, out value);
         }
+
+        public static bool IsValidDateFormat(string dateFormat)
+        {
+            try
+            {
+                String dts = DateTime.Now.ToString(dateFormat);
+                DateTime.ParseExact(dts, dateFormat, CultureInfo.InvariantCulture);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public static bool IsDate(string text)
+        {
+            try
+            {
+                int test = 0;
+                test = Convert.ToInt16(text[0]); if (test < 0 | test > 9) return false;
+                test = Convert.ToInt16(text[1]); if (test < 0 | test > 9) return false;
+                test = Convert.ToInt16(text[2]); if (test < 0 | test > 9) return false;
+                test = Convert.ToInt16(text[3]); if (test < 0 | test > 9) return false;
+                if (text[4] != '-') return false;
+                test = Convert.ToInt16(text[5]); if (test < 0 | test > 9) return false;
+                test = Convert.ToInt16(text[6]); if (test < 0 | test > 9) return false;
+                if (text[7] != '-') return false;
+                test = Convert.ToInt16(text[8]); if (test < 0 | test > 9) return false;
+                test = Convert.ToInt16(text[9]); if (test < 0 | test > 9) return false;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static bool IsValidEmail(string email)
         {
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
                 return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool IsDay(string day)
+        {
+            try
+            {
+                int x = 0;
+
+                Int32.TryParse(day, out x);
+                x=Int32.Parse(day);
+                if (x<=31&&x>=1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {
@@ -55,6 +127,15 @@ namespace HomeBudget.Validation
         }
         public static string GetNumberWithDot(string text)
         {
+            int test = text.IndexOf('.');
+            if (test == 0)
+            {
+                 test = text.IndexOf(',');
+                if (test == 0)
+                {
+                    text = text + ".0";
+                }
+            }
             if (!Regex.IsMatch(text, @"^[0-9]{1,10}([,][0-9]{1,2})?$"))
             {
                 if (!Regex.IsMatch(text, @"^[0-9]{1,10}([.][0-9]{1,2})?$"))
@@ -75,6 +156,12 @@ namespace HomeBudget.Validation
                 return text;
             }
         }
+        public static string GetNumberTwoZero(string text)
+        {
+            int dot = text.IndexOf(',');
+            text = text.Remove(dot+3);
+            return text;
+        }
         public static bool NotLongerThen(string text, int value)
         {
             if(text.Count()>value)
@@ -85,6 +172,15 @@ namespace HomeBudget.Validation
             {
                 return true;
             }
+        }
+        public static string GetGoodDate(string date)
+        {
+            string GoodDate="";
+            Char delimiter = '.';
+            String[] substrings = date.Split(delimiter);
+            GoodDate = substrings[2] + '-' + substrings[1] + '-' + substrings[0];
+            return GoodDate;
+
         }
         public static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
         {

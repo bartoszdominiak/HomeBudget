@@ -8,7 +8,8 @@
         
         
       
-        Title="Budżet domowy" Height="600" Width="800" Background="#FF73797F">
+        Title="Budżet domowy" Height="600" Width="810" Background="#FFD3D8DE" ResizeMode="NoResize">
+    <ScrollViewer>
     <Frame x:Name="myframe" Content="" Margin="0,0,0.333,-0.333" NavigationUIVisibility="Hidden"/>
-    
+    </ScrollViewer>
 </Window>

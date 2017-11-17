@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeBudget.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,29 @@ namespace HomeBudget.Panels
     public partial class SettingsPanel : Page
     {
         private int UserId { get; }
+        private List<Settings> settings { get; set; } = new List<Settings>();
         public SettingsPanel(int Id)
         {
             InitializeComponent();
+            Page p1 = new InterfacePanel();
+            InterfaceFrame.NavigationService.Navigate(p1);
+
+            UserId = Id;
+
+            DB db = new DB();
+            settings= db.GetAllFromSettings(UserId);
+            if(settings.Count==0)
+            {
+                MessageBox.Show("Brak danych z ustawieniami. Skontaktuj się z administratorem.");
+                this.NavigationService.Navigate(new MenuPanel(UserId));
+            }
+            else
+            {
+                StartsSavingBox.Text= Validation.Validation.GetNumberTwoZero(settings[0].StartsSaving);
+                EarningsBox.Text = Validation.Validation.GetNumberTwoZero(settings[0].Earnings);
+                StartDayBox.Text = settings[0].StartDay.ToString();
+            }
+            
         }
 
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
@@ -64,7 +85,7 @@ namespace HomeBudget.Panels
             IrregularBudgetButton.Visibility = Visibility.Hidden;
             SettingsButton.Visibility = Visibility.Hidden;
             LogOutButton.Visibility = Visibility.Hidden;
-            this.NavigationService.Navigate(new ExpensesPanel(UserId));
+            this.NavigationService.Navigate(new ExpensesPanel(UserId, false));
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
@@ -95,6 +116,22 @@ namespace HomeBudget.Panels
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SettingsPanel(UserId));
+        }
+
+        private void StartsSavingBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            StartsSavingBox.Text = Validation.Validation.GetNumberWithDot(StartsSavingBox.Text.Trim());
+        }
+        private void EarningsBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            EarningsBox.Text = Validation.Validation.GetNumberWithDot(EarningsBox.Text.Trim());
+        }
+        private void StartDayBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(!Validation.Validation.IsDay(StartDayBox.Text))
+            {
+                StartDayBox.Text = "1";
+            }
         }
     }
 }

@@ -50,3 +50,5 @@ D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\CategoriesPanel.b
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\HistoryMonthPlansPanel.baml
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\IrregularBudgetPanel.baml
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\MonthPlansPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AddCategoryPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AddCategoryPanel.baml
