@@ -17,31 +17,39 @@ using System.Windows.Shapes;
 namespace HomeBudget.Panels
 {
     /// <summary>
-    /// Interaction logic for ExpensesPanel.xaml
+    /// Interaction logic for ModifyEpensesPanel.xaml
     /// </summary>
-    public partial class ExpensesPanel : Page
+    public partial class ModifyEpensesPanel : Page
     {
         private int UserId { get; }
-        public ExpensesPanel(int Id,bool added)
+        public Expenses expenses { get; set; }
+        public ModifyEpensesPanel(int Id,Expenses ex)
         {
             InitializeComponent();
 
             UserId = Id;
+            expenses = ex;
             //global = new Global();
             Page p1 = new InterfacePanel();
             InterfaceFrame.NavigationService.Navigate(p1);
 
             DB db = new DB();
             List<string> categories = db.GetCategoriesName(UserId);
-            foreach(string cat in categories)
+            int i = 0;
+            int temp = 0;
+            foreach (string cat in categories)
             {
+                if(expenses.CategoryName==cat)
+                {
+                    i = temp;
+                }
+                temp = temp++;
                 CategoryComboBox.Items.Add(cat);
             }
-            CategoryComboBox.SelectedIndex = 0;
-            if(added==true)
-            {
-                Added.Content = "Dodano wydatek";
-            }
+            CategoryComboBox.SelectedIndex = i;
+            NameBox.Text = expenses.Name;
+            AmountBox.Text = expenses.Value;
+            DateBox.Text = expenses.Date;
 
         }
 
@@ -124,8 +132,8 @@ namespace HomeBudget.Panels
         }
 
         private void DateBox_LostFocus(object sender, RoutedEventArgs e)
-        { 
-            Calendar.Visibility = Visibility.Hidden; 
+        {
+            Calendar.Visibility = Visibility.Hidden;
         }
 
         private void Calendar_GotFocus(object sender, RoutedEventArgs e)
@@ -149,7 +157,7 @@ namespace HomeBudget.Panels
             if (calendar.SelectedDate.HasValue)
             {
                 DateTime date = calendar.SelectedDate.Value;
-                DateBox.Text=Validation.Validation.GetGoodDate(date.ToShortDateString().ToString());
+                DateBox.Text = Validation.Validation.GetGoodDate(date.ToShortDateString().ToString());
                 Calendar.Visibility = Visibility.Hidden;
             }
 
@@ -188,7 +196,7 @@ namespace HomeBudget.Panels
                 AddFail.Content = "Nieprawidłowy format daty";
                 return;
             }
-            if (!Validation.Validation.IsGreaterOrEqualThenZero(Convert.ToDecimal(AmountBox.Text))) 
+            if (!Validation.Validation.IsGreaterOrEqualThenZero(Convert.ToDecimal(AmountBox.Text)))
             {
                 AddFail.Content = "Kwota nie może być ujemna";
                 return;
@@ -197,21 +205,21 @@ namespace HomeBudget.Panels
             {
                 DB db = new DB();
                 int CategoryId = db.GetCategoryRecid(UserId, CategoryComboBox.Text);
-                if(CategoryId==-2)
+                if (CategoryId == -2)
                 {
                     AddFail.Content = "Nieprawidłowy format dancyh";
                     return;
                 }
                 else
                 {
-                    if(!db.InsertExpenditure(UserId,NameBox.Text,AmountBox.Text,DateBox.Text,CategoryId))
+                    if (!db.UpdateExpenses(UserId, NameBox.Text, Validation.Validation.GetNumberWithDot(AmountBox.Text), DateBox.Text, CategoryId,expenses.ExpRecid))
                     {
                         AddFail.Content = "Nieprawidłowy format dancyh";
                         return;
                     }
                     else
                     {
-                        this.NavigationService.Navigate(new ExpensesPanel(UserId,true));
+                        this.NavigationService.Navigate(new AllExpenses(UserId));
                     }
                 }
             }
@@ -226,5 +234,6 @@ namespace HomeBudget.Panels
         {
             AmountBox.Text = Validation.Validation.GetNumberWithDot(AmountBox.Text.Trim());
         }
+
     }
 }

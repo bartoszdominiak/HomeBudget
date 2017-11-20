@@ -46,11 +46,12 @@ namespace HomeBudget.Panels
             }
             
         }
-
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
         {
             InterfaceFrame.Visibility = Visibility.Visible;
             ExpensesButton.Visibility = Visibility.Visible;
+            AllExpensesButton.Visibility = Visibility.Visible;
+            MenuButton.Visibility = Visibility.Visible;
             MonthPlansButton.Visibility = Visibility.Visible;
             HistoryMonthPlansButton.Visibility = Visibility.Visible;
             CategoriesButton.Visibility = Visibility.Visible;
@@ -63,28 +64,18 @@ namespace HomeBudget.Panels
         {
             InterfaceFrame.Visibility = Visibility.Hidden;
             ExpensesButton.Visibility = Visibility.Hidden;
+            MenuButton.Visibility = Visibility.Hidden;
+            AllExpensesButton.Visibility = Visibility.Hidden;
             MonthPlansButton.Visibility = Visibility.Hidden;
             HistoryMonthPlansButton.Visibility = Visibility.Hidden;
             CategoriesButton.Visibility = Visibility.Hidden;
             IrregularBudgetButton.Visibility = Visibility.Hidden;
             SettingsButton.Visibility = Visibility.Hidden;
             LogOutButton.Visibility = Visibility.Hidden;
-        }
-
-        private void button_Click_1(object sender, RoutedEventArgs e)
-        {
         }
 
         private void ExpensesButton_Click(object sender, RoutedEventArgs e)
         {
-            InterfaceFrame.Visibility = Visibility.Hidden;
-            ExpensesButton.Visibility = Visibility.Hidden;
-            MonthPlansButton.Visibility = Visibility.Hidden;
-            HistoryMonthPlansButton.Visibility = Visibility.Hidden;
-            CategoriesButton.Visibility = Visibility.Hidden;
-            IrregularBudgetButton.Visibility = Visibility.Hidden;
-            SettingsButton.Visibility = Visibility.Hidden;
-            LogOutButton.Visibility = Visibility.Hidden;
             this.NavigationService.Navigate(new ExpensesPanel(UserId, false));
         }
 
@@ -118,6 +109,16 @@ namespace HomeBudget.Panels
             this.NavigationService.Navigate(new SettingsPanel(UserId));
         }
 
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MenuPanel(UserId));
+        }
+
+        private void AllExpensesButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AllExpenses(UserId));
+        }
+
         private void StartsSavingBox_LostFocus(object sender, RoutedEventArgs e)
         {
             StartsSavingBox.Text = Validation.Validation.GetNumberWithDot(StartsSavingBox.Text.Trim());
@@ -131,6 +132,29 @@ namespace HomeBudget.Panels
             if(!Validation.Validation.IsDay(StartDayBox.Text))
             {
                 StartDayBox.Text = "1";
+            }
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(settings[0].HaveChanged(StartsSavingBox.Text, EarningsBox.Text, StartDayBox.Text))
+            {
+                DB db = new Models.DB();
+                if (db.UpdateSettings(UserId, StartsSavingBox.Text.Replace(',','.'), EarningsBox.Text.Replace(',', '.'), StartDayBox.Text))
+                {
+                    settings.Clear();
+                    settings.Add(new Settings(StartsSavingBox.Text, EarningsBox.Text, StartDayBox.Text));
+                    MessageBox.Show("Modyfikacja zakończona");
+                }
+
+                else
+                {
+                    MessageBox.Show("Ups. Coś poszło nie tak.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Modyfikacja zakończona");
             }
         }
     }

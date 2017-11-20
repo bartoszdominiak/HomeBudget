@@ -1,4 +1,4 @@
-﻿<Page x:Class="HomeBudget.Panels.SettingsPanel"
+﻿<Page x:Class="HomeBudget.Panels.AllExpenses"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,20 +22,32 @@
         <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click"  />
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" />
 
-        <Label x:Name="MainLabel" Content="Ustawienia użytkownika" HorizontalAlignment="Center" Margin="208,10,201,0" VerticalAlignment="Top" Width="391" Height="70" FontSize="36"/>
 
-        <Label x:Name="Info1Label" Content="Informacje o aktualnych finansach." HorizontalAlignment="Left" Margin="168,63,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="StartsSavingBoxLabel" Content="Wartość oszczędności:" HorizontalAlignment="Left" Margin="168,89,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="460,89,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus"/>
-        <Label x:Name="EarningsLabel" Content="Wysokość miesięcznych zarobków:" HorizontalAlignment="Left" Margin="168,112,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="460,113,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus"/>
+        <DataGrid x:Name="ExpensesGrid" HorizontalAlignment="Left" Margin="165,79,0,0" VerticalAlignment="Top" Height="378" Width="614">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="200" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kwota" Binding="{Binding Path=Value}" MinWidth="70" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding Path=Date}" MinWidth="80" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Path=CategoryName}" MinWidth="110" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Recid" Binding="{Binding Path=CategoryRecid}" MinWidth="110" Width="Auto" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Recid" Binding="{Binding Path=ExpRecid}" MinWidth="110" Width="Auto" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="ModifyExpenses_Click"  MinWidth="60" Tag="aaa">Modyfikuj</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Tag="aaa"  MinWidth="60">Usuń</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <Label x:Name="Info2Label" Content="Ustawienia systemu." HorizontalAlignment="Left" Margin="168,151,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="StartDayLabel" Content="Dzień miesiąca w którym zaczyna się plan miesięczny:" HorizontalAlignment="Left" Margin="168,178,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="StartDayBox"  HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="460,180,0,0" TextWrapping="NoWrap" Text="1" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartDayBox_LostFocus"/>
-
-
-        <Button  x:Name="UpdateButton" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="519,474,0,0" VerticalAlignment="Top" Width="254" Height="50" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="UpdateButton_Click" />
 
 
     </Grid>

@@ -64,7 +64,7 @@ namespace HomeBudget.Validation
                 return false;
             }
         }
-
+        
         public static bool IsValidEmail(string email)
         {
             try
@@ -161,6 +161,16 @@ namespace HomeBudget.Validation
             int dot = text.IndexOf(',');
             text = text.Remove(dot+3);
             return text;
+        }
+        public static string GetShortDate(string text)
+        {
+            int dot = text.IndexOf(' ');
+            text = text.Remove(dot);
+            return text;
+        }
+        public static decimal GetDecimal(string value)
+        {
+            return Decimal.Parse(value);
         }
         public static bool NotLongerThen(string text, int value)
         {

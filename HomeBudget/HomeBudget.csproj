@@ -57,10 +57,14 @@
     </ApplicationDefinition>
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\Expenses.cs" />
     <Compile Include="Models\Global.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Panels\AddCategoryPanel.xaml.cs">
       <DependentUpon>AddCategoryPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\AllExpenses.xaml.cs">
+      <DependentUpon>AllExpenses.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panels\CategoriesPanel.xaml.cs">
       <DependentUpon>CategoriesPanel.xaml</DependentUpon>
@@ -79,6 +83,9 @@
     </Compile>
     <Compile Include="Panels\MenuPanel.xaml.cs">
       <DependentUpon>MenuPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\ModifyEpensesPanel.xaml.cs">
+      <DependentUpon>ModifyEpensesPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panels\MonthPlansPanel.xaml.cs">
       <DependentUpon>MonthPlansPanel.xaml</DependentUpon>
@@ -110,6 +117,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Panels\AllExpenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Panels\CategoriesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Panels\MenuPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\ModifyEpensesPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

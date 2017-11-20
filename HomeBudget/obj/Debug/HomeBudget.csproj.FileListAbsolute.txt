@@ -52,3 +52,7 @@ D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\IrregularBudgetPa
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\MonthPlansPanel.baml
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AddCategoryPanel.g.cs
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AddCategoryPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AllExpenses.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AllExpenses.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\ModifyEpensesPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\ModifyEpensesPanel.baml

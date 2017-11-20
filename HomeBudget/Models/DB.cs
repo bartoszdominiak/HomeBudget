@@ -29,7 +29,7 @@ namespace HomeBudget.Models
                     Connection.Open();
                     Connection.Close();
                 }
-                catch (Exception ex)
+                catch
                 {
                     MyError.ConnectingFail();
                 }
@@ -54,7 +54,7 @@ namespace HomeBudget.Models
                     Connection.Close();
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     return false;
                 }
@@ -77,7 +77,7 @@ namespace HomeBudget.Models
                     Connection.Close();
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     return false;
                 }
@@ -108,7 +108,7 @@ namespace HomeBudget.Models
                     Connection.Close();
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     return false;
                 }
@@ -135,7 +135,7 @@ namespace HomeBudget.Models
                     Connection.Close();
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     return false;
                 }
@@ -159,7 +159,53 @@ namespace HomeBudget.Models
                     Connection.Close();
                     return true;
                 }
-                catch (Exception ex)
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool UpdateExpenses(int UserId, string name, string amount, string date, int CategoryId, int ExpRecid)
+        {
+            string query = "UPDATE Expenses SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + ", Date='" + date + "', _category="+CategoryId+" WHERE __recid=" + ExpRecid ;
+
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool UpdateSettings(int UserId, string startssaving, string earnings, string startday)
+        {
+            string query = "UPDATE Settings SET StartsSaving='" + startssaving + "', Earnings='" + earnings + "', StartDay=" + startday.ToString() + " WHERE  _user=" + UserId + " ";
+
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch 
                 {
                     return false;
                 }
@@ -398,6 +444,42 @@ namespace HomeBudget.Models
             }
         }
 
+
+        public List<Expenses> GetAllFromExpenses(int UserId)
+        {
+
+            List<Expenses> list = new List<Expenses>();
+            string query = "Select e.Name, e.Amount, e.[Date] da, c.Name, c.__recid, e.__recid from Expenses e join Categories c on e._category=c.__recid where c._user="+UserId+" order by da";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        Expenses cat = new Expenses(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString(), Reader.GetValue(2).ToString(), Reader.GetValue(3).ToString(), Reader.GetValue(4).ToString(), Reader.GetValue(5).ToString());
+                        list.Add(cat);
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
 
         public List<Settings> GetAllFromSettings(int UserId)
         {

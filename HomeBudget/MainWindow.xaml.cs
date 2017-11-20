@@ -58,7 +58,7 @@ namespace HomeBudget
                     //}
                     conn.Close();
                 }
-                catch (Exception ex)
+                catch 
                 {
                     MyError.ConnectingFail();
                 }

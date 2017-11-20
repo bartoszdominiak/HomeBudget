@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeBudget.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,19 +17,19 @@ using System.Windows.Shapes;
 namespace HomeBudget.Panels
 {
     /// <summary>
-    /// Interaction logic for MonthPlansPanel.xaml
+    /// Interaction logic for AllExpenses.xaml
     /// </summary>
-    public partial class MonthPlansPanel : Page
+    public partial class AllExpenses : Page
     {
         private int UserId { get; }
-        public MonthPlansPanel(int Id)
+        public AllExpenses(int Id)
         {
             InitializeComponent();
-
             Page p1 = new InterfacePanel();
             InterfaceFrame.NavigationService.Navigate(p1);
 
             UserId = Id;
+            GetDataToGrid();
         }
 
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
@@ -103,5 +104,23 @@ namespace HomeBudget.Panels
         {
             this.NavigationService.Navigate(new AllExpenses(UserId));
         }
+
+        private void GetDataToGrid()
+        {
+            DB db = new DB();
+            List<Expenses> cat = db.GetAllFromExpenses(UserId);
+            foreach (Expenses c in cat)
+            {
+                ExpensesGrid.Items.Add(c);
+            }
+        }
+
+        private void ModifyExpenses_Click(object sender, RoutedEventArgs e)
+        {
+            Expenses ex = (Expenses)ExpensesGrid.SelectedItem;
+            this.NavigationService.Navigate(new ModifyEpensesPanel(UserId,ex));
+        }
+
+
     }
 }

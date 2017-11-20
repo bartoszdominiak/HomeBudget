@@ -39,11 +39,12 @@ namespace HomeBudget.Panels
 
         }
 
-
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
         {
             InterfaceFrame.Visibility = Visibility.Visible;
             ExpensesButton.Visibility = Visibility.Visible;
+            AllExpensesButton.Visibility = Visibility.Visible;
+            MenuButton.Visibility = Visibility.Visible;
             MonthPlansButton.Visibility = Visibility.Visible;
             HistoryMonthPlansButton.Visibility = Visibility.Visible;
             CategoriesButton.Visibility = Visibility.Visible;
@@ -56,28 +57,18 @@ namespace HomeBudget.Panels
         {
             InterfaceFrame.Visibility = Visibility.Hidden;
             ExpensesButton.Visibility = Visibility.Hidden;
+            MenuButton.Visibility = Visibility.Hidden;
+            AllExpensesButton.Visibility = Visibility.Hidden;
             MonthPlansButton.Visibility = Visibility.Hidden;
             HistoryMonthPlansButton.Visibility = Visibility.Hidden;
             CategoriesButton.Visibility = Visibility.Hidden;
             IrregularBudgetButton.Visibility = Visibility.Hidden;
             SettingsButton.Visibility = Visibility.Hidden;
             LogOutButton.Visibility = Visibility.Hidden;
-        }
-
-        private void button_Click_1(object sender, RoutedEventArgs e)
-        {
         }
 
         private void ExpensesButton_Click(object sender, RoutedEventArgs e)
         {
-            InterfaceFrame.Visibility = Visibility.Hidden;
-            ExpensesButton.Visibility = Visibility.Hidden;
-            MonthPlansButton.Visibility = Visibility.Hidden;
-            HistoryMonthPlansButton.Visibility = Visibility.Hidden;
-            CategoriesButton.Visibility = Visibility.Hidden;
-            IrregularBudgetButton.Visibility = Visibility.Hidden;
-            SettingsButton.Visibility = Visibility.Hidden;
-            LogOutButton.Visibility = Visibility.Hidden;
             this.NavigationService.Navigate(new ExpensesPanel(UserId, false));
         }
 
@@ -109,6 +100,16 @@ namespace HomeBudget.Panels
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new SettingsPanel(UserId));
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MenuPanel(UserId));
+        }
+
+        private void AllExpensesButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AllExpenses(UserId));
         }
 
         private void GetDataToGrid()
