@@ -158,9 +158,17 @@ namespace HomeBudget.Validation
         }
         public static string GetNumberTwoZero(string text)
         {
-            int dot = text.IndexOf(',');
-            text = text.Remove(dot+3);
-            return text;
+            try
+            {
+                int dot = text.IndexOf(',');
+                text = text.Remove(dot + 3);
+                return text;
+            }
+            catch
+            {
+                return text;
+            }
+            
         }
         public static string GetShortDate(string text)
         {
@@ -168,6 +176,15 @@ namespace HomeBudget.Validation
             text = text.Remove(dot);
             return text;
         }
+        public static string GetReverseDate(string text)
+        {
+            text = GetShortDate(text);
+            Char delimiter = '.';
+            String[] substrings = text.Split(delimiter);
+            text = substrings[2] + "." + substrings[1] + "." + substrings[0];
+            return text;
+        }
+
         public static decimal GetDecimal(string value)
         {
             return Decimal.Parse(value);

@@ -114,6 +114,16 @@ namespace HomeBudget.Panels
                 ExpensesGrid.Items.Add(c);
             }
         }
+        private void GetDataToGridBetweenDate(string from, string to)
+        {
+            DB db = new DB();
+            List<Expenses> cat = db.GetAllFromExpensesBetweenDate(UserId,from,to);
+            foreach (Expenses c in cat)
+            {
+                ExpensesGrid.Items.Add(c);
+            }
+
+        }
 
         private void ModifyExpenses_Click(object sender, RoutedEventArgs e)
         {
@@ -121,6 +131,172 @@ namespace HomeBudget.Panels
             this.NavigationService.Navigate(new ModifyEpensesPanel(UserId,ex));
         }
 
+        private void DateFromBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
+
+        private void DateFromBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarFrom.Visibility = Visibility.Visible;
+        }
+
+        private void DateFromBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarFrom.Visibility = Visibility.Hidden;
+        }
+
+        private void DateToBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarTo.Visibility = Visibility.Visible;
+        }
+
+        private void DateToBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarTo.Visibility = Visibility.Hidden;
+        }
+
+        private void CalendarFrom_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarFrom.Visibility = Visibility.Visible;
+        }
+
+        private void CalendarTo_GotFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarTo.Visibility = Visibility.Visible;
+        }
+
+        private void CalendarFrom_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarFrom.Visibility = Visibility.Hidden;
+        }
+
+        private void CalendarTo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CalendarTo.Visibility = Visibility.Hidden;
+        }
+
+        private void CalendarFrom_MouseLeave(object sender, MouseEventArgs e)
+        {
+            CalendarFrom.Visibility = Visibility.Hidden;
+        }
+
+        private void CalendarTo_MouseLeave(object sender, MouseEventArgs e)
+        {
+            CalendarTo.Visibility = Visibility.Hidden;
+        }
+
+        private void CalendarFrom_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var calendar = sender as Calendar;
+            if (calendar.SelectedDate.HasValue)
+            {
+                DateTime date = calendar.SelectedDate.Value;
+                DateFromBox.Text = Validation.Validation.GetGoodDate(date.ToShortDateString().ToString());
+                CalendarFrom.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void CalendarTo_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var calendar = sender as Calendar;
+            if (calendar.SelectedDate.HasValue)
+            {
+                DateTime date = calendar.SelectedDate.Value;
+                DateToBox.Text = Validation.Validation.GetGoodDate(date.ToShortDateString().ToString());
+                CalendarTo.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            int type = 0;
+            if (!Validation.Validation.StringNotNull(DateFromBox.Text))
+            {
+                type = 1; //nie ma z
+            }
+            if(!Validation.Validation.StringNotNull(DateToBox.Text))
+            {
+                if (type == 1)
+                {
+                    type = 3; //ani jedno ani drugie
+                }
+                else
+                {
+                    type = 2; //nie ma do
+                }
+            }
+
+            if(type==3)
+            {
+                    ExpensesGrid.Items.Clear();
+                    GetDataToGrid();
+            }
+            if(type==2)
+            {
+                if (!Validation.Validation.IsValidDateFormat(DateFromBox.Text))
+                {
+                    MessageBox.Show("Nieprawidłowy format daty");
+                    return;
+                }
+                else
+                {
+                    ExpensesGrid.Items.Clear();
+                    GetDataToGridBetweenDate(DateFromBox.Text, "01-01-3001");
+                }
+            }
+            if (type == 1)
+            {
+                if (!Validation.Validation.IsValidDateFormat(DateToBox.Text))
+                {
+                    MessageBox.Show("Nieprawidłowy format daty");
+                    return;
+                }
+                else
+                {
+                    ExpensesGrid.Items.Clear();
+                    GetDataToGridBetweenDate("01-01-1001", DateToBox.Text);
+                }
+            }
+            if(type==0)
+            {
+                if (!Validation.Validation.IsValidDateFormat(DateFromBox.Text)|| (!Validation.Validation.IsValidDateFormat(DateToBox.Text)))
+                {
+                    MessageBox.Show("Nieprawidłowy format daty");
+                    return;
+                }
+                else
+                {
+                    ExpensesGrid.Items.Clear();
+                    GetDataToGridBetweenDate(DateFromBox.Text, DateToBox.Text);
+                }
+            }
+        }
+
+        private void DateFromBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            CalendarFrom.Visibility = Visibility.Visible;
+        }
+
+        private void DateToBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            CalendarTo.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Expenses ex = (Expenses)ExpensesGrid.SelectedItem;
+
+            if (MessageBox.Show("Czy na pewno chcesz usunąć wydatek \""+ex.Name+"\"?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                DB db = new Models.DB();
+                db.DeleteteExpenditure(ex.ExpRecid);
+                this.NavigationService.Navigate(new AllExpenses(UserId));
+            }
+        }
     }
 }

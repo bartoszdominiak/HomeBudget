@@ -22,5 +22,39 @@
         <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click"  />
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" />
 
+        <Label x:Name="MainLabel" Content="Moje wydatki nieregularne" HorizontalAlignment="Center" Margin="165,10,61,0" VerticalAlignment="Top" Width="574" Height="70" FontSize="48"/>
+
+        <DataGrid x:Name="IrregularExpensesGrid" HorizontalAlignment="Left" Margin="180,78,0,0" VerticalAlignment="Top" Height="198" Width="538">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="300" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kwota roczna" Binding="{Binding Path=Amount}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Recid" Binding="{Binding Path=__recid}" MinWidth="110" Width="Auto" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button   MinWidth="60" Tag="aaa" Click="Modify_Click">Modyfikuj</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Tag="aaa"  MinWidth="60" Click="Delete_Click" >Usuń</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="InfoLabel" Content="Dodawanie nowego wydatku nieregularnego:" HorizontalAlignment="Left" Margin="180,297,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="385" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="Info2Label" Content="Nazwa kategorii" HorizontalAlignment="Left" Margin="180,339,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
+        <Label x:Name="Info3Label" Content="Kwota roczna:" HorizontalAlignment="Left" Margin="180,373,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
+        <TextBox x:Name="NameBox" HorizontalAlignment="Center" Height="26" Margin="290,339,251,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="259" FontSize="18" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" />
+        <TextBox x:Name="AmountBox" HorizontalAlignment="Center" Height="26" Margin="290,373,251,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="259" FontSize="18" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" LostFocus="AmountBox_LostFocus" />
+
+        <Button  x:Name="AddButton" Content="Dodaj nowy wydatek nieregularny" HorizontalAlignment="Left" Margin="400,420,0,0" VerticalAlignment="Top" Width="318" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="AddButton_Click" />
+        <Button  x:Name="ModifyButton" Content="Modyfikuj wydatek nieregularny" HorizontalAlignment="Left" Margin="400,420,0,0" VerticalAlignment="Top" Width="318" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Visibility="Hidden" Click="ModifyButton_Click"  />
+        <Button  x:Name="BackButton" Content="Powrót do dodawania" HorizontalAlignment="Left" Margin="180,420,0,0" VerticalAlignment="Top" Width="203" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Visibility="Hidden"  RenderTransformOrigin="-0.222,-2.389" Click="BackButton_Click"  />
+
+
     </Grid>
 </Page>

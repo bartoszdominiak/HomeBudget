@@ -59,6 +59,7 @@
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\Expenses.cs" />
     <Compile Include="Models\Global.cs" />
+    <Compile Include="Models\IrregularBudget.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Panels\AddCategoryPanel.xaml.cs">
       <DependentUpon>AddCategoryPanel.xaml</DependentUpon>

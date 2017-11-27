@@ -142,6 +142,30 @@ namespace HomeBudget.Models
             }
         }
 
+
+        //TWORZENIE NOWEGO WIERSZA Z WYDATKIEM NIEREGULARNYM
+        public bool InsertIrregularBudget(int UserId, string name, string amount)
+        {
+            string query = "INSERT INTO IrregularBudget VALUES(" + UserId + ",'" + name + "'," + amount.Replace(',', '.') + "," + "0.0"+ ")";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         //TWORZENIE WIERSZA Z NOWYM UŻYTKOWNIKIEM
         public bool UpdateCategory(int UserId,int recid , string name, string desc, string color)
         {
@@ -169,6 +193,29 @@ namespace HomeBudget.Models
         public bool UpdateExpenses(int UserId, string name, string amount, string date, int CategoryId, int ExpRecid)
         {
             string query = "UPDATE Expenses SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + ", Date='" + date + "', _category="+CategoryId+" WHERE __recid=" + ExpRecid ;
+
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool UpdateIrregularBudget(int UserId, string name, string amount, int recid)
+        {
+            string query = "UPDATE IrregularBudget SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + " WHERE __recid=" + recid;
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -408,6 +455,42 @@ namespace HomeBudget.Models
             }
         }
 
+        public List<IrregularBudget> GetAllFromIrregularBudget(int UserId)
+        {
+
+            List<IrregularBudget> list = new List<IrregularBudget>();
+            string query = "SELECT Name,Amount, Value, __recid FROM IrregularBudget WHERE _User=" + UserId;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        IrregularBudget cat = new IrregularBudget(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString(), Reader.GetValue(2).ToString(), Convert.ToInt16(Reader.GetValue(3)));
+                        list.Add(cat);
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
+
         public List<Categories> GetAllFromCategories(int UserId)
         {
 
@@ -481,6 +564,42 @@ namespace HomeBudget.Models
             }
         }
 
+        public List<Expenses> GetAllFromExpensesBetweenDate(int UserId,string DateFrom, string DateTo)
+        {
+
+            List<Expenses> list = new List<Expenses>();
+            string query = "Select e.Name, e.Amount, e.[Date] da, c.Name, c.__recid, e.__recid from Expenses e join Categories c on e._category=c.__recid where c._user=" + UserId + " and e.[Date] between '"+DateFrom+"' and '"+DateTo+"' order by da";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        Expenses cat = new Expenses(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString(), Reader.GetValue(2).ToString(), Reader.GetValue(3).ToString(), Reader.GetValue(4).ToString(), Reader.GetValue(5).ToString());
+                        list.Add(cat);
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
+
         public List<Settings> GetAllFromSettings(int UserId)
         {
 
@@ -513,6 +632,51 @@ namespace HomeBudget.Models
                 {
                     Connection.Close();
                     return list;
+                }
+            }
+        }
+
+        public bool DeleteteExpenditure(int __recid)
+        {
+            string query = "Delete from expenses where __recid="+__recid;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool DeleteteIrregularBudget(int __recid)
+        {
+            
+            string query = "Delete from IrregularBudget where __recid=" + __recid;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
                 }
             }
         }

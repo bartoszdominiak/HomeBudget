@@ -19,7 +19,7 @@ namespace HomeBudget.Models
         {
             Name = n;
             Value = Validation.Validation.GetNumberTwoZero(v);
-            Date = Validation.Validation.GetShortDate(d);
+            Date = Validation.Validation.GetReverseDate(d);
             CategoryName = cn;
             CategoryRecid = Convert.ToInt16(cr);
             ExpRecid = Convert.ToInt16(expRecid);

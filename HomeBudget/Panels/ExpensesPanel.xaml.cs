@@ -199,14 +199,14 @@ namespace HomeBudget.Panels
                 int CategoryId = db.GetCategoryRecid(UserId, CategoryComboBox.Text);
                 if(CategoryId==-2)
                 {
-                    AddFail.Content = "Nieprawidłowy format dancyh";
+                    AddFail.Content = "Nieprawidłowy format danych";
                     return;
                 }
                 else
                 {
                     if(!db.InsertExpenditure(UserId,NameBox.Text,AmountBox.Text,DateBox.Text,CategoryId))
                     {
-                        AddFail.Content = "Nieprawidłowy format dancyh";
+                        AddFail.Content = "Nieprawidłowy format danych";
                         return;
                     }
                     else
