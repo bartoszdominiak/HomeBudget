@@ -7,23 +7,23 @@
       mc:Ignorable="d" 
       d:DesignHeight="600"  d:DesignWidth="800"
       Title="LoginPanel" Background="White"
-            FontFamily="Cambria">
+            FontFamily="Source Sans Pro">
 
-    <Grid Background="#FFD3D8DE" HorizontalAlignment="Left" Width="800">
-        <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" />
+    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800">
+        <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" Background="#FF0099D5" Foreground="#FFEAEAEA" FontFamily="Source Sans Pro Light" />
         <Frame x:Name="InterfaceFrame" Content="" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="160" Visibility="Hidden" MouseLeave="InterfaceFrame_MouseLeave"   />
-        <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click"  />
-        <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" />
-        <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" />
-        <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" />
-        <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" />
-        <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" />
-        <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click"  />
-        <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" />
+        <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
 
-        <Label x:Name="MainLabel" Content="Historia wydatków" HorizontalAlignment="Center" Margin="216,10,162,0" VerticalAlignment="Top" Width="422" Height="70" FontSize="48"/>
-        <DataGrid x:Name="ExpensesGrid" HorizontalAlignment="Left" Margin="163,167,0,0" VerticalAlignment="Top" Height="318" Width="614">
+        <Label x:Name="MainLabel" Content="Historia wydatków" HorizontalAlignment="Center" Margin="216,10,162,0" VerticalAlignment="Top" Width="422" Height="70" FontSize="48" FontFamily="Source Sans Pro"/>
+        <DataGrid x:Name="ExpensesGrid" HorizontalAlignment="Left" Margin="163,167,0,0" VerticalAlignment="Top" Height="318" Width="600" BorderBrush="#FF0099D5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="200" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Kwota" Binding="{Binding Path=Value}" MinWidth="70" Width="Auto" IsReadOnly="True"/>
@@ -34,26 +34,26 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="ModifyExpenses_Click"  MinWidth="60" Tag="aaa">Modyfikuj</Button>
+                            <Button Click="ModifyExpenses_Click"  MinWidth="60" Tag="aaa" Background="#FFFFCA50" Foreground="Black" FontFamily="Source Sans Pro">Modyfikuj</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button  Tag="aaa"  MinWidth="60" Click="Button_Click">Usuń</Button>
+                            <Button  Tag="aaa"  MinWidth="60" Click="Button_Click" Background="#FFFFCA50" Foreground="Black" FontFamily="Source Sans Pro">Usuń</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Content="Wybierz okres:" HorizontalAlignment="Left" Margin="163,68,0,0" VerticalAlignment="Top" Width="145" FontSize="16"/>
-        <TextBox x:Name="DateToBox" HorizontalAlignment="Center" Height="25" Margin="247,134,421,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="132" FontSize="18" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" GotFocus="DateToBox_GotFocus" LostFocus="DateToBox_LostFocus" PreviewMouseDown="DateToBox_PreviewMouseDown"   />
-        <Label x:Name="DateToLabel" Content="Data do:" HorizontalAlignment="Center" Margin="165,134,540,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Cambria"/>
+        <Label x:Name="label" Content="Wybierz okres:" HorizontalAlignment="Left" Margin="163,68,0,0" VerticalAlignment="Top" Width="145" FontSize="16" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="DateToBox" HorizontalAlignment="Center" Height="25" Margin="247,134,421,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="132" FontSize="18" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionBrush="#FFFA1700" GotFocus="DateToBox_GotFocus" LostFocus="DateToBox_LostFocus" PreviewMouseDown="DateToBox_PreviewMouseDown"   />
+        <Label x:Name="DateToLabel" Content="Data do:" HorizontalAlignment="Center" Margin="165,134,540,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
         <Calendar HorizontalAlignment="Left" Margin="371,131,0,0" VerticalAlignment="Top" Name="CalendarTo" Visibility="Hidden"  Height="164" Width="193" GotFocus="CalendarTo_GotFocus" LostFocus="CalendarTo_LostFocus" MouseLeave="CalendarTo_MouseLeave" SelectedDatesChanged="CalendarTo_SelectedDatesChanged"/>
-        <Button  x:Name="ChangeButton" Content="Zmień okres" HorizontalAlignment="Left" Margin="645,134,0,0" VerticalAlignment="Top" Width="132" Height="25" BorderBrush="#FF73797F" FontSize="14" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" RenderTransformOrigin="-1.866,0.187" Click="ChangeButton_Click" />
-        <TextBox x:Name="DateFromBox" HorizontalAlignment="Center" Height="26" Margin="247,102,421,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="132" FontSize="18" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF73797F" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" TextChanged="DateFromBox_TextChanged" GotFocus="DateFromBox_GotFocus" LostFocus="DateFromBox_LostFocus" PreviewMouseDown="DateFromBox_PreviewMouseDown"   />
-        <Label x:Name="DateFromLabel" Content="Data od:" HorizontalAlignment="Center" Margin="165,101,540,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Cambria"/>
+        <Button  x:Name="ChangeButton" Content="Zmień okres" HorizontalAlignment="Left" Margin="631,134,0,0" VerticalAlignment="Top" Width="132" Height="25" BorderBrush="#FF73797F" FontSize="14" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" RenderTransformOrigin="-1.866,0.187" Click="ChangeButton_Click" />
+        <TextBox x:Name="DateFromBox" HorizontalAlignment="Center" Height="26" Margin="247,102,421,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="132" FontSize="18" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" TextChanged="DateFromBox_TextChanged" GotFocus="DateFromBox_GotFocus" LostFocus="DateFromBox_LostFocus" PreviewMouseDown="DateFromBox_PreviewMouseDown"   />
+        <Label x:Name="DateFromLabel" Content="Data od:" HorizontalAlignment="Center" Margin="165,101,540,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro" />
         <Calendar HorizontalAlignment="Left" Margin="371,100,0,0" VerticalAlignment="Top" Name="CalendarFrom" Visibility="Hidden"  Height="164" Width="193" GotFocus="CalendarFrom_GotFocus" LostFocus="CalendarFrom_LostFocus" MouseLeave="CalendarFrom_MouseLeave" SelectedDatesChanged="CalendarFrom_SelectedDatesChanged"/>
 
 

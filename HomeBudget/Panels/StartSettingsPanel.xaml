@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HomeBudget.Panels"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="600"  d:DesignWidth="800"
       Title="LoginPanel" Background="White"
-            FontFamily="Cambria">
+            FontFamily="Source Sans Pro">
 
-    <Grid  Background="#FFD3D8DE" HorizontalAlignment="Left" Width="800">
+    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800">
         
 
         <Label x:Name="MainLabel" Content="Konfiguracja ustawień użytkownika" HorizontalAlignment="Center" Margin="145,10,79,0" VerticalAlignment="Top" Width="576" Height="70" FontSize="36"/>
@@ -18,9 +18,9 @@
         <Label x:Name="Info2Label" Content="(Później będziesz mógł je zmienić)" HorizontalAlignment="Left" Margin="245,79,0,0" VerticalAlignment="Top" FontSize="10"/>
 
         <Label x:Name="StartsSavingBoxLabel" Content="Wartość oszczędności:" HorizontalAlignment="Left" Margin="18,101,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="208,101,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus"/>
+        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="208,101,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
         <Label x:Name="EarningsLabel" Content="Wysokość miesięcznych zarobków:" HorizontalAlignment="Left" Margin="18,124,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="208,125,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus"/>
+        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="208,125,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus" Background="#FFE6F2FF"/>
 
         <Label x:Name="Info3Label" Content="Dodaj podstawowe kategorie wydatków." HorizontalAlignment="Left" Margin="18,153,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="Info4Label" Content="(Później będziesz mógł je modyfikować i dodawać kolejne)" HorizontalAlignment="Left" Margin="278,157,0,0" VerticalAlignment="Top" FontSize="10"/>
@@ -28,9 +28,9 @@
         <Label x:Name="Info6Label" Content="Opis kategorii" HorizontalAlignment="Left" Margin="166,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
         <Label x:Name="Info7Label" Content="Kolor" HorizontalAlignment="Left" Margin="609,185,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
 
-        <TextBox x:Name="NameCategory1" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="18,211,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16"/>
-        <TextBox x:Name="DescriptionCategory1" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="166,211,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14"/>
-        <Button x:Name="ColorCategory1" Content="" HorizontalAlignment="Left" Margin="609,211,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFFFF00" Click="ColorCategory1_Click" />
+        <TextBox x:Name="NameCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="18,211,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16" Background="#FFE6F2FF"/>
+        <TextBox x:Name="DescriptionCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="166,211,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14" Background="#FFE6F2FF"/>
+        <Button x:Name="ColorCategory1" Content="" HorizontalAlignment="Left" Margin="609,211,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFFFF00" Click="ColorCategory1_Click" BorderBrush="#FF0099D5" />
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,211,79,227"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList1" SelectionChanged="colorList1_SelectionChanged" Visibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -45,9 +45,9 @@
         </ListBox>
 
 
-        <TextBox x:Name="NameCategory2" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="18,253,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16"/>
-        <TextBox x:Name="DescriptionCategory2" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="166,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14"/>
-        <Button x:Name="ColorCategory2" Content="" HorizontalAlignment="Left" Margin="609,253,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFE9967A" Click="ColorCategory2_Click" />
+        <TextBox x:Name="NameCategory2" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="18,253,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16" Background="#FFE6F2FF"/>
+        <TextBox x:Name="DescriptionCategory2" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="166,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14" Background="#FFE6F2FF"/>
+        <Button x:Name="ColorCategory2" Content="" HorizontalAlignment="Left" Margin="609,253,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFE9967A" Click="ColorCategory2_Click" BorderBrush="#FF0099D5" />
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,253,79,185"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList2" SelectionChanged="colorList2_SelectionChanged" Visibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -62,9 +62,9 @@
         </ListBox>
 
 
-        <TextBox x:Name="NameCategory3" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="18,296,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16"/>
-        <TextBox x:Name="DescriptionCategory3" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="166,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14"/>
-        <Button x:Name="ColorCategory3" Content="" HorizontalAlignment="Left" Margin="609,296,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFCD5C5C" Click="ColorCategory3_Click" />
+        <TextBox x:Name="NameCategory3" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="18,296,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16" Background="#FFE6F2FF"/>
+        <TextBox x:Name="DescriptionCategory3" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="166,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14" Background="#FFE6F2FF"/>
+        <Button x:Name="ColorCategory3" Content="" HorizontalAlignment="Left" Margin="609,296,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFCD5C5C" Click="ColorCategory3_Click" BorderBrush="#FF0099D5" />
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,296,79,142"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList3" SelectionChanged="colorList3_SelectionChanged" Visibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -78,9 +78,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <TextBox x:Name="NameCategory4" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="18,339,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16"/>
-        <TextBox x:Name="DescriptionCategory4" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="166,339,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14"/>
-        <Button x:Name="ColorCategory4" Content="" HorizontalAlignment="Left" Margin="609,339,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FF556B2F" Click="ColorCategory4_Click" />
+        <TextBox x:Name="NameCategory4" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="18,339,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16" Background="#FFE6F2FF"/>
+        <TextBox x:Name="DescriptionCategory4" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="166,339,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14" Background="#FFE6F2FF"/>
+        <Button x:Name="ColorCategory4" Content="" HorizontalAlignment="Left" Margin="609,339,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FF556B2F" Click="ColorCategory4_Click" BorderBrush="#FF0099D5" />
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,339,79,99"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList4" SelectionChanged="colorList4_SelectionChanged" Visibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -95,9 +95,9 @@
         </ListBox>
 
 
-        <TextBox x:Name="NameCategory5" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="23" Margin="18,382,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16"/>
-        <TextBox x:Name="DescriptionCategory5" HorizontalAlignment="Left" BorderBrush="#FF73797F" Height="38" Margin="166,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14"/>
-        <Button x:Name="ColorCategory5" Content="" HorizontalAlignment="Left" Margin="609,382,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FF4682B4" Click="ColorCategory5_Click" RenderTransformOrigin="0.373,0.526" />
+        <TextBox x:Name="NameCategory5" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="18,382,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16" Background="#FFE6F2FF"/>
+        <TextBox x:Name="DescriptionCategory5" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="166,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14" Background="#FFE6F2FF"/>
+        <Button x:Name="ColorCategory5" Content="" HorizontalAlignment="Left" Margin="609,382,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FF4682B4" Click="ColorCategory5_Click" RenderTransformOrigin="0.373,0.526" BorderBrush="#FF0099D5" />
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,382,79,99"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList5" SelectionChanged="colorList5_SelectionChanged" Visibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -110,7 +110,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="EndButton" Content="Zakończ" HorizontalAlignment="Left" Margin="481,445,0,0" VerticalAlignment="Top" Width="166" Height="48" FontSize="18" Click="EndButton_Click"/>
+        <Button x:Name="EndButton" Content="Zakończ" HorizontalAlignment="Left" Margin="481,445,0,0" VerticalAlignment="Top" Width="166" Height="48" FontSize="18" Click="EndButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"/>
 
         <!--Rectangle x:Name="rtlfill" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="10,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.533,0.6"/ -->
     </Grid>

@@ -7,20 +7,20 @@
       mc:Ignorable="d" 
       d:DesignHeight="600"  d:DesignWidth="800"
       Title="LoginPanel" Background="White"
-            FontFamily="Cambria">
+            FontFamily="Source Sans Pro">
 
-    <Grid Background="#FFD3D8DE" HorizontalAlignment="Left" Width="800">
-        <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" />
+    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800">
+        <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" Background="#FF0099D5" Foreground="#FFEAEAEA" FontFamily="Source Sans Pro Light" />
         <Frame x:Name="InterfaceFrame" Content="" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="160" Visibility="Hidden" MouseLeave="InterfaceFrame_MouseLeave"   />
-        <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click"  />
-        <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" />
-        <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" />
-        <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" />
-        <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" />
-        <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" />
-        <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click"  />
-        <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" />
+        <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
 
     </Grid>
 </Page>
