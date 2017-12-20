@@ -37,7 +37,6 @@ namespace HomeBudget.Models
             //MessageBox.Show("SELECT Email FROM Users WHERE Email =/ ' /'");
         }
 
-
         //TWORZENIE WIERSZA Z NOWYM UŻYTKOWNIKIEM
         public bool InsertUser(string name, string email, string hash)
         {
@@ -60,7 +59,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         //TWORZENIE WIERSZA Z NOWYM WYDATKIEM
         public bool InsertExpenditure(int UserId,string name, string amount, string date, int CategoryId)
         {
@@ -83,7 +81,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         //TWORZENIE WIERSZA Z NOWĄ KATEGORIĄ
         public bool InsertCategory(int user, string name, string description, string color, bool parent)
         {
@@ -114,14 +111,12 @@ namespace HomeBudget.Models
                 }
             }
         }
-
-
         //TWORZENIE NOWEGO WIERSZA Z USTAWIENIAMI
         public bool InsertSettings(int userid, decimal saving, decimal earnings)
         {
             string a = saving.ToString().Replace(',','.');
             string b = earnings.ToString().Replace(',', '.');
-            string query = "INSERT INTO Settings VALUES(" + userid + "," + a + "," + b + ")";
+            string query = "INSERT INTO Settings VALUES(" + userid + "," + a + "," + b +",1 )";
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -141,8 +136,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
-
         //TWORZENIE NOWEGO WIERSZA Z WYDATKIEM NIEREGULARNYM
         public bool InsertIrregularBudget(int UserId, string name, string amount)
         {
@@ -166,6 +159,51 @@ namespace HomeBudget.Models
             }
         }
 
+        public bool InsertMonthPlan(int UserId,string earnings, int year, int month, string irregolarbudget)
+        {
+            string e = earnings.ToString().Replace(',', '.');
+            string query = "INSERT INTO MonthPlans VALUES(" + UserId + ",'" + e + "'," + year + "," + month+ "," + e+")";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return false;
+                }
+                catch
+                {
+                    return true;
+                }
+            }
+        }
+
+        public bool InsertCategoryPlan(string categoryrec, string monthplanrecid, string value)
+        {
+            string e = value.ToString().Replace(',', '.');
+            string query = "INSERT INTO CategoryPlan VALUES(" + categoryrec + "," + monthplanrecid + "," + e+ ")";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
         //TWORZENIE WIERSZA Z NOWYM UŻYTKOWNIKIEM
         public bool UpdateCategory(int UserId,int recid , string name, string desc, string color)
         {
@@ -189,7 +227,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public bool UpdateExpenses(int UserId, string name, string amount, string date, int CategoryId, int ExpRecid)
         {
             string query = "UPDATE Expenses SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + ", Date='" + date + "', _category="+CategoryId+" WHERE __recid=" + ExpRecid ;
@@ -212,7 +249,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public bool UpdateIrregularBudget(int UserId, string name, string amount, int recid)
         {
             string query = "UPDATE IrregularBudget SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + " WHERE __recid=" + recid;
@@ -235,7 +271,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public bool UpdateSettings(int UserId, string startssaving, string earnings, string startday)
         {
             string query = "UPDATE Settings SET StartsSaving='" + startssaving + "', Earnings='" + earnings + "', StartDay=" + startday.ToString() + " WHERE  _user=" + UserId + " ";
@@ -259,8 +294,54 @@ namespace HomeBudget.Models
             }
         }
 
+        public bool UpdateMonthPlan(string recid, string earnings, string irregularbudget)
+        {
+            string e = earnings.ToString().Replace(',', '.');
+            string ib = irregularbudget.ToString().Replace(',', '.');
+            string query = "UPDATE MonthPlans SET Earnings=" + e+ ", IrregularBudgetFund="+ ib +" WHERE __recid = "+recid;
 
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
+        public bool UpdateCategoryPlan(string recid, string value)
+        {
+            string e = value.ToString().Replace(',', '.');
+            string query = "UPDATE CategoryPlan SET Value=" + e + " WHERE __recid = " + recid;
+
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
         //SPRAWDZENIE CZY ISTNIEJE UŻYTKOWNIK O PODANYM ADRESIE EMAIL
         public bool CheckUniqueEmail(string email)
         {
@@ -290,7 +371,34 @@ namespace HomeBudget.Models
             }
 
         }
+        public bool CheckMonthPlan(int _user,int year, int month)
+        {
 
+
+            string query = "SELECT * FROM MonthPlans WHERE _user=" + _user + " AND [Year]= "+year+" AND [Month]="+month;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+                    Connection.Close();
+                    return true;
+                }
+                else
+                {
+                    Connection.Close();
+                    return false;
+                }
+            }
+
+        }
         //Sprawdzenie czy istnieje użytkownik
         public bool ChechUserLogin(string email, string hash)
         {
@@ -319,7 +427,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         //Sprawdzenie czy użytkownik posiada ustawienia
         public bool ChechUserSettings(int user)
         {
@@ -348,7 +455,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         //Pobranie recidu kategorii po użytkowniku i nazwie
         public int GetCategoryRecid(int UserId, string name)
         {
@@ -382,8 +488,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
-
         //Pobranie recidu użytkownika podczas logowania
         public int GetUserRecid(string email, string hash)
         {
@@ -454,7 +558,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public List<IrregularBudget> GetAllFromIrregularBudget(int UserId)
         {
 
@@ -490,7 +593,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public List<Categories> GetAllFromCategories(int UserId)
         {
 
@@ -526,8 +628,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
-
         public List<Expenses> GetAllFromExpenses(int UserId)
         {
 
@@ -563,7 +663,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public List<Expenses> GetAllFromExpensesBetweenDate(int UserId,string DateFrom, string DateTo)
         {
 
@@ -599,7 +698,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public List<Settings> GetAllFromSettings(int UserId)
         {
 
@@ -635,6 +733,297 @@ namespace HomeBudget.Models
                 }
             }
         }
+        public MonthPlans GetMonthPlan(string UserId,string Year, string Month)
+        {
+            MonthPlans mp = new MonthPlans(UserId);
+            string query = "SELECT __recid,  Earnings, IrregularBudgetFund  FROM MonthPlans WHERE _user=" + UserId +"and Month= "+Month+" and Year = "+Year;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        mp.ChangeMonthPlan(Year, Month, true, Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString(), Reader.GetValue(2).ToString());
+                    }
+
+                    Connection.Close();
+                    return mp;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return mp;
+                }
+            }
+        }
+
+        public string GetMonthPlanRecid(int _user, int year, int month)
+        {
+
+
+            string query = "SELECT __recid FROM MonthPlans WHERE _user=" + _user + " AND [Year]= " + year + " AND [Month]=" + month;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+                    string recid="";
+                    while (Reader.Read())
+                    {
+                        recid = Reader.GetValue(0).ToString();
+                    }
+                    Connection.Close();
+                    return recid;
+                }
+                else
+                {
+                    Connection.Close();
+                    return "";
+                }
+            }
+
+        }
+
+        public List<CategoryPlan> GetCategoryPlan(int monthplanrecid)
+        {
+
+            List<CategoryPlan> list = new List<CategoryPlan>();
+            string query = "SELECT cp.__recid, cat.Name, cp._category, cp._monthplan, cp.Value FROM CategoryPlan cp left join Categories cat on cp._category=cat.__recid WHERE _monthplan=" + monthplanrecid ;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        list.Add(new CategoryPlan(Reader.GetValue(0).ToString(), (Reader.GetValue(1).ToString()), Reader.GetValue(2).ToString(), Reader.GetValue(3).ToString(), Reader.GetValue(4).ToString()));
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
+
+
+        public List<CategoryPlan> GetCategoryPlanWithSum(int monthplanrecid,int month)
+        {
+
+            List<CategoryPlan> list = new List<CategoryPlan>();
+            string query = "SELECT cp.__recid, cat.Name, cp._category, cp._monthplan, cp.Value FROM CategoryPlan cp left join Categories cat on cp._category=cat.__recid WHERE _monthplan=" + monthplanrecid;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        DB db = new DB();
+                        list.Add(new CategoryPlan(Reader.GetValue(0).ToString(), (Reader.GetValue(1).ToString()), Reader.GetValue(2).ToString(), Reader.GetValue(3).ToString(), Reader.GetValue(4).ToString(), db.GetAmuntToCategory(Reader.GetValue(2).ToString(),month)));
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
+
+        public string GetAmuntToCategory(string catrecid, int month)
+        {
+
+            string tempmonth = month.ToString();
+            if(month<10)
+            {
+                tempmonth="0"+ month.ToString();
+            }
+            
+            string toreturn = "0,00";
+            string query = "Select SUM(e.Amount) from Expenses e join Categories c on e._category=c.__recid  where c.__recid="+catrecid+" and e.[Date] between '2017-"+tempmonth+ "-01' and '2017-" + tempmonth + "-"+Validation.Validation.GetDayInMonth(tempmonth) +"'";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+                    
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0,00";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
+        public string GetCategoryColor(string catrecid)
+        {
+
+
+
+            string toreturn = "#FF07B226";
+            string query = "SELECT Color FROM Categories WHERE __recid="+catrecid;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "#FF07B226";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
+        public string GetIrregularBudgetSum(string user)
+        {
+
+
+
+            string toreturn = "0,0";
+            string query = "SELECT Sum(Amount) FROM IrregularBudget WHERE _user=" + user;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0,0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
+        public string GetIrregularBudgetFund(string user,string year)
+        {
+
+
+
+            string toreturn = "0,0";
+            string query = "SELECT SUM(IrregularBudgetFund) FROM MonthPlans WHERE _user=" + user+"AND Year="+year;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0,0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
 
         public bool DeleteteExpenditure(int __recid)
         {
@@ -657,7 +1046,6 @@ namespace HomeBudget.Models
                 }
             }
         }
-
         public bool DeleteteIrregularBudget(int __recid)
         {
             
@@ -680,6 +1068,39 @@ namespace HomeBudget.Models
                 }
             }
         }
+        public List<CategoryPlan> NewCategoryPlan(int UserId)
+        {
 
+            List<CategoryPlan> list = new List<CategoryPlan>();
+            string query = "SELECT Name, __recid FROM Categories WHERE _User=" + UserId;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        list.Add(new CategoryPlan(Reader.GetValue(0).ToString(), (Reader.GetValue(1).ToString()), "0"));
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
     }
 }

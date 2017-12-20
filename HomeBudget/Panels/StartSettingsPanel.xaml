@@ -31,7 +31,7 @@
         <TextBox x:Name="NameCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="18,211,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="125" FontSize="16" Background="#FFE6F2FF"/>
         <TextBox x:Name="DescriptionCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="166,211,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="420" FontSize="14" Background="#FFE6F2FF"/>
         <Button x:Name="ColorCategory1" Content="" HorizontalAlignment="Left" Margin="609,211,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFFFF00" Click="ColorCategory1_Click" BorderBrush="#FF0099D5" />
-        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,211,79,227"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList1" SelectionChanged="colorList1_SelectionChanged" Visibility="Hidden">
+        <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="647,211,66,227"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList1" SelectionChanged="colorList1_SelectionChanged" Visibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" Orientation="Vertical"/>

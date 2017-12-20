@@ -209,6 +209,42 @@ namespace HomeBudget.Validation
             return GoodDate;
 
         }
+        public static string GetDayInMonth(string date)
+        {
+            if (date == "01") return "31";
+            else if (date == "02") return "28";
+            else if (date == "03") return "31";
+            else if (date == "04") return "30";
+            else if (date == "05") return "31";
+            else if (date == "06") return "30";
+            else if (date == "07") return "31";
+            else if (date == "08") return "31";
+            else if (date == "09") return "30";
+            else if (date == "10") return "31";
+            else if (date == "11") return "30";
+            else if (date == "12") return "31";
+            else return "28";
+        }
+        public static int GetMonthFromDate(string date)
+        {
+            date=Validation.GetShortDate(date);
+            string GoodDate = "";
+            Char delimiter = '.';
+            String[] substrings = date.Split(delimiter);
+            GoodDate =substrings[1];
+            return Convert.ToInt16(GoodDate);
+
+        }
+        public static int GetYearFromDate(string date)
+        {
+            date=Validation.GetShortDate(date);
+            string GoodDate = "";
+            Char delimiter = '.';
+            String[] substrings = date.Split(delimiter);
+            GoodDate = substrings[2];
+            return Convert.ToInt16(GoodDate);
+
+        }
         public static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
         {
             // Hash the input.

@@ -22,5 +22,43 @@
         <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
 
+        <Label x:Name="MainLabel" Content="Aktualności" HorizontalAlignment="Center" Margin="267,7,287,0" VerticalAlignment="Top" Width="246" Height="70" FontSize="48" />
+        <Border Name="Border1" BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="300" Margin="210,111,0,0" VerticalAlignment="Top" Width="485"/>
+        <Border BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="210,455,0,0" VerticalAlignment="Top" Width="485"/>
+
+
+        <Label x:Name="BudgetRealizationLabel" Content="Realizacja budżetu" HorizontalAlignment="Left" Margin="210,71,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24" FontWeight="Bold"/>
+        <TextBlock x:Name="BudgetNotExistLabel" HorizontalAlignment="Left" Margin="216,111,0,0" TextWrapping="Wrap" Text="Nie istnieje jeszcze plan budżetu na ten miesiąc. Jeśli chcesz zaplanować go teraz" VerticalAlignment="Top" Height="60" Width="517" FontSize="20" Visibility="Visible"/>
+        <Button x:Name="SetBudgetButton" Content="KLIKIJ TUTAJ." HorizontalAlignment="Left" Margin="389,136,0,0" VerticalAlignment="Top" Width="115" Background="Transparent" BorderBrush="Transparent" Foreground="#FF0099D5" FontSize="18"  RenderTransformOrigin="0.504,-0.271" FontWeight="Bold" FontFamily="Source Sans Pro" Click="SetBudgetButton_Click" Visibility="Visible"/>
+
+
+        <Label x:Name="MaxCatLabel" Content="test" HorizontalAlignment="Left" Margin="225,111,0,0" VerticalAlignment="Top" Width="173" FontSize="20"/>
+        <ProgressBar Name="MaxCatPB" HorizontalAlignment="Left" Height="30" Margin="225,146,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White" Visibility="Hidden"/>
+        <TextBlock x:Name="MaxCatText" HorizontalAlignment="Left" Margin="225,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20" Visibility="Hidden"/>
+        <Label x:Name="Interjection1" Content="!" HorizontalAlignment="Left" Margin="560,121,0,0" VerticalAlignment="Top" Height="59" Width="29" FontSize="48" FontWeight="Bold" Foreground="#FFFF1B1B"/>
+
+
+        <Label x:Name="MidCatLabel" Content="test" HorizontalAlignment="Left" Margin="225,182,0,0" VerticalAlignment="Top" Width="173" FontSize="20"/>
+        <ProgressBar x:Name="MidCatPB" HorizontalAlignment="Left" Height="30" Margin="225,217,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White"/>
+        <TextBlock x:Name="MidCatText" HorizontalAlignment="Left" Margin="225,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
+        <Label x:Name="Interjection2" Content="!" HorizontalAlignment="Left" Margin="560,192,0,0" VerticalAlignment="Top" Height="59" Width="29" FontSize="48" FontWeight="Bold" Foreground="#FFFF1B1B"/>
+
+
+        <Label x:Name="LowCatLabel" Content="test" HorizontalAlignment="Left" Margin="225,259,0,0" VerticalAlignment="Top" Width="173" FontSize="20"/>
+        <ProgressBar x:Name="LowCatPB" HorizontalAlignment="Left" Height="30" Margin="225,294,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White"/>
+        <TextBlock x:Name="LowCatText" HorizontalAlignment="Left" Margin="225,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
+        <Label x:Name="Interjection3" Content="!" HorizontalAlignment="Left" Margin="560,269,0,0" VerticalAlignment="Top" Height="59" Width="29" FontSize="48" FontWeight="Bold" Foreground="#FFFF1B1B"/>
+
+        <Button  x:Name="HistoryMonthPlan" Content="Zobacz pozostałe kategorie" HorizontalAlignment="Left" Margin="411,360,0,0" VerticalAlignment="Top" Width="267" Height="33"  BorderBrush="#FF73797F" FontSize="20"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="HistoryMonthPlan_Click" />
+
+
+
+        <Label x:Name="BudgetRealizationLabel2" Content="Fundusz na wydatki nieregularne" HorizontalAlignment="Left" Margin="210,416,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24"/>
+        <ProgressBar x:Name="IBPB" HorizontalAlignment="Left" Height="30" Margin="225,478,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White"/>
+        <TextBlock x:Name="IBText" HorizontalAlignment="Left" Margin="225,480,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
+
+
+
+
     </Grid>
 </Page>
