@@ -234,6 +234,19 @@ namespace HomeBudget.Panels
         {
             AmountBox.Text = Validation.Validation.GetNumberWithDot(AmountBox.Text.Trim());
         }
+        private void DateBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //Calendar.Visibility = Visibility.Hidden;
+        }
 
+        private void DateBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //Calendar.Visibility = Visibility.Visible;
+        }
+
+        private void DateBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Calendar.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -323,5 +323,7 @@ namespace HomeBudget.Panels
         {
             IrregularBudgetBox.Text = Validation.Validation.GetNumberWithDot(IrregularBudgetBox.Text.Trim());
         }
+
+
     }
 }

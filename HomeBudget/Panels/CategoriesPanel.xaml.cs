@@ -125,7 +125,42 @@ namespace HomeBudget.Panels
 
         private void DeleteCategory_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("TODO. Brak możliwości usunięcia rekordu");
+            //MessageBox.Show("TODO. Brak możliwości usunięcia rekordu");
+            Categories ex = (Categories)CategoryGrid.SelectedItem;
+            DB db = new Models.DB();
+            string count = db.GetNumberExpensesInCaterory(UserId.ToString(), ex.Name);
+            if(count!="0")
+            {
+                MessageBox.Show("Nie można usuwać kategorii dla których istnieją wydatki.");
+                return;
+            }
+            else
+            {
+                if(db.GetNumberCategoryPlansWithCategory(UserId.ToString(),ex.Name)!="0")
+                {
+                    MessageBox.Show("Nie można usuwać kategorii dla których zaplanowany jest już budżet.");
+                    return;
+                }
+
+                List<Categories> cat = db.GetAllFromCategories(UserId);
+                if(cat.Count<=5)
+                {
+                    MessageBox.Show("Musisz mieć przynajmniej pięć kategorii wydatków.");
+                    return;
+                }
+
+                if (db.DeleteteCategory(UserId.ToString(),ex.Name))
+                {
+                    MessageBox.Show("Usunięto kategorię.");
+                    this.NavigationService.Navigate(new CategoriesPanel(UserId));
+                }
+                else
+                {
+                    MessageBox.Show("Nie udało się usunąć kategorii.");
+                    return;
+                }
+            }
+
         }
 
 

@@ -15,7 +15,7 @@
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
@@ -25,21 +25,22 @@
 
         <Label x:Name="MainLabel" Content="Nowy wydatek" HorizontalAlignment="Center" Margin="259,10,221,0" VerticalAlignment="Top" Width="320" Height="70" FontSize="48"/>
 
-        <Label x:Name="CategryLabel" Content="Nazwa kategorii" HorizontalAlignment="Center" Margin="278,96,268,0" VerticalAlignment="Top" Width="254" FontSize="20" FontFamily="Cambria"/>
-        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="40" Margin="278,139,0,0" VerticalAlignment="Top" Width="254" FontSize="20" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionChanged="CategoryComboBox_SelectionChanged"/>
 
-        <TextBox x:Name="NameBox" HorizontalAlignment="Center" Height="40" Margin="10,218,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700"  />
-        <Label x:Name="NameLabel" Content="Opis wydatku" HorizontalAlignment="Center" Margin="278,185,386,0" VerticalAlignment="Top" Width="136" FontSize="20" FontFamily="Cambria"/>
-        <TextBox x:Name="AmountBox" HorizontalAlignment="Center" Height="40" Margin="278,375,268,0" TextWrapping="NoWrap" Text="0,00" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" TextChanged="AmountBox_TextChanged" LostFocus="AmountBox_LostFocus"  />
-        <Label x:Name="AmountLabel" Content="Kwota" HorizontalAlignment="Center" Margin="278,341,386,0" VerticalAlignment="Top" Width="136" FontSize="20" FontFamily="Cambria"/>
-        <TextBox x:Name="DateBox" HorizontalAlignment="Center" Height="40" Margin="278,296,268,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FFFA1700" GotFocus="DateBox_GotFocus" LostFocus="DateBox_LostFocus"  />
-        <Label x:Name="DateLabel" Content="Data" HorizontalAlignment="Center" Margin="278,263,386,0" VerticalAlignment="Top" Width="136" FontSize="20" FontFamily="Cambria"/>
+        <Label x:Name="CategryLabel" Content="Nazwa kategorii" HorizontalAlignment="Center" Margin="278,96,268,0" VerticalAlignment="Top" Width="254" FontSize="18" FontFamily="Source Sans Pro"/>
+        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="31" Margin="278,139,0,0" VerticalAlignment="Top" Width="254" FontSize="20" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionChanged="CategoryComboBox_SelectionChanged"/>
+
+        <TextBox x:Name="NameBox" HorizontalAlignment="Center" Height="31" Margin="278,213,268,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="20" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionBrush="#FFFA1700"  />
+        <Label x:Name="NameLabel" Content="Opis wydatku" HorizontalAlignment="Center" Margin="278,180,386,0" VerticalAlignment="Top" Width="136" FontSize="18" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="DateBox" HorizontalAlignment="Center" Height="31" Margin="278,290,268,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="20" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionBrush="#FFFA1700" GotFocus="DateBox_GotFocus" LostFocus="DateBox_LostFocus" MouseLeave="DateBox_MouseLeave" PreviewMouseDoubleClick="DateBox_PreviewMouseDoubleClick" PreviewMouseDown="DateBox_PreviewMouseDown"  />
+        <Label x:Name="DateLabel" Content="Data" HorizontalAlignment="Center" Margin="278,251,386,0" VerticalAlignment="Top" Width="136" FontSize="18" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="AmountBox" HorizontalAlignment="Center" Height="31" Margin="278,362,268,0" TextWrapping="NoWrap" Text="0,00" VerticalAlignment="Top" Width="254" FontSize="20" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionBrush="#FFFA1700" TextChanged="AmountBox_TextChanged" LostFocus="AmountBox_LostFocus"  />
+        <Label x:Name="AmountLabel" Content="Kwota" HorizontalAlignment="Center" Margin="278,328,386,0" VerticalAlignment="Top" Width="136" FontSize="18" FontFamily="Source Sans Pro"/>
         <Calendar HorizontalAlignment="Left" Margin="532,302,0,0" VerticalAlignment="Top" Name="Calendar" Visibility="Hidden" GotFocus="Calendar_GotFocus" LostFocus="Calendar_LostFocus" MouseLeave="Calendar_MouseLeave" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
-        <Button  x:Name="AddButton" Content="Dodaj wydatek" HorizontalAlignment="Left" Margin="278,435,0,0" VerticalAlignment="Top" Width="254" Height="50" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="AddButton_Click" />
+        <Button  x:Name="AddButton" Content="Dodaj wydatek" HorizontalAlignment="Left" Margin="278,420,0,0" VerticalAlignment="Top" Width="254" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="AddButton_Click" />
 
-        <Label x:Name="Added" Content="" HorizontalAlignment="Left" Margin="542,435,0,0" VerticalAlignment="Top" Height="50" Width="248" FontSize="16" Foreground="#FF267D06" FontFamily="Cambria" />
+        <Label x:Name="Added" Content="" HorizontalAlignment="Left" Margin="403,490,0,0" VerticalAlignment="Top" Height="50" Width="248" FontSize="16" Foreground="#FF267D06" FontFamily="Cambria" />
+        <Label x:Name="AddFail" Content="" HorizontalAlignment="Left" Margin="403,490,0,0" VerticalAlignment="Top" Height="50" Width="248" FontSize="16" Foreground="#FF860000" FontFamily="Cambria" />
 
-        <Label x:Name="AddFail" Content="" HorizontalAlignment="Left" Margin="542,435,0,0" VerticalAlignment="Top" Height="50" Width="248" FontSize="16" Foreground="#FF860000" FontFamily="Cambria" />
 
     </Grid>
 </Page>

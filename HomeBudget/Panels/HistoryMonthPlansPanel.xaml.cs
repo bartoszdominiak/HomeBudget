@@ -21,6 +21,7 @@ namespace HomeBudget.Panels
     public partial class HistoryMonthPlansPanel : Page
     {
         private int UserId { get; }
+        private int Year = 0;
         public HistoryMonthPlansPanel(int Id)
         {
             InitializeComponent();
@@ -100,6 +101,31 @@ namespace HomeBudget.Panels
         private void AllExpensesButton_Click_1(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new AllExpenses(UserId));
+        }
+
+        private void MonthComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+        private void cmdUp_Click(object sender, RoutedEventArgs e)
+        {
+            NumValue++;
+            
+        }
+
+        private void cmdDown_Click(object sender, RoutedEventArgs e)
+        {
+            NumValue--;
+            
+        }
+
+        public int NumValue
+        {
+            get { return Year; }
+            set
+            {
+                Year = value;
+                YearBox.Text = value.ToString();
+            }
         }
     }
 }

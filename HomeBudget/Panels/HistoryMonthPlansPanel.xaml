@@ -15,12 +15,46 @@
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+
+
+        <Label x:Name="MainLabel" Content="Historia realizacji budżetu" HorizontalAlignment="Center" Margin="171,10,27,0" VerticalAlignment="Top" Width="602" Height="70" FontSize="48"/>
+
+
+        <DataGrid x:Name="MonthBudgetGrid"  HorizontalAlignment="Left" IsEnabled="True" Margin="348,85,0,0" VerticalAlignment="Top" Height="316" Width="375" BorderBrush="#FF0099D5" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nazwa kategorii" Binding="{Binding Path=Name}" MinWidth="200" Width="Auto" IsReadOnly="True" />
+                <DataGridTextColumn Header="Recid kategorii" Binding="{Binding Path=CatRecid}" MinWidth="200" Width="Auto" Visibility="Hidden" />
+                <DataGridTextColumn Header="Planowany budżet dla kategorii" Binding="{Binding Path=Value}" MinWidth="100" Width="Auto"  />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="MonthLabel" Content="Miesiąc:" HorizontalAlignment="Center" Margin="165,83,540,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
+
+
+
+        <Button  x:Name="AddButton" Content="Zapisz budżet" HorizontalAlignment="Left" Margin="520,420,0,0" VerticalAlignment="Top" Width="203" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" />
+        <ComboBox x:Name="MonthComboBox" HorizontalAlignment="Left" Margin="170,111,0,0" VerticalAlignment="Top" Width="141" SelectionChanged="MonthComboBox_SelectionChanged" Background="Black"/>
+
+        <Label x:Name="YearLabel" Content="Rok:" HorizontalAlignment="Center" Margin="164,137,541,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
+
+
+        <StackPanel Orientation="Horizontal" Margin="164,155,480,414">
+            <TextBox x:Name="YearBox" x:FieldModifier="private" Margin="5,5,0,2.667" Width="95" Text="" IsReadOnly="True" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE6F2FF" />
+            <Button x:Name="cmdUp" x:FieldModifier="private" Margin="5,5,0,2.667" Content="˄" Width="20" Click="cmdUp_Click" />
+            <Button x:Name="cmdDown" x:FieldModifier="private" Margin="0,5,0,2.667"  Content="˅" Width="20" Click="cmdDown_Click" />
+        </StackPanel>
+
+
+        <Label x:Name="EarningLabel" Content="Miesięczny przychód:" HorizontalAlignment="Center" Margin="165,188,457,0" VerticalAlignment="Top" Width="178" FontSize="14" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="EarningsBox" x:FieldModifier="private" Margin="170,212,457,365" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE6F2FF" RenderTransformOrigin="0.5,0.5" />
+        <Label x:Name="IBLabel" Content="Kwota na budżet nieregulany" HorizontalAlignment="Center" Margin="166,240,452,0" VerticalAlignment="Top" Width="182" FontSize="14" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="IrregularBudgetBox" x:FieldModifier="private" Margin="171,264,457,313" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE6F2FF" RenderTransformOrigin="0.5,0.5"/>
+
 
     </Grid>
 </Page>

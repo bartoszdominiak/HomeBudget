@@ -162,7 +162,8 @@ namespace HomeBudget.Models
         public bool InsertMonthPlan(int UserId,string earnings, int year, int month, string irregolarbudget)
         {
             string e = earnings.ToString().Replace(',', '.');
-            string query = "INSERT INTO MonthPlans VALUES(" + UserId + ",'" + e + "'," + year + "," + month+ "," + e+")";
+            string ir = irregolarbudget.ToString().Replace(',', '.');
+            string query = "INSERT INTO MonthPlans VALUES(" + UserId + ",'" + e + "'," + year + "," + month+ "," + ir+")";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -1025,6 +1026,82 @@ namespace HomeBudget.Models
             }
         }
 
+
+
+        public string GetNumberExpensesInCaterory(string user, string name)
+        {
+
+
+
+            string toreturn = "0";
+            string query = "Select Count(e.Name)from Expenses e join Categories c on e._category = c.__recid where c.Name='"+name+"' and  c._user="+user;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
+        public string GetNumberCategoryPlansWithCategory(string user, string name)
+        {
+
+
+
+            string toreturn = "0";
+            string query = "select Count(cp.__recid) from CategoryPlan cp join Categories c on cp._category=c.__recid where c._user="+user+" and c.Name='"+name+"'";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
         public bool DeleteteExpenditure(int __recid)
         {
             string query = "Delete from expenses where __recid="+__recid;
@@ -1068,6 +1145,30 @@ namespace HomeBudget.Models
                 }
             }
         }
+
+        public bool DeleteteCategory(string user, string name)
+        {
+
+            string query = "Delete from  Categories where Name='"+name+"' and  _user="+user;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         public List<CategoryPlan> NewCategoryPlan(int UserId)
         {
 

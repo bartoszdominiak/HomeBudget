@@ -110,7 +110,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="EndButton" Content="Zakończ" HorizontalAlignment="Left" Margin="481,445,0,0" VerticalAlignment="Top" Width="166" Height="48" FontSize="18" Click="EndButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"/>
+        <Button x:Name="EndButton" Content="Dalej" HorizontalAlignment="Left" Margin="481,445,0,0" VerticalAlignment="Top" Width="166" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Click="EndButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"/>
 
         <!--Rectangle x:Name="rtlfill" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="10,475,0,0" Stroke="Black" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.533,0.6"/ -->
     </Grid>

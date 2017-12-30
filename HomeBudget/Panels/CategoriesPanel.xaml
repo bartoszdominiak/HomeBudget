@@ -15,7 +15,7 @@
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
@@ -23,11 +23,11 @@
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
 
 
-        <Label x:Name="MainLabel" Content="Kategorie wydatków" HorizontalAlignment="Center" Margin="158,9,180,0" VerticalAlignment="Top" Width="462" Height="70" FontSize="48"/>
-        <DataGrid x:Name="CategoryGrid" HorizontalAlignment="Left" Margin="165,79,0,0" VerticalAlignment="Top" Height="254" Width="614" BorderBrush="#FF0099D5">
+        <Label x:Name="MainLabel" Content="Kategorie wydatków" HorizontalAlignment="Center" Margin="198,7,140,0" VerticalAlignment="Top" Width="462" Height="70" FontSize="48"/>
+        <DataGrid x:Name="CategoryGrid" HorizontalAlignment="Left" Margin="165,79,0,0" VerticalAlignment="Top" Height="254" Width="601" BorderBrush="#FF0099D5">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Opis" Binding="{Binding Path=Descript}" MinWidth="300" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Path=Descript}" MinWidth="280" Width="Auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Kolor" Binding="{Binding Path=Color}" MinWidth="80" Width="Auto" IsReadOnly="True"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -46,13 +46,13 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label x:Name="Info5Label" Content="Nazwa kategorii" HorizontalAlignment="Left" Margin="226,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
-        <Label x:Name="Info6Label" Content="Opis kategorii" HorizontalAlignment="Left" Margin="412,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110"/>
-        <Label x:Name="Info7Label" Content="Kolor" HorizontalAlignment="Left" Margin="165,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="56"/>
+        <Label x:Name="Info5Label" Content="Nazwa kategorii" HorizontalAlignment="Left" Margin="221,333,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110" FontSize="16" FontFamily="Source Sans Pro"/>
+        <Label x:Name="Info6Label" Content="Opis kategorii" HorizontalAlignment="Left" Margin="412,333,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="110" FontSize="16" FontFamily="Source Sans Pro"/>
+        <Label x:Name="Info7Label" Content="Kolor" HorizontalAlignment="Left" Margin="160,333,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.86,-0.543" Width="56" FontSize="16" FontFamily="Source Sans Pro"/>
 
 
         <TextBox x:Name="NameCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="226,360,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="163" FontSize="26"/>
-        <TextBox x:Name="DescriptionCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="412,360,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="367" FontSize="26"/>
+        <TextBox x:Name="DescriptionCategory1" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="38" Margin="412,360,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="354" FontSize="26"/>
         <Button x:Name="ColorCategory1" Content="" HorizontalAlignment="Left" Margin="165,360,0,0" VerticalAlignment="Top" Width="38" Height="38" Background="#FFFFFF00" Click="ColorCategory1_Click" BorderBrush="#FF0099D5" />
         <ListBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="165,398,561,95"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="colorList1" SelectionChanged="colorList1_SelectionChanged" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
@@ -77,10 +77,10 @@
 
 
 
-        <Button  x:Name="AddButton" Content="Dodaj nową kategorię" HorizontalAlignment="Left" Margin="525,425,0,0" VerticalAlignment="Top" Width="254" Height="50"  BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="AddButton_Click" />
-        <Button  x:Name="ModifyButton" Content="Zapisz modyfikację" HorizontalAlignment="Left" Margin="525,425,0,0" VerticalAlignment="Top" Width="254" Height="50"  BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="ModifyButton_Click" Visibility="Hidden" />
+        <Button  x:Name="AddButton" Content="Dodaj nową kategorię" HorizontalAlignment="Left" Margin="512,425,0,0" VerticalAlignment="Top" Width="254" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="AddButton_Click" />
+        <Button  x:Name="ModifyButton" Content="Zapisz modyfikację" HorizontalAlignment="Left" Margin="525,425,0,0" VerticalAlignment="Top" Width="254"  Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="ModifyButton_Click" Visibility="Hidden" />
 
-        <Button  x:Name="ChangeButton" Content="Przywróć dodawanie" HorizontalAlignment="Left" Margin="243,425,0,0" VerticalAlignment="Top" Width="254" Height="50"  BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="Black" Background="#FF4D657F" Click="ChangeButton_Click" Visibility="Hidden"/>
+        <Button  x:Name="ChangeButton" Content="Przywróć dodawanie" HorizontalAlignment="Left" Margin="243,425,0,0" VerticalAlignment="Top" Width="254" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="ChangeButton_Click" Visibility="Hidden"/>
 
 
 

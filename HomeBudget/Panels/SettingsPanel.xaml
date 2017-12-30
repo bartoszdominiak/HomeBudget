@@ -15,7 +15,7 @@
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
@@ -35,7 +35,7 @@
         <TextBox x:Name="StartDayBox"  HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="460,180,0,0" TextWrapping="NoWrap" Text="1" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartDayBox_LostFocus" Background="#FFE6F2FF"/>
 
 
-        <Button  x:Name="UpdateButton" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="519,474,0,0" VerticalAlignment="Top" Width="254" Height="50" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="UpdateButton_Click" />
+        <Button  x:Name="UpdateButton" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="574,474,0,0" VerticalAlignment="Top" Width="199" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="UpdateButton_Click" />
 
 
     </Grid>

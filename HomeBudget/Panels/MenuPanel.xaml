@@ -15,7 +15,7 @@
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
         <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="MonthPlansButton" Content="Budżet na przyszły miesiąc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
         <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
@@ -27,7 +27,7 @@
         <Border BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="210,455,0,0" VerticalAlignment="Top" Width="485"/>
 
 
-        <Label x:Name="BudgetRealizationLabel" Content="Realizacja budżetu" HorizontalAlignment="Left" Margin="210,71,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24" FontWeight="Bold"/>
+        <Label x:Name="BudgetRealizationLabel" Content="Realizacja budżetu" HorizontalAlignment="Left" Margin="210,71,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24"/>
         <TextBlock x:Name="BudgetNotExistLabel" HorizontalAlignment="Left" Margin="216,111,0,0" TextWrapping="Wrap" Text="Nie istnieje jeszcze plan budżetu na ten miesiąc. Jeśli chcesz zaplanować go teraz" VerticalAlignment="Top" Height="60" Width="517" FontSize="20" Visibility="Visible"/>
         <Button x:Name="SetBudgetButton" Content="KLIKIJ TUTAJ." HorizontalAlignment="Left" Margin="389,136,0,0" VerticalAlignment="Top" Width="115" Background="Transparent" BorderBrush="Transparent" Foreground="#FF0099D5" FontSize="18"  RenderTransformOrigin="0.504,-0.271" FontWeight="Bold" FontFamily="Source Sans Pro" Click="SetBudgetButton_Click" Visibility="Visible"/>
 
@@ -49,7 +49,7 @@
         <TextBlock x:Name="LowCatText" HorizontalAlignment="Left" Margin="225,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
         <Label x:Name="Interjection3" Content="!" HorizontalAlignment="Left" Margin="560,269,0,0" VerticalAlignment="Top" Height="59" Width="29" FontSize="48" FontWeight="Bold" Foreground="#FFFF1B1B"/>
 
-        <Button  x:Name="HistoryMonthPlan" Content="Zobacz pozostałe kategorie" HorizontalAlignment="Left" Margin="411,360,0,0" VerticalAlignment="Top" Width="267" Height="33"  BorderBrush="#FF73797F" FontSize="20"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="HistoryMonthPlan_Click" />
+        <Button  x:Name="HistoryMonthPlan" Content="Zobacz pozostałe kategorie" HorizontalAlignment="Left" Margin="411,360,0,0" VerticalAlignment="Top" Width="267" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="HistoryMonthPlan_Click" />
 
 
 
