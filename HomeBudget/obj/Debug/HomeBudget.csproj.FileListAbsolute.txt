@@ -56,3 +56,5 @@ D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AllExpenses.g.cs
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AllExpenses.baml
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\ModifyEpensesPanel.g.cs
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\ModifyEpensesPanel.baml
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AnnualSummaryPanel.g.cs
+D:\Programowanie\GitHub\HomeBudget\HomeBudget\obj\Debug\Panels\AnnualSummaryPanel.baml

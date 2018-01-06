@@ -55,6 +55,32 @@ namespace HomeBudget.Panels
                 MessageBox.Show("Opis kategorii może mieć do 100 znaków");
                 return;
             }
+            if((NameCategory1.Text== NameCategory2.Text)|| (NameCategory1.Text == NameCategory3.Text)||(NameCategory1.Text == NameCategory4.Text)||(NameCategory1.Text == NameCategory5.Text))
+            {
+                MessageBox.Show("Nazwy kategorii nie mogą się powtarzać");
+                return;
+            }
+            if ((NameCategory2.Text == NameCategory1.Text) || (NameCategory2.Text == NameCategory3.Text) || (NameCategory2.Text == NameCategory4.Text) || (NameCategory2.Text == NameCategory5.Text))
+            {
+                MessageBox.Show("Nazwy kategorii nie mogą się powtarzać");
+                return;
+            }
+            if ((NameCategory3.Text == NameCategory1.Text) || (NameCategory3.Text == NameCategory2.Text) || (NameCategory3.Text == NameCategory4.Text) || (NameCategory3.Text == NameCategory5.Text))
+            {
+                MessageBox.Show("Nazwy kategorii nie mogą się powtarzać");
+                return;
+            }
+            if ((NameCategory4.Text == NameCategory1.Text) || (NameCategory4.Text == NameCategory2.Text) || (NameCategory4.Text == NameCategory3.Text) || (NameCategory4.Text == NameCategory5.Text))
+            {
+                MessageBox.Show("Nazwy kategorii nie mogą się powtarzać");
+                return;
+            }
+            if ((NameCategory5.Text == NameCategory1.Text) || (NameCategory5.Text == NameCategory2.Text) || (NameCategory5.Text == NameCategory3.Text) || (NameCategory5.Text == NameCategory4.Text))
+            {
+                MessageBox.Show("Nazwy kategorii nie mogą się powtarzać");
+                return;
+            }
+
 
             DB db = new DB();
             if (!db.InsertCategory(UserId, NameCategory1.Text, DescriptionCategory1.Text, ColorCategory1.Background.ToString(), false))

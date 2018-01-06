@@ -1,4 +1,4 @@
-﻿<Page x:Class="HomeBudget.Panels.HistoryMonthPlansPanel"
+﻿<Page x:Class="HomeBudget.Panels.AnnualSummaryPanel"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,38 +23,37 @@
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
 
 
-        <Label x:Name="MainLabel" Content="Historia realizacji budżetu" HorizontalAlignment="Center" Margin="171,10,27,0" VerticalAlignment="Top" Width="602" Height="70" FontSize="48"/>
+        <Label x:Name="MainLabel" Content="Podsmowanie roczne" HorizontalAlignment="Center" Margin="171,10,27,0" VerticalAlignment="Top" Width="602" Height="70" FontSize="48"/>
 
 
-        <DataGrid x:Name="MonthBudgetGrid"  HorizontalAlignment="Left" IsEnabled="True" Margin="348,85,0,0" VerticalAlignment="Top" Height="316" Width="375" BorderBrush="#FF0099D5" AutoGenerateColumns="False" >
+        <DataGrid x:Name="MonthBudgetGrid"  HorizontalAlignment="Left" IsEnabled="True" Margin="371,85,0,0" VerticalAlignment="Top" Height="316" Width="352" BorderBrush="#FF0099D5" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa kategorii" Binding="{Binding Path=Name}" MinWidth="180" Width="Auto" IsReadOnly="True" />
                 <DataGridTextColumn Header="Recid kategorii" Binding="{Binding Path=CatRecid}" MinWidth="200" Width="Auto" Visibility="Hidden" />
-                <DataGridTextColumn Header="Planowany budżet" Binding="{Binding Path=Value}" MinWidth="50" Width="Auto"  />
-                <DataGridTextColumn Header="Kwota wydana" Binding="{Binding Path=Sum}" MinWidth="50" Width="Auto"  />
+                <DataGridTextColumn Header="Kwota wydana" Binding="{Binding Path=Sum}" MinWidth="160" Width="Auto"  />
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="MonthLabel" Content="Miesiąc:" HorizontalAlignment="Center" Margin="165,83,540,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
+
+        <Label x:Name="YearLabel" Content="Rok:" HorizontalAlignment="Center" Margin="166,85,539,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
 
 
-
-        <Button  x:Name="AddButton" Content="Zapisz budżet" HorizontalAlignment="Left" Margin="520,420,0,0" VerticalAlignment="Top" Width="203" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" />
-        <ComboBox x:Name="MonthComboBox" HorizontalAlignment="Left" Margin="170,111,0,0" VerticalAlignment="Top" Width="141" SelectionChanged="MonthComboBox_SelectionChanged" Background="Black"/>
-
-        <Label x:Name="YearLabel" Content="Rok:" HorizontalAlignment="Center" Margin="164,137,541,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
-
-
-        <StackPanel Orientation="Horizontal" Margin="164,155,480,414">
+        <StackPanel Orientation="Horizontal" Margin="166,103,478,466">
             <TextBox x:Name="YearBox" x:FieldModifier="private" Margin="5,5,0,2.667" Width="95" Text="" IsReadOnly="True" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" />
             <Button x:Name="cmdUp" x:FieldModifier="private" Margin="5,5,0,2.667" Content="˄" Width="20" Click="cmdUp_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
             <Button x:Name="cmdDown" x:FieldModifier="private" Margin="0,5,0,2.667"  Content="˅" Width="20" Click="cmdDown_Click" Background="#FF0099D5" Foreground="#FFE7E7E7" />
         </StackPanel>
 
 
-        <Label x:Name="EarningLabel" Content="Miesięczny przychód:" HorizontalAlignment="Center" Margin="165,188,457,0" VerticalAlignment="Top" Width="178" FontSize="14" FontFamily="Source Sans Pro"/>
-        <TextBox x:Name="EarningsBox" x:FieldModifier="private" Margin="170,212,457,365" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" />
-        <Label x:Name="IBLabel" Content="Kwota na budżet nieregulany" HorizontalAlignment="Center" Margin="166,240,452,0" VerticalAlignment="Top" Width="182" FontSize="14" FontFamily="Source Sans Pro"/>
-        <TextBox x:Name="IrregularBudgetBox" x:FieldModifier="private" Margin="171,264,457,313" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="EarningLabel" Content="Przychód roczny" HorizontalAlignment="Center" Margin="166,133,456,0" VerticalAlignment="Top" Width="178" FontSize="14" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="EarningsBox" x:FieldModifier="private" Margin="171,157,534,420" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300" />
+        <Label x:Name="AllExpensesLabel" Content="Wydatki roczne" HorizontalAlignment="Center" Margin="166,180,452,0" VerticalAlignment="Top" Width="182" FontSize="14" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="AllExpensesBox" x:FieldModifier="private" Margin="171,204,534,373" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FFF21E1E"/>
+        <Label x:Name="IBPlusLabel" Content="Fundusz na wydatki nieregularne" HorizontalAlignment="Center" Margin="165,228,429,0" VerticalAlignment="Top" Width="206" FontSize="14" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="IrregularBudgetPlusBox" x:FieldModifier="private" Margin="171,255,535,322" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300"/>
+        <Label x:Name="IBLabelMinusLabel" Content="Wydatki nieregularne" HorizontalAlignment="Center" Margin="166,273,428,0" VerticalAlignment="Top" Width="206" FontSize="14" FontFamily="Source Sans Pro"/>
+        <TextBox x:Name="IrregularBudgetMinusBox" x:FieldModifier="private" Margin="172,300,534,277" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FFF21E1E"/>
+        <Label x:Name="SavingsLabel" Content="W ciągu roku zaoszczędzono" HorizontalAlignment="Center" Margin="166,323,428,0" VerticalAlignment="Top" Width="206" FontSize="14" FontFamily="Source Sans Pro" FontWeight="Bold"/>
+        <TextBox x:Name="SavingsBox" x:FieldModifier="private" Margin="172,350,534,227" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300"/>
 
 
     </Grid>

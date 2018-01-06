@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Programowanie\GitHub\HomeBudget\HomeBudget\App.xaml
-15-1294478742
+16-519821575
 
-30-1441923061
+32-984058032
 17-67723260
-MainWindow.xaml;Panels\AddCategoryPanel.xaml;Panels\AllExpenses.xaml;Panels\CategoriesPanel.xaml;Panels\ExpensesPanel.xaml;Panels\HistoryMonthPlansPanel.xaml;Panels\InterfacePanel.xaml;Panels\IrregularBudgetPanel.xaml;Panels\LoginPanel.xaml;Panels\MenuPanel.xaml;Panels\ModifyEpensesPanel.xaml;Panels\MonthPlansPanel.xaml;Panels\RegisterPanel.xaml;Panels\SettingsPanel.xaml;Panels\StartSettingsPanel.xaml;
+MainWindow.xaml;Panels\AddCategoryPanel.xaml;Panels\AllExpenses.xaml;Panels\AnnualSummaryPanel.xaml;Panels\CategoriesPanel.xaml;Panels\ExpensesPanel.xaml;Panels\HistoryMonthPlansPanel.xaml;Panels\InterfacePanel.xaml;Panels\IrregularBudgetPanel.xaml;Panels\LoginPanel.xaml;Panels\MenuPanel.xaml;Panels\ModifyEpensesPanel.xaml;Panels\MonthPlansPanel.xaml;Panels\RegisterPanel.xaml;Panels\SettingsPanel.xaml;Panels\StartSettingsPanel.xaml;
 
 False
 

@@ -193,6 +193,12 @@ namespace HomeBudget.Panels
                 return;
             }
             DB db = new DB();
+
+            if(db.CheckCategory(UserId,NameCategory1.Text))
+            {
+                MessageBox.Show("Kategoria o takiej nazwie już istenieje");
+                return;
+            }
             if (!db.InsertCategory(UserId, NameCategory1.Text, DescriptionCategory1.Text, ColorCategory1.Background.ToString(), false))
             {
                 MessageBox.Show("UPS. Coś poszło nie tak :(");

@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\AnnualSummary.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\CategoryPlan.cs" />
     <Compile Include="Models\DB.cs" />
@@ -73,6 +74,9 @@
     </Compile>
     <Compile Include="Panels\AllExpenses.xaml.cs">
       <DependentUpon>AllExpenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\AnnualSummaryPanel.xaml.cs">
+      <DependentUpon>AnnualSummaryPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panels\CategoriesPanel.xaml.cs">
       <DependentUpon>CategoriesPanel.xaml</DependentUpon>
@@ -126,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Panels\AllExpenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\AnnualSummaryPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

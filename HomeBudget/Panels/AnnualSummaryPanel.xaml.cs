@@ -17,19 +17,20 @@ using System.Windows.Shapes;
 namespace HomeBudget.Panels
 {
     /// <summary>
-    /// Interaction logic for HistoryMonthPlansPanel.xaml
+    /// Interaction logic for AnnualSummaryPanel.xaml
     /// </summary>
-    public partial class HistoryMonthPlansPanel : Page
+    public partial class AnnualSummaryPanel : Page
     {
+
         private int UserId { get; }
         private int Year = 0;
         private int Month = 0;
         private MonthPlans monthplans;
         private List<CategoryPlan> cat = new List<CategoryPlan>();
-
-        public HistoryMonthPlansPanel(int Id)
+        public AnnualSummaryPanel(int Id)
         {
             InitializeComponent();
+
             Page p1 = new InterfacePanel();
             InterfaceFrame.NavigationService.Navigate(p1);
 
@@ -39,8 +40,9 @@ namespace HomeBudget.Panels
             Year = Validation.Validation.GetYearFromDate(localDate.ToString());
             YearBox.Text = Convert.ToString(Year);
             monthplans = new MonthPlans(UserId.ToString());
-            GetMonths(Month);
-            MonthPlanExist();
+            GetData();
+ 
+
         }
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
         {
@@ -115,57 +117,30 @@ namespace HomeBudget.Panels
             this.NavigationService.Navigate(new AllExpenses(UserId));
         }
 
-
-        private void MonthPlanExist()
+        public void GetData()
         {
             DB db = new DB();
-            if (db.CheckMonthPlan(UserId, Year, Month))
-            {
-                MonthPlans mp = db.GetMonthPlan(UserId.ToString(), Year.ToString(), Month.ToString());
-                monthplans = mp;
-                cat.Clear();
-                cat = db.GetCategoryPlanWithSum(Convert.ToInt16(mp.__recid),Month);
-                MonthBudgetGrid.ItemsSource = cat;
-                EarningsBox.Text = monthplans.Earning;
-                IrregularBudgetBox.Text = monthplans.IrregularBudgetFund;
-            }
-            else
-            {
-                List<CategoryPlan> EmptyList = new List<CategoryPlan>();
-                MonthBudgetGrid.ItemsSource=EmptyList;
-                EarningsBox.Text = "0,00";
-                IrregularBudgetBox.Text = "0,00";
-                MessageBox.Show("Nie zaplanowano budżetu na ten miesiąc");
-            }
-
+            EarningsBox.Text = Validation.Validation.GetNumberTwoZero(db.GetYearEarnings(UserId.ToString(), Year.ToString()));
+            AllExpensesBox.Text = Validation.Validation.GetNumberTwoZero(db.GetYearExpenses(UserId.ToString(), Year.ToString()));
+            IrregularBudgetPlusBox.Text = Validation.Validation.GetNumberTwoZero(db.GetIrregularBudgetFund(UserId.ToString(), Year.ToString()));
+            IrregularBudgetMinusBox.Text = Validation.Validation.GetNumberTwoZero(db.GetIrregularBudgetSum(UserId.ToString()));
+            decimal temp = (Convert.ToDecimal(EarningsBox.Text) - Convert.ToDecimal(AllExpensesBox.Text));
+            if (temp < 0) temp = 0;
+            SavingsBox.Text = Validation.Validation.GetNumberTwoZero(temp.ToString());
+            List<AnnualSummary> AS = db.GeAnnualSUmmary(UserId.ToString(), Year.ToString());
+            MonthBudgetGrid.ItemsSource = AS;
         }
 
-        private void MonthComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string text = (sender as ComboBox).SelectedItem as string;
-            Dictionary<int, string> mon = new Dictionary<int, string>();
-            mon = DictionaryGenerator.GetMonths();
-            foreach (KeyValuePair<int, string> kvp in mon)
-            {
-                if (kvp.Value == text)
-                {
-                    Month = kvp.Key;
-                    break;
-                }
-            }
-            MonthPlanExist();
-
-        }
         private void cmdUp_Click(object sender, RoutedEventArgs e)
         {
             NumValue++;
-            MonthPlanExist();
+            GetData();
         }
 
         private void cmdDown_Click(object sender, RoutedEventArgs e)
         {
             NumValue--;
-            MonthPlanExist();
+            GetData();
         }
 
         public int NumValue
@@ -178,19 +153,5 @@ namespace HomeBudget.Panels
             }
         }
 
-        private void GetMonths(int month)
-        {
-            Dictionary<int, string> mon = new Dictionary<int, string>();
-            mon = DictionaryGenerator.GetMonths();
-            foreach (KeyValuePair<int, string> kvp in mon)
-            {
-                MonthComboBox.Items.Add(kvp.Value);
-                if (kvp.Key == month)
-                {
-                    MonthComboBox.SelectedItem = kvp.Value;
-                }
-            }
-
-        }
     }
 }

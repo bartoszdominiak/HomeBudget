@@ -301,5 +301,10 @@ namespace HomeBudget.Panels
         {
             this.NavigationService.Navigate(new HistoryMonthPlansPanel(UserId));
         }
+
+        private void AnnualSummary_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AnnualSummaryPanel(UserId));
+        }
     }
 }

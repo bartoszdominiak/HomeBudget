@@ -37,13 +37,15 @@ namespace HomeBudget.Panels
             List<string> categories = db.GetCategoriesName(UserId);
             int i = 0;
             int temp = 0;
+
             foreach (string cat in categories)
             {
                 if(expenses.CategoryName==cat)
                 {
                     i = temp;
                 }
-                temp = temp++;
+                
+                temp = temp +1;
                 CategoryComboBox.Items.Add(cat);
             }
             CategoryComboBox.SelectedIndex = i;

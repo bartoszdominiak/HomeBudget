@@ -23,8 +23,8 @@
         <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
 
         <Label x:Name="MainLabel" Content="Aktualności" HorizontalAlignment="Center" Margin="267,7,287,0" VerticalAlignment="Top" Width="246" Height="70" FontSize="48" />
-        <Border Name="Border1" BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="300" Margin="210,111,0,0" VerticalAlignment="Top" Width="485"/>
-        <Border BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="210,455,0,0" VerticalAlignment="Top" Width="485"/>
+        <Border Name="Border1" BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="273" Margin="210,111,0,0" VerticalAlignment="Top" Width="485"/>
+        <Border BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="210,427,0,0" VerticalAlignment="Top" Width="485"/>
 
 
         <Label x:Name="BudgetRealizationLabel" Content="Realizacja budżetu" HorizontalAlignment="Left" Margin="210,71,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24"/>
@@ -45,17 +45,19 @@
 
 
         <Label x:Name="LowCatLabel" Content="test" HorizontalAlignment="Left" Margin="225,259,0,0" VerticalAlignment="Top" Width="173" FontSize="20"/>
-        <ProgressBar x:Name="LowCatPB" HorizontalAlignment="Left" Height="30" Margin="225,294,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White"/>
+        <ProgressBar x:Name="LowCatPB" HorizontalAlignment="Left" Height="30" Margin="225,294,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5">
+        </ProgressBar>
         <TextBlock x:Name="LowCatText" HorizontalAlignment="Left" Margin="225,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
         <Label x:Name="Interjection3" Content="!" HorizontalAlignment="Left" Margin="560,269,0,0" VerticalAlignment="Top" Height="59" Width="29" FontSize="48" FontWeight="Bold" Foreground="#FFFF1B1B"/>
 
-        <Button  x:Name="HistoryMonthPlan" Content="Zobacz pozostałe kategorie" HorizontalAlignment="Left" Margin="411,360,0,0" VerticalAlignment="Top" Width="267" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="HistoryMonthPlan_Click" />
+        <Button  x:Name="HistoryMonthPlan" Content="Zobacz pozostałe kategorie" HorizontalAlignment="Left" Margin="409,334,0,0" VerticalAlignment="Top" Width="267" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="HistoryMonthPlan_Click" />
 
 
 
-        <Label x:Name="BudgetRealizationLabel2" Content="Fundusz na wydatki nieregularne" HorizontalAlignment="Left" Margin="210,416,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24"/>
-        <ProgressBar x:Name="IBPB" HorizontalAlignment="Left" Height="30" Margin="225,478,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White"/>
-        <TextBlock x:Name="IBText" HorizontalAlignment="Left" Margin="225,480,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
+        <Label x:Name="BudgetRealizationLabel2" Content="Fundusz na wydatki nieregularne" HorizontalAlignment="Left" Margin="210,388,0,0" VerticalAlignment="Top" Width="444" Height="45" FontSize="24"/>
+        <ProgressBar x:Name="IBPB" HorizontalAlignment="Left" Height="30" Margin="225,450,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White"/>
+        <TextBlock x:Name="IBText" HorizontalAlignment="Left" Margin="225,452,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
+        <Button  x:Name="AnnualSummary" Content="Podsumowanie roczne" HorizontalAlignment="Left" Margin="506,504,0,0" VerticalAlignment="Top" Width="246" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" Click="AnnualSummary_Click"  />
 
 
 

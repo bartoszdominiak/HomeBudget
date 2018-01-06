@@ -456,6 +456,34 @@ namespace HomeBudget.Models
                 }
             }
         }
+
+        public bool CheckCategory(int user,string name)
+        {
+
+
+            string query = "Select count(c.Name) from Categories c where c.Name='"+name+"' and c._user="+user.ToString();
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+                    Connection.Close();
+                    return true;
+                }
+                else
+                {
+                    Connection.Close();
+                    return false;
+                }
+            }
+        }
         //Pobranie recidu kategorii po użytkowniku i nazwie
         public int GetCategoryRecid(int UserId, string name)
         {
@@ -837,6 +865,41 @@ namespace HomeBudget.Models
             }
         }
 
+        public List<AnnualSummary> GeAnnualSUmmary(string user,string year)
+        {
+
+            List<AnnualSummary> list = new List<AnnualSummary>();
+            string query = "Select c.Name, SUM(e.Amount) as sum from Categories c  left join Expenses e  on e._category=c.__recid where c._user="+user+" and e.[Date] between '"+year+"-01-01' and '"+year+"-12-31' group by c.Name ";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        list.Add(new AnnualSummary(Reader.GetValue(0).ToString(), (Reader.GetValue(1).ToString())));
+                    }
+
+                    Connection.Close();
+                    return list;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return list;
+                }
+            }
+        }
+
 
         public List<CategoryPlan> GetCategoryPlanWithSum(int monthplanrecid,int month)
         {
@@ -954,9 +1017,6 @@ namespace HomeBudget.Models
 
         public string GetIrregularBudgetSum(string user)
         {
-
-
-
             string toreturn = "0,0";
             string query = "SELECT Sum(Amount) FROM IrregularBudget WHERE _user=" + user;
             Connection.ConnectionString = ConnectionString;
@@ -1090,6 +1150,79 @@ namespace HomeBudget.Models
                         toreturn = (Reader.GetValue(0).ToString());
                     }
                     if (toreturn == "") toreturn = "0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+        public string GetYearEarnings(string user, string year)
+        {
+
+
+
+            string toreturn = "0";
+            string query = "select Sum(Earnings) from MonthPlans where _user="+user+" and [Year]="+year;
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0,0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
+        public string GetYearExpenses(string user, string year)
+        {
+
+
+
+            string toreturn = "0";
+            string query = "select Sum(Amount) from Expenses where _user="+user+" and [Date] between '" + year + "-01-01' and '" + year+"-12-31'";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0,0";
                     Connection.Close();
                     return toreturn;
 
