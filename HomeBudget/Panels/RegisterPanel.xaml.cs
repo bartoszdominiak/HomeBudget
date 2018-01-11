@@ -31,44 +31,55 @@ namespace HomeBudget.Panels
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validation.Validation.StringNotNull(NameBox.Text))
-            {
-                RegisterFail.Content = "Wprowadź imię";
-                return;
-            }
-            if (!Validation.Validation.NotLongerThen(NameBox.Text,60))
-            {
-                RegisterFail.Content = "Imię może mieć do 60 znaków";
-                return;
-            }
+            RegisterButton_Click();
+        }
+
+
+        private void RegisterButton_Click()
+        {
+            //if (!Validation.Validation.StringNotNull(NameBox.Text))
+            //{
+            //    RegisterFail.Content = "Wprowadź imię";
+            //    return;
+            //}
+            //if (!Validation.Validation.NotLongerThen(NameBox.Text,60))
+            //{
+            //    RegisterFail.Content = "Imię może mieć do 60 znaków";
+            //    return;
+            //}
             if (!Validation.Validation.StringNotNull(EmailBox.Text))
             {
-                RegisterFail.Content = "Wprowadź adres email";
+                RegisterFail.Text = "Wprowadź adres email";
                 return;
             }
             if (!Validation.Validation.NotLongerThen(EmailBox.Text, 60))
             {
-                RegisterFail.Content = "Email może mieć do 60 znaków";
+                RegisterFail.Text = "Email może mieć do 60 znaków";
                 return;
             }
             else if (PasswordBox.Password.Count() == 0)
             {
-                RegisterFail.Content = "Wprowadź hasło";
+                RegisterFail.Text = "Wprowadź hasło";
+                return;
+            }
+            else if (PasswordBox.Password.Count() < 8)
+            {
+                RegisterFail.Text = "Hasło musi mieć przynajmniej 8 znaków";
                 return;
             }
             else if (PasswordConfirmBox.Password.Count() == 0)
             {
-                RegisterFail.Content = "Wprowadź potwierdzenie hasła";
+                RegisterFail.Text = "Wprowadź potwierdzenie hasła";
                 return;
             }
             else if (!Validation.Validation.TwoStringsEquals(PasswordConfirmBox.Password.ToString(), PasswordBox.Password.ToString()))
             {
-                RegisterFail.Content = "Hasła nie są równe";
+                RegisterFail.Text = "Hasła nie są równe";
                 return;
             }
             else if (!Validation.Validation.IsValidEmail(EmailBox.Text))
             {
-                RegisterFail.Content = "Niepoprawny adres email";
+                RegisterFail.Text = "Niepoprawny adres email";
                 return;
             }
             else
@@ -76,7 +87,7 @@ namespace HomeBudget.Panels
                 string hash = null;
                 using (MD5 md5Hash = MD5.Create())
                 {
-                    hash=GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
+                    hash = GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
 
 
                     if (!VerifyMd5Hash(md5Hash, PasswordBox.Password.ToString(), hash))
@@ -87,12 +98,12 @@ namespace HomeBudget.Panels
                 }
 
                 DB db = new DB();
-                if(db.CheckUniqueEmail(EmailBox.Text))
+                if (db.CheckUniqueEmail(EmailBox.Text))
                 {
-                    RegisterFail.Content = "Adres zajęty";
+                    RegisterFail.Text = "Adres zajęty";
                     return;
                 }
-                else if(!db.InsertUser(NameBox.Text,EmailBox.Text,hash))
+                else if (!db.InsertUser(EmailBox.Text, hash))
                 {
                     MessageBox.Show("UPS. Coś poszło nie tak :(");
                     return;
@@ -106,6 +117,7 @@ namespace HomeBudget.Panels
             }
 
         }
+
 
         static string GetMd5Hash(MD5 md5Hash, string input)
         {
@@ -139,6 +151,11 @@ namespace HomeBudget.Panels
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new LoginPanel());
+        }
+
+        private void PasswordConfirmBox_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

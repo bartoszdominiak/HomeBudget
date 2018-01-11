@@ -33,7 +33,14 @@ namespace HomeBudget.Panels
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!Validation.Validation.StringNotNull(EmailBox.Text))
+            LoginButton_Click();
+
+
+        }
+
+        private void LoginButton_Click()
+        {
+            if (!Validation.Validation.StringNotNull(EmailBox.Text))
             {
                 LoginFail.Content = "Wprowadź adres email";
             }
@@ -60,8 +67,8 @@ namespace HomeBudget.Panels
                         return;
                     }
                 }
-                
-                if(db.GetUserRecid(EmailBox.Text, hash)==-2|| db.GetUserRecid(EmailBox.Text, hash) == 0)
+
+                if (db.GetUserRecid(EmailBox.Text, hash) == -2 || db.GetUserRecid(EmailBox.Text, hash) == 0)
                 {
                     LoginFail.Content = "Podany dane nieprawidłowe";
                     return;
@@ -70,7 +77,7 @@ namespace HomeBudget.Panels
                 {
                     int UserId = db.GetUserRecid(EmailBox.Text, hash);
                     if (!db.ChechUserSettings(UserId))
-                    this.NavigationService.Navigate(new StartSettingsPanel(UserId));
+                        this.NavigationService.Navigate(new StartSettingsPanel(UserId));
                     else
                         this.NavigationService.Navigate(new MenuPanel(UserId));
                 }
@@ -95,6 +102,14 @@ namespace HomeBudget.Panels
                 sBuilder.Append(data[i].ToString("x2"));
             }
             return sBuilder.ToString();
+        }
+
+        private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                LoginButton_Click();
+            }
         }
     }
 }

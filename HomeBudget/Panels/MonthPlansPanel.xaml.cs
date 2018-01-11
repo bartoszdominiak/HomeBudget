@@ -146,7 +146,7 @@ namespace HomeBudget.Panels
             {
                 monthplans.ChangeMonthPlan(Year.ToString(), Month.ToString(), false, IrregularBudgetBox.Text);
                 GetDataToGrid();
-                EarningsBox.Text = "0,00";
+                EarningsBox.Text = Validation.Validation.GetNumberTwoZero(db.GetUserEarnings(UserId));
                 IrregularBudgetBox.Text = "0,00";
             }
         }

@@ -38,9 +38,9 @@ namespace HomeBudget.Models
         }
 
         //TWORZENIE WIERSZA Z NOWYM UŻYTKOWNIKIEM
-        public bool InsertUser(string name, string email, string hash)
+        public bool InsertUser( string email, string hash)
         {
-            string query = "INSERT INTO Users VALUES('" + name + "','" + email + "','" + hash + "')";
+            string query = "INSERT INTO Users VALUES(N'" + email + "','" + hash + "')";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -62,7 +62,7 @@ namespace HomeBudget.Models
         //TWORZENIE WIERSZA Z NOWYM WYDATKIEM
         public bool InsertExpenditure(int UserId,string name, string amount, string date, int CategoryId)
         {
-            string query = "INSERT INTO Expenses VALUES(" + UserId + ",'" + name + "'," + amount.Replace(',','.') + ",'" + date + "',"+CategoryId+")";
+            string query = "INSERT INTO Expenses VALUES(" + UserId + ",N'" + name + "'," + amount.Replace(',','.') + ",'" + date + "',"+CategoryId+")";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -87,11 +87,11 @@ namespace HomeBudget.Models
             string query = "";
             if (parent == true)
             {
-                query = "INSERT INTO Categories VALUES("  + user + ",'" + name + "','" + description + "','" + color + "', 1 )";
+                query = "INSERT INTO Categories VALUES("  + user + ",N'" + name + "',N'" + description + "','" + color + "', 1 )";
             }
             else
             {
-                query = "INSERT INTO Categories VALUES(" + user + ",'" + name + "','" + description + "','" + color + "', 0 )";
+                query = "INSERT INTO Categories VALUES(" + user + ",N'" + name + "',N'" + description + "','" + color + "', 0 )";
             }
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -139,7 +139,7 @@ namespace HomeBudget.Models
         //TWORZENIE NOWEGO WIERSZA Z WYDATKIEM NIEREGULARNYM
         public bool InsertIrregularBudget(int UserId, string name, string amount)
         {
-            string query = "INSERT INTO IrregularBudget VALUES(" + UserId + ",'" + name + "'," + amount.Replace(',', '.') + "," + "0.0"+ ")";
+            string query = "INSERT INTO IrregularBudget VALUES(" + UserId + ",N'" + name + "'," + amount.Replace(',', '.') + "," + "0.0"+ ")";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -208,7 +208,7 @@ namespace HomeBudget.Models
         //TWORZENIE WIERSZA Z NOWYM UŻYTKOWNIKIEM
         public bool UpdateCategory(int UserId,int recid , string name, string desc, string color)
         {
-            string query = "UPDATE Categories SET Name='"+name+"', Descript='"+desc+"', Color='"+color+"' WHERE __recid="+recid+" AND _user="+UserId+" ";
+            string query = "UPDATE Categories SET Name=N'"+name+"', Descript=N'"+desc+"', Color='"+color+"' WHERE __recid="+recid+" AND _user="+UserId+" ";
             
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -230,7 +230,7 @@ namespace HomeBudget.Models
         }
         public bool UpdateExpenses(int UserId, string name, string amount, string date, int CategoryId, int ExpRecid)
         {
-            string query = "UPDATE Expenses SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + ", Date='" + date + "', _category="+CategoryId+" WHERE __recid=" + ExpRecid ;
+            string query = "UPDATE Expenses SET Name=N'" + name + "', Amount=" + amount.Replace(',', '.') + ", Date='" + date + "', _category="+CategoryId+" WHERE __recid=" + ExpRecid ;
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -252,7 +252,7 @@ namespace HomeBudget.Models
         }
         public bool UpdateIrregularBudget(int UserId, string name, string amount, int recid)
         {
-            string query = "UPDATE IrregularBudget SET Name='" + name + "', Amount=" + amount.Replace(',', '.') + " WHERE __recid=" + recid;
+            string query = "UPDATE IrregularBudget SET Name=N'" + name + "', Amount=" + amount.Replace(',', '.') + " WHERE __recid=" + recid;
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -348,7 +348,7 @@ namespace HomeBudget.Models
         {
 
 
-            string query = "SELECT Email FROM Users WHERE Email='" + email + "'";
+            string query = "SELECT Email FROM Users WHERE Email=N'" + email + "'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -405,7 +405,7 @@ namespace HomeBudget.Models
         {
 
 
-            string query = "SELECT __recid FROM Users WHERE Email='" + email + "' AND Password='"+hash+"'";
+            string query = "SELECT __recid FROM Users WHERE Email=N'" + email + "' AND Password='"+hash+"'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -461,7 +461,7 @@ namespace HomeBudget.Models
         {
 
 
-            string query = "Select count(c.Name) from Categories c where c.Name='"+name+"' and c._user="+user.ToString();
+            string query = "Select count(c.Name) from Categories c where c.Name=N'"+name+"' and c._user="+user.ToString();
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -474,8 +474,20 @@ namespace HomeBudget.Models
 
                 if (Reader.HasRows)
                 {
-                    Connection.Close();
-                    return true;
+                    string temp = "";
+                    while (Reader.Read())
+                    {
+                        temp = Reader.GetValue(0).ToString();
+                    }
+                    if (temp == "0")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        Connection.Close();
+                        return true;
+                    }
                 }
                 else
                 {
@@ -487,7 +499,7 @@ namespace HomeBudget.Models
         //Pobranie recidu kategorii po użytkowniku i nazwie
         public int GetCategoryRecid(int UserId, string name)
         {
-            string query = "SELECT __recid FROM Categories WHERE _user=" + UserId + " AND Name='" + name + "'";
+            string query = "SELECT __recid FROM Categories WHERE _user=" + UserId + " AND Name=N'" + name + "'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -522,7 +534,7 @@ namespace HomeBudget.Models
         {
 
 
-            string query = "SELECT __recid FROM Users WHERE Email='" + email + "' AND Password='" + hash + "'";
+            string query = "SELECT __recid FROM Users WHERE Email=N'" + email + "' AND Password='" + hash + "'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -1094,7 +1106,7 @@ namespace HomeBudget.Models
 
 
             string toreturn = "0";
-            string query = "Select Count(e.Name)from Expenses e join Categories c on e._category = c.__recid where c.Name='"+name+"' and  c._user="+user;
+            string query = "Select Count(e.Name)from Expenses e join Categories c on e._category = c.__recid where c.Name=N'"+name+"' and  c._user="+user;
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -1131,7 +1143,7 @@ namespace HomeBudget.Models
 
 
             string toreturn = "0";
-            string query = "select Count(cp.__recid) from CategoryPlan cp join Categories c on cp._category=c.__recid where c._user="+user+" and c.Name='"+name+"'";
+            string query = "select Count(cp.__recid) from CategoryPlan cp join Categories c on cp._category=c.__recid where c._user="+user+" and c.Name=N'"+name+"'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -1235,6 +1247,44 @@ namespace HomeBudget.Models
             }
         }
 
+
+        public string GetUserEarnings(int user)
+        {
+
+
+
+            string toreturn = "0";
+            string query = "SELECT Earnings from Settings where _user = '"+user+"'";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "0,0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
         public bool DeleteteExpenditure(int __recid)
         {
             string query = "Delete from expenses where __recid="+__recid;
@@ -1282,7 +1332,7 @@ namespace HomeBudget.Models
         public bool DeleteteCategory(string user, string name)
         {
 
-            string query = "Delete from  Categories where Name='"+name+"' and  _user="+user;
+            string query = "Delete from  Categories where Name=N'"+name+"' and  _user="+user;
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;

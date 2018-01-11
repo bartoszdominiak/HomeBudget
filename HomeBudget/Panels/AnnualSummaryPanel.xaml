@@ -7,9 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="600"  d:DesignWidth="800"
       Title="LoginPanel" Background="White"
+      
             FontFamily="Source Sans Pro">
 
-    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800">
+
+    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800" >
         <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" Background="#FF0099D5" Foreground="#FFEAEAEA" FontFamily="Source Sans Pro Light" />
         <Frame x:Name="InterfaceFrame" Content="" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="160" Visibility="Hidden" MouseLeave="InterfaceFrame_MouseLeave"   />
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
@@ -37,23 +39,23 @@
         <Label x:Name="YearLabel" Content="Rok:" HorizontalAlignment="Center" Margin="166,85,539,0" VerticalAlignment="Top" Width="95" FontSize="14" FontFamily="Source Sans Pro"/>
 
 
-        <StackPanel Orientation="Horizontal" Margin="166,103,478,466">
-            <TextBox x:Name="YearBox" x:FieldModifier="private" Margin="5,5,0,2.667" Width="95" Text="" IsReadOnly="True" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" />
-            <Button x:Name="cmdUp" x:FieldModifier="private" Margin="5,5,0,2.667" Content="˄" Width="20" Click="cmdUp_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
-            <Button x:Name="cmdDown" x:FieldModifier="private" Margin="0,5,0,2.667"  Content="˅" Width="20" Click="cmdDown_Click" Background="#FF0099D5" Foreground="#FFE7E7E7" />
+        <StackPanel Orientation="Horizontal" Margin="166,103,478,466" >
+            <TextBox x:Name="YearBox" x:FieldModifier="private" Margin="5,5,0,2.667" Width="95" Height="25" Text="" IsReadOnly="True" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" />
+            <Button x:Name="cmdUp" x:FieldModifier="private" Margin="5,5,0,2.667" Content="˄" Height="25" Width="20" Click="cmdUp_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+            <Button x:Name="cmdDown" x:FieldModifier="private" Margin="0,5,0,2.667"  Content="˅" Height="25" Width="20" Click="cmdDown_Click" Background="#FF0099D5" Foreground="#FFE7E7E7" />
         </StackPanel>
 
 
         <Label x:Name="EarningLabel" Content="Przychód roczny" HorizontalAlignment="Center" Margin="166,133,456,0" VerticalAlignment="Top" Width="178" FontSize="14" FontFamily="Source Sans Pro"/>
-        <TextBox x:Name="EarningsBox" x:FieldModifier="private" Margin="171,157,534,420" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300" />
+        <TextBox x:Name="EarningsBox"  x:FieldModifier="private" Margin="171,157,534,420" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300" />
         <Label x:Name="AllExpensesLabel" Content="Wydatki roczne" HorizontalAlignment="Center" Margin="166,180,452,0" VerticalAlignment="Top" Width="182" FontSize="14" FontFamily="Source Sans Pro"/>
-        <TextBox x:Name="AllExpensesBox" x:FieldModifier="private" Margin="171,204,534,373" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FFF21E1E"/>
+        <TextBox x:Name="AllExpensesBox"  x:FieldModifier="private" Margin="171,204,534,373" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FFF21E1E"/>
         <Label x:Name="IBPlusLabel" Content="Fundusz na wydatki nieregularne" HorizontalAlignment="Center" Margin="165,228,429,0" VerticalAlignment="Top" Width="206" FontSize="14" FontFamily="Source Sans Pro"/>
         <TextBox x:Name="IrregularBudgetPlusBox" x:FieldModifier="private" Margin="171,255,535,322" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300"/>
         <Label x:Name="IBLabelMinusLabel" Content="Wydatki nieregularne" HorizontalAlignment="Center" Margin="166,273,428,0" VerticalAlignment="Top" Width="206" FontSize="14" FontFamily="Source Sans Pro"/>
         <TextBox x:Name="IrregularBudgetMinusBox" x:FieldModifier="private" Margin="172,300,534,277" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FFF21E1E"/>
         <Label x:Name="SavingsLabel" Content="W ciągu roku zaoszczędzono" HorizontalAlignment="Center" Margin="166,323,428,0" VerticalAlignment="Top" Width="206" FontSize="14" FontFamily="Source Sans Pro" FontWeight="Bold"/>
-        <TextBox x:Name="SavingsBox" x:FieldModifier="private" Margin="172,350,534,227" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300"/>
+        <TextBox x:Name="SavingsBox" x:FieldModifier="private"  Margin="172,350,534,227" Text="0,0" IsReadOnly="False" FontSize="18" BorderBrush="#FF0099D5" Background="#FFE7E7E7" RenderTransformOrigin="0.5,0.5" Foreground="#FF148300"/>
 
 
     </Grid>

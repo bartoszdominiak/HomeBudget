@@ -26,6 +26,7 @@ namespace HomeBudget.Panels
         private int Month = 0;
         private MonthPlans monthplans;
         private List<CategoryPlan> cat = new List<CategoryPlan>();
+        bool first = true;
 
         public HistoryMonthPlansPanel(int Id)
         {
@@ -41,6 +42,7 @@ namespace HomeBudget.Panels
             monthplans = new MonthPlans(UserId.ToString());
             GetMonths(Month);
             MonthPlanExist();
+            first = false;
         }
         private void InterfaceButton_MouseMove(object sender, MouseEventArgs e)
         {
@@ -135,6 +137,7 @@ namespace HomeBudget.Panels
                 MonthBudgetGrid.ItemsSource=EmptyList;
                 EarningsBox.Text = "0,00";
                 IrregularBudgetBox.Text = "0,00";
+                if(first==false)
                 MessageBox.Show("Nie zaplanowano budżetu na ten miesiąc");
             }
 

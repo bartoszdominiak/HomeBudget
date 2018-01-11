@@ -210,12 +210,18 @@ namespace HomeBudget.Panels
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
+            ChangeButton_Click();
+        }
+
+
+        private void ChangeButton_Click()
+        {
             int type = 0;
             if (!Validation.Validation.StringNotNull(DateFromBox.Text))
             {
                 type = 1; //nie ma z
             }
-            if(!Validation.Validation.StringNotNull(DateToBox.Text))
+            if (!Validation.Validation.StringNotNull(DateToBox.Text))
             {
                 if (type == 1)
                 {
@@ -227,12 +233,12 @@ namespace HomeBudget.Panels
                 }
             }
 
-            if(type==3)
+            if (type == 3)
             {
-                    ExpensesGrid.Items.Clear();
-                    GetDataToGrid();
+                ExpensesGrid.Items.Clear();
+                GetDataToGrid();
             }
-            if(type==2)
+            if (type == 2)
             {
                 if (!Validation.Validation.IsValidDateFormat(DateFromBox.Text))
                 {
@@ -258,9 +264,9 @@ namespace HomeBudget.Panels
                     GetDataToGridBetweenDate("01-01-1001", DateToBox.Text);
                 }
             }
-            if(type==0)
+            if (type == 0)
             {
-                if (!Validation.Validation.IsValidDateFormat(DateFromBox.Text)|| (!Validation.Validation.IsValidDateFormat(DateToBox.Text)))
+                if (!Validation.Validation.IsValidDateFormat(DateFromBox.Text) || (!Validation.Validation.IsValidDateFormat(DateToBox.Text)))
                 {
                     MessageBox.Show("Nieprawidłowy format daty");
                     return;
@@ -296,6 +302,22 @@ namespace HomeBudget.Panels
                 DB db = new Models.DB();
                 db.DeleteteExpenditure(ex.ExpRecid);
                 this.NavigationService.Navigate(new AllExpenses(UserId));
+            }
+        }
+
+        private void DateToBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                ChangeButton_Click();
+            }
+        }
+
+        private void DateFromBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                ChangeButton_Click();
             }
         }
     }

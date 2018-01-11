@@ -178,9 +178,10 @@ namespace HomeBudget.Panels
                 AddFail.Content = "Wprowadź kwotę";
                 return;
             }
-            if (!Validation.Validation.IsGreaterOrEqualThenZero(Convert.ToDecimal(AmountBox.Text)));
+            int myInt;
+            if (int.TryParse(AmountBox.Text, out myInt) && (myInt < 0))
             {
-                AddFail.Content = "Kwota nie może być mniejsza niz zero";
+                AddFail.Content = Convert.ToDecimal(AmountBox.Text) + "Kwota nie może być mniejsza niz zero";
                 return;
             }
             if (!Validation.Validation.NotLongerThen(NameBox.Text, 100))
@@ -222,6 +223,69 @@ namespace HomeBudget.Panels
             }
         }
 
+        private void AddButton_Click()
+        {
+            Added.Content = "";
+            if (!Validation.Validation.StringNotNull(NameBox.Text))
+            {
+                AddFail.Content = "Wprowadź opis";
+                return;
+            }
+            if (!Validation.Validation.StringNotNull(DateBox.Text))
+            {
+                AddFail.Content = "Wprowadź datę";
+                return;
+            }
+            if (!Validation.Validation.StringNotNull(AmountBox.Text))
+            {
+                AddFail.Content = "Wprowadź kwotę";
+                return;
+            }
+            int myInt;
+            if (int.TryParse(AmountBox.Text, out myInt) && (myInt < 0))
+            {
+                AddFail.Content = Convert.ToDecimal(AmountBox.Text) + "Kwota nie może być mniejsza niz zero";
+                return;
+            }
+            if (!Validation.Validation.NotLongerThen(NameBox.Text, 100))
+            {
+                AddFail.Content = "Opis może mieć do 100 znaków";
+                return;
+            }
+            if (!Validation.Validation.IsValidDateFormat(DateBox.Text))
+            {
+                AddFail.Content = "Nieprawidłowy format daty";
+                return;
+            }
+            if (!Validation.Validation.IsGreaterOrEqualThenZero(Convert.ToDecimal(AmountBox.Text)))
+            {
+                AddFail.Content = "Kwota nie może być ujemna";
+                return;
+            }
+            else
+            {
+                DB db = new DB();
+                int CategoryId = db.GetCategoryRecid(UserId, CategoryComboBox.Text);
+                if (CategoryId == -2)
+                {
+                    AddFail.Content = "Nieprawidłowy format danych";
+                    return;
+                }
+                else
+                {
+                    if (!db.InsertExpenditure(UserId, NameBox.Text, AmountBox.Text, DateBox.Text, CategoryId))
+                    {
+                        AddFail.Content = "Nieprawidłowy format danych";
+                        return;
+                    }
+                    else
+                    {
+                        this.NavigationService.Navigate(new ExpensesPanel(UserId, true));
+                    }
+                }
+            }
+        }
+
         private void AmountBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -245,6 +309,14 @@ namespace HomeBudget.Panels
         private void DateBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Calendar.Visibility = Visibility.Visible;
+        }
+
+        private void AmountBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddButton_Click();
+            }
         }
     }
 }

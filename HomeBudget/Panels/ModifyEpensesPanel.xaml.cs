@@ -172,6 +172,10 @@ namespace HomeBudget.Panels
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            AddButton_Click();
+        }
+        private void AddButton_Click()
+        {
             Added.Content = "";
             if (!Validation.Validation.StringNotNull(NameBox.Text))
             {
@@ -214,7 +218,7 @@ namespace HomeBudget.Panels
                 }
                 else
                 {
-                    if (!db.UpdateExpenses(UserId, NameBox.Text, Validation.Validation.GetNumberWithDot(AmountBox.Text), DateBox.Text, CategoryId,expenses.ExpRecid))
+                    if (!db.UpdateExpenses(UserId, NameBox.Text, Validation.Validation.GetNumberWithDot(AmountBox.Text), DateBox.Text, CategoryId, expenses.ExpRecid))
                     {
                         AddFail.Content = "Nieprawidłowy format dancyh";
                         return;
@@ -249,6 +253,14 @@ namespace HomeBudget.Panels
         private void DateBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Calendar.Visibility = Visibility.Visible;
+        }
+
+        private void AmountBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddButton_Click();
+            }
         }
     }
 }

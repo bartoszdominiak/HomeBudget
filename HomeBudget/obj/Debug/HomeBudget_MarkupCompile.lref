@@ -3,6 +3,7 @@
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\MainWindow.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\AddCategoryPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\AllExpenses.xaml;;
+FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\AnnualSummaryPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\CategoriesPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\ExpensesPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\HistoryMonthPlansPanel.xaml;;
@@ -15,5 +16,4 @@ FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\MonthPlansPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\RegisterPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\SettingsPanel.xaml;;
 FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\StartSettingsPanel.xaml;;
-FD:\Programowanie\GitHub\HomeBudget\HomeBudget\Panels\AnnualSummaryPanel.xaml;;
 

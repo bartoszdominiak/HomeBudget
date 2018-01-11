@@ -9,7 +9,7 @@
       Title="LoginPanel" Background="White"
             FontFamily="Source Sans Pro">
 
-    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800">
+    <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800" >
         <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" Background="#FF0099D5" Foreground="#FFEAEAEA" FontFamily="Source Sans Pro Light" />
         <Frame x:Name="InterfaceFrame" Content="" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="160" Visibility="Hidden" MouseLeave="InterfaceFrame_MouseLeave"   />
         <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
