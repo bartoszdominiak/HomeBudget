@@ -72,6 +72,11 @@ namespace HomeBudget.Panels
                 RegisterFail.Text = "Wprowadź potwierdzenie hasła";
                 return;
             }
+            else if (!Validation.Validation.TwoStringsEquals(EmailBox.Text, EmailBox2.Text))
+            {
+                RegisterFail.Text = "Adresy e-mail nie są równe";
+                return;
+            }
             else if (!Validation.Validation.TwoStringsEquals(PasswordConfirmBox.Password.ToString(), PasswordBox.Password.ToString()))
             {
                 RegisterFail.Text = "Hasła nie są równe";

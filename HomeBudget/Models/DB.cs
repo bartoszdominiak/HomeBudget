@@ -62,7 +62,7 @@ namespace HomeBudget.Models
         //TWORZENIE WIERSZA Z NOWYM WYDATKIEM
         public bool InsertExpenditure(int UserId,string name, string amount, string date, int CategoryId)
         {
-            string query = "INSERT INTO Expenses VALUES(" + UserId + ",N'" + name + "'," + amount.Replace(',','.') + ",'" + date + "',"+CategoryId+")";
+            string query = "INSERT INTO Expenses VALUES(N'" + name + "'," + amount.Replace(',','.') + ",'" + date + "',"+CategoryId+")";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -87,11 +87,11 @@ namespace HomeBudget.Models
             string query = "";
             if (parent == true)
             {
-                query = "INSERT INTO Categories VALUES("  + user + ",N'" + name + "',N'" + description + "','" + color + "', 1 )";
+                query = "INSERT INTO Categories VALUES("+user+",N'" + name + "',N'" + description + "','" + color + "', 1 )";
             }
             else
             {
-                query = "INSERT INTO Categories VALUES(" + user + ",N'" + name + "',N'" + description + "','" + color + "', 0 )";
+                query = "INSERT INTO Categories VALUES("+user+",N'" + name + "',N'" + description + "','" + color + "', 0 )";
             }
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -116,7 +116,7 @@ namespace HomeBudget.Models
         {
             string a = saving.ToString().Replace(',','.');
             string b = earnings.ToString().Replace(',', '.');
-            string query = "INSERT INTO Settings VALUES(" + userid + "," + a + "," + b +",1 )";
+            string query = "INSERT INTO Settings VALUES(" + userid + "," + a + "," + b +")";
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -272,9 +272,9 @@ namespace HomeBudget.Models
                 }
             }
         }
-        public bool UpdateSettings(int UserId, string startssaving, string earnings, string startday)
+        public bool UpdateSettings(int UserId, string startssaving, string earnings)
         {
-            string query = "UPDATE Settings SET StartsSaving='" + startssaving + "', Earnings='" + earnings + "', StartDay=" + startday.ToString() + " WHERE  _user=" + UserId + " ";
+            string query = "UPDATE Settings SET StartsSaving='" + startssaving + "', Earnings='" + earnings + "' WHERE  _user=" + UserId + " ";
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -743,7 +743,7 @@ namespace HomeBudget.Models
         {
 
             List<Settings> list = new List<Settings>();
-            string query = "SELECT StartsSaving,Earnings,StartDay FROM Settings WHERE _User=" + UserId;
+            string query = "SELECT StartsSaving,Earnings FROM Settings WHERE _User=" + UserId;
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -759,7 +759,7 @@ namespace HomeBudget.Models
 
                     while (Reader.Read())
                     {
-                        Settings cat = new Settings(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString(), Reader.GetValue(2).ToString() );
+                        Settings cat = new Settings(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString());
                         list.Add(cat);
                     }
 
@@ -913,7 +913,7 @@ namespace HomeBudget.Models
         }
 
 
-        public List<CategoryPlan> GetCategoryPlanWithSum(int monthplanrecid,int month)
+        public List<CategoryPlan> GetCategoryPlanWithSum(int monthplanrecid,int month, int year)
         {
 
             List<CategoryPlan> list = new List<CategoryPlan>();
@@ -934,7 +934,7 @@ namespace HomeBudget.Models
                     while (Reader.Read())
                     {
                         DB db = new DB();
-                        list.Add(new CategoryPlan(Reader.GetValue(0).ToString(), (Reader.GetValue(1).ToString()), Reader.GetValue(2).ToString(), Reader.GetValue(3).ToString(), Reader.GetValue(4).ToString(), db.GetAmuntToCategory(Reader.GetValue(2).ToString(),month)));
+                        list.Add(new CategoryPlan(Reader.GetValue(0).ToString(), (Reader.GetValue(1).ToString()), Reader.GetValue(2).ToString(), Reader.GetValue(3).ToString(), Reader.GetValue(4).ToString(), db.GetAmuntToCategory(Reader.GetValue(2).ToString(),month,year)));
                     }
 
                     Connection.Close();
@@ -949,7 +949,7 @@ namespace HomeBudget.Models
             }
         }
 
-        public string GetAmuntToCategory(string catrecid, int month)
+        public string GetAmuntToCategory(string catrecid, int month, int year)
         {
 
             string tempmonth = month.ToString();
@@ -959,7 +959,7 @@ namespace HomeBudget.Models
             }
             
             string toreturn = "0,00";
-            string query = "Select SUM(e.Amount) from Expenses e join Categories c on e._category=c.__recid  where c.__recid="+catrecid+" and e.[Date] between '2017-"+tempmonth+ "-01' and '2017-" + tempmonth + "-"+Validation.Validation.GetDayInMonth(tempmonth) +"'";
+            string query = "Select SUM(e.Amount) from Expenses e join Categories c on e._category=c.__recid  where c.__recid="+catrecid+" and e.[Date] between '"+year+"-"+tempmonth+ "-01' and '" + year + "-" + tempmonth + "-"+Validation.Validation.GetDayInMonth(tempmonth) +"'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -1216,7 +1216,8 @@ namespace HomeBudget.Models
 
 
             string toreturn = "0";
-            string query = "select Sum(Amount) from Expenses where _user="+user+" and [Date] between '" + year + "-01-01' and '" + year+"-12-31'";
+            //string query = "select Sum(Amount) from Expenses where _user="+user+" and [Date] between '" + year + "-01-01' and '" + year+"-12-31'";
+            string query = "select Sum(e.Amount) from Expenses e right join Categories c on e._category = c.__recid where c._user = " + user + " and e.[Date] between '" + year + "-01-01' and '" + year+"-12-31'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;

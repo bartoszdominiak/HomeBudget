@@ -17,10 +17,10 @@
         <Label x:Name="Info1Label" Content="Informacje o aktualnych finansach." HorizontalAlignment="Left" Margin="18,75,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="Info2Label" Content="(Później będziesz mógł je zmienić)" HorizontalAlignment="Left" Margin="245,79,0,0" VerticalAlignment="Top" FontSize="10"/>
 
-        <Label x:Name="StartsSavingBoxLabel" Content="Wartość oszczędności:" HorizontalAlignment="Left" Margin="18,101,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="208,101,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
-        <Label x:Name="EarningsLabel" Content="Wysokość miesięcznych zarobków:" HorizontalAlignment="Left" Margin="18,124,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="208,125,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus" Background="#FFE6F2FF"/>
+        <Label x:Name="StartsSavingBoxLabel" Content="Wartość aktualnych oszczędności:" HorizontalAlignment="Left" Margin="18,101,0,0" VerticalAlignment="Top" Width="183"/>
+        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="224,101,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
+        <Label x:Name="EarningsLabel" Content="Wysokość miesięcznych przychodów:" HorizontalAlignment="Left" Margin="18,124,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="224,126,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus" Background="#FFE6F2FF"/>
 
         <Label x:Name="Info3Label" Content="Dodaj podstawowe kategorie wydatków." HorizontalAlignment="Left" Margin="18,153,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="Info4Label" Content="(Później będziesz mógł je modyfikować i dodawać kolejne)" HorizontalAlignment="Left" Margin="278,157,0,0" VerticalAlignment="Top" FontSize="10"/>

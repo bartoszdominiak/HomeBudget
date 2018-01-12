@@ -12,18 +12,22 @@
     <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800" >
         <Label x:Name="MainLabel" Content="Rejestracja" Margin="283,10,263,0" VerticalAlignment="Top" Width="254" Height="70" FontSize="48"/>
 
-        <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="39" Margin="283,152,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FF0099D5" />
-        <Label x:Name="EmailLabel" Content="Email" HorizontalAlignment="Left" Margin="283,119,0,0" VerticalAlignment="Top" Width="80" FontSize="20" FontFamily="Cambria"/>
+        <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="39" Margin="283,140,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FF0099D5" />
+        <Label x:Name="EmailLabel2" Content="Adres e-mail" HorizontalAlignment="Left" Margin="283,102,0,0" VerticalAlignment="Top" Width="132" FontSize="20" FontFamily="Cambria"/>
 
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="39" Margin="283,222,0,0"   VerticalAlignment="Top" Width="254" FontSize="24" Background="#FFE6F2FF" BorderBrush="#FF0099D5" Foreground="Black" FontFamily="Cambria" />
-        <Label x:Name="PasswordLabel" Content="Hasło" HorizontalAlignment="Left" Margin="283,189,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cambria"/>
 
-        <PasswordBox x:Name="PasswordConfirmBox" HorizontalAlignment="Left" Height="39" Margin="283,294,0,0"   VerticalAlignment="Top" Width="254" FontSize="24" Background="#FFE6F2FF" BorderBrush="#FF0099D5" Foreground="Black" FontFamily="Cambria" KeyDown="PasswordConfirmBox_KeyDown" />
-        <Label x:Name="PasswordConfirmLabel" Content="Powtórz hasło" HorizontalAlignment="Left" Margin="283,261,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cambria"/>
+        <Label x:Name="EmailLabel" Content=" Powtórz adres e-mail" HorizontalAlignment="Left" Margin="283,179,0,0" VerticalAlignment="Top" Width="254" FontSize="20" FontFamily="Cambria"/>
+        <TextBox x:Name="EmailBox2" HorizontalAlignment="Left" Height="39" Margin="283,212,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="254" FontSize="24" MaxLines="1" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Cambria" Foreground="Black" SelectionBrush="#FF0099D5" />
 
-        <Button  x:Name="RegisterButton"  Content="Zarejestruj się" HorizontalAlignment="Left" Margin="283,338,0,0" VerticalAlignment="Top" Width="254" Height="50" Click="RegisterButton_Click" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" />
-        <TextBlock x:Name="RegisterFail" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="542,338,0,0" VerticalAlignment="Top" Height="50" Width="216" FontSize="16" Foreground="#FFF50A0A" FontFamily="Cambria" />
-        <Button x:Name="LoginButton" Content="Powrót do okna logowania" HorizontalAlignment="Left" Margin="344,388,0,0" VerticalAlignment="Top" Width="193" Background="Transparent" BorderBrush="Transparent" Foreground="#FF0099D5" FontSize="16" Click="LoginButton_Click" />
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="39" Margin="283,282,0,0"   VerticalAlignment="Top" Width="254" FontSize="24" Background="#FFE6F2FF" BorderBrush="#FF0099D5" Foreground="Black" FontFamily="Cambria" />
+        <Label x:Name="PasswordLabel" Content="Hasło" HorizontalAlignment="Left" Margin="283,249,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cambria"/>
+
+        <PasswordBox x:Name="PasswordConfirmBox" HorizontalAlignment="Left" Height="39" Margin="283,354,0,0"   VerticalAlignment="Top" Width="254" FontSize="24" Background="#FFE6F2FF" BorderBrush="#FF0099D5" Foreground="Black" FontFamily="Cambria" KeyDown="PasswordConfirmBox_KeyDown" />
+        <Label x:Name="PasswordConfirmLabel" Content="Powtórz hasło" HorizontalAlignment="Left" Margin="283,321,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cambria"/>
+
+        <Button  x:Name="RegisterButton"  Content="Zarejestruj się" HorizontalAlignment="Left" Margin="283,398,0,0" VerticalAlignment="Top" Width="254" Height="50" Click="RegisterButton_Click" BorderBrush="#FF73797F" FontSize="24" FontFamily="Cambria" Foreground="#FFEAEAEA" Background="#FF0099D5" />
+        <TextBlock x:Name="RegisterFail" TextWrapping="Wrap" Text="" HorizontalAlignment="Left" Margin="542,398,0,0" VerticalAlignment="Top" Height="50" Width="216" FontSize="16" Foreground="#FFF50A0A" FontFamily="Cambria" />
+        <Button x:Name="LoginButton" Content="Powrót do okna logowania" HorizontalAlignment="Left" Margin="344,448,0,0" VerticalAlignment="Top" Width="193" Background="Transparent" BorderBrush="Transparent" Foreground="#FF0099D5" FontSize="16" Click="LoginButton_Click" />
 
 
 

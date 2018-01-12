@@ -45,7 +45,7 @@
 
 
         <Label x:Name="LowCatLabel" Content="test" HorizontalAlignment="Left" Margin="225,259,0,0" VerticalAlignment="Top" Width="173" FontSize="20"/>
-        <ProgressBar x:Name="LowCatPB" HorizontalAlignment="Left" Height="30" Margin="225,294,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5">
+        <ProgressBar x:Name="LowCatPB" HorizontalAlignment="Left" Height="30" Margin="225,294,0,0" VerticalAlignment="Top" Width="313" Minimum="0.01" Maximum="1" Value="0.6" Foreground="#FF07B226" BorderBrush="#FF0099D5" Background="White">
         </ProgressBar>
         <TextBlock x:Name="LowCatText" HorizontalAlignment="Left" Margin="225,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="313" TextAlignment="Center" FontSize="20"/>
         <Label x:Name="Interjection3" Content="!" HorizontalAlignment="Left" Margin="560,269,0,0" VerticalAlignment="Top" Height="59" Width="29" FontSize="48" FontWeight="Bold" Foreground="#FFFF1B1B"/>

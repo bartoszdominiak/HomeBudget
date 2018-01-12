@@ -26,9 +26,9 @@
         <Label x:Name="MainLabel" Content="Kategorie wydatków" HorizontalAlignment="Center" Margin="198,7,140,0" VerticalAlignment="Top" Width="462" Height="70" FontSize="48"/>
         <DataGrid x:Name="CategoryGrid" HorizontalAlignment="Left" Margin="165,79,0,0" VerticalAlignment="Top" Height="254" Width="601" BorderBrush="#FF0099D5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}" MinWidth="100" Width="Auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Opis" Binding="{Binding Path=Descript}" MinWidth="280" Width="Auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Kolor" Binding="{Binding Path=Color}" MinWidth="80" Width="Auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Path=Name}"  Width="100" IsReadOnly="True" />
+                <DataGridTextColumn Header="Opis" Binding="{Binding Path=Descript}" Width="280" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kolor" Binding="{Binding Path=Color}"  Width="80" IsReadOnly="True"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

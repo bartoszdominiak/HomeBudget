@@ -126,7 +126,7 @@ namespace HomeBudget.Panels
                 MonthPlans mp = db.GetMonthPlan(UserId.ToString(), Year.ToString(), Month.ToString());
                 monthplans = mp;
                 cat.Clear();
-                cat = db.GetCategoryPlanWithSum(Convert.ToInt16(mp.__recid),Month);
+                cat = db.GetCategoryPlanWithSum(Convert.ToInt16(mp.__recid),Month,Year);
                 MonthBudgetGrid.ItemsSource = cat;
                 EarningsBox.Text = monthplans.Earning;
                 IrregularBudgetBox.Text = monthplans.IrregularBudgetFund;

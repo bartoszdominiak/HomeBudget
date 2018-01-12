@@ -42,7 +42,7 @@ namespace HomeBudget.Panels
             {
                 StartsSavingBox.Text= Validation.Validation.GetNumberTwoZero(settings[0].StartsSaving);
                 EarningsBox.Text = Validation.Validation.GetNumberTwoZero(settings[0].Earnings);
-                StartDayBox.Text = settings[0].StartDay.ToString();
+                
             }
             
         }
@@ -127,23 +127,17 @@ namespace HomeBudget.Panels
         {
             EarningsBox.Text = Validation.Validation.GetNumberWithDot(EarningsBox.Text.Trim());
         }
-        private void StartDayBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if(!Validation.Validation.IsDay(StartDayBox.Text))
-            {
-                StartDayBox.Text = "1";
-            }
-        }
+
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if(settings[0].HaveChanged(StartsSavingBox.Text, EarningsBox.Text, StartDayBox.Text))
+            if(settings[0].HaveChanged(StartsSavingBox.Text, EarningsBox.Text))
             {
                 DB db = new Models.DB();
-                if (db.UpdateSettings(UserId, StartsSavingBox.Text.Replace(',','.'), EarningsBox.Text.Replace(',', '.'), StartDayBox.Text))
+                if (db.UpdateSettings(UserId, StartsSavingBox.Text.Replace(',','.'), EarningsBox.Text.Replace(',', '.')))
                 {
                     settings.Clear();
-                    settings.Add(new Settings(StartsSavingBox.Text, EarningsBox.Text, StartDayBox.Text));
+                    settings.Add(new Settings(StartsSavingBox.Text, EarningsBox.Text));
                     MessageBox.Show("Modyfikacja zakończona");
                 }
 
@@ -156,6 +150,11 @@ namespace HomeBudget.Panels
             {
                 MessageBox.Show("Modyfikacja zakończona");
             }
+        }
+
+        private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
