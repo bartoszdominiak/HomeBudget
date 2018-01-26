@@ -116,7 +116,7 @@ namespace HomeBudget.Models
         {
             string a = saving.ToString().Replace(',','.');
             string b = earnings.ToString().Replace(',', '.');
-            string query = "INSERT INTO Settings VALUES(" + userid + "," + a + "," + b +")";
+            string query = "INSERT INTO Settings VALUES(" + userid + "," + a + "," + b +",'')";
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -272,9 +272,32 @@ namespace HomeBudget.Models
                 }
             }
         }
-        public bool UpdateSettings(int UserId, string startssaving, string earnings)
+
+        public bool UpdateUser(int UserId, string hash)
         {
-            string query = "UPDATE Settings SET StartsSaving='" + startssaving + "', Earnings='" + earnings + "' WHERE  _user=" + UserId + " ";
+            string query = "UPDATE Users SET Password='" + hash + "'  WHERE __recid=" + UserId;
+
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+                try
+                {
+                    Connection.Open();
+                    Cmd.ExecuteNonQuery();
+                    Connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public bool UpdateSettings(int UserId, string startssaving, string earnings, string catname)
+        {
+            string query = "UPDATE Settings SET StartsSaving='" + startssaving + "', Earnings='" + earnings + "', FirstCat='"+catname+"' WHERE  _user=" + UserId + " ";
 
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
@@ -406,6 +429,34 @@ namespace HomeBudget.Models
 
 
             string query = "SELECT __recid FROM Users WHERE Email=N'" + email + "' AND Password='"+hash+"'";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+                    Connection.Close();
+                    return true;
+                }
+                else
+                {
+                    Connection.Close();
+                    return false;
+                }
+            }
+        }
+
+        public bool ChechUserRecid(int user, string hash)
+        {
+
+
+            string query = "SELECT __recid FROM Users WHERE __recid=" + user + " AND Password='" + hash + "'";
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -743,7 +794,7 @@ namespace HomeBudget.Models
         {
 
             List<Settings> list = new List<Settings>();
-            string query = "SELECT StartsSaving,Earnings FROM Settings WHERE _User=" + UserId;
+            string query = "SELECT StartsSaving,Earnings, FirstCat FROM Settings WHERE _User=" + UserId;
             Connection.ConnectionString = ConnectionString;
             Cmd = new SqlCommand(query, Connection);
             //Cmd.Connection = Connection;
@@ -759,7 +810,7 @@ namespace HomeBudget.Models
 
                     while (Reader.Read())
                     {
-                        Settings cat = new Settings(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString());
+                        Settings cat = new Settings(Reader.GetValue(0).ToString(), Reader.GetValue(1).ToString(), Reader.GetValue(2).ToString());
                         list.Add(cat);
                     }
 
@@ -1274,6 +1325,43 @@ namespace HomeBudget.Models
                         toreturn = (Reader.GetValue(0).ToString());
                     }
                     if (toreturn == "") toreturn = "0,0";
+                    Connection.Close();
+                    return toreturn;
+
+                }
+                else
+                {
+                    Connection.Close();
+                    return toreturn;
+                }
+            }
+        }
+
+        public string GetUserFirstCat(int user)
+        {
+
+
+
+            string toreturn = "";
+            string query = "SELECT FirstCat from Settings where _user = '" + user + "'";
+            Connection.ConnectionString = ConnectionString;
+            Cmd = new SqlCommand(query, Connection);
+            //Cmd.Connection = Connection;
+            using (Connection)
+            {
+
+                Connection.Open();
+                Reader = Cmd.ExecuteReader();
+
+
+                if (Reader.HasRows)
+                {
+
+                    while (Reader.Read())
+                    {
+                        toreturn = (Reader.GetValue(0).ToString());
+                    }
+                    if (toreturn == "") toreturn = "";
                     Connection.Close();
                     return toreturn;
 

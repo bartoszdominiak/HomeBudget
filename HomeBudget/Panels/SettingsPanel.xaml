@@ -11,27 +11,40 @@
     <Grid Background="#FFF6F6F6" HorizontalAlignment="Left" Width="800" >
         <Button x:Name="InterfaceButton" Content="=" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60 " Height="60" FontSize="48" MouseMove="InterfaceButton_MouseMove" FontWeight="Bold" Cursor="" Background="#FF0099D5" Foreground="#FFEAEAEA" FontFamily="Source Sans Pro Light" />
         <Frame x:Name="InterfaceFrame" Content="" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="160" Visibility="Hidden" MouseLeave="InterfaceFrame_MouseLeave"   />
-        <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,60,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
-        <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,120,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,180,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
-        <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,240,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
-        <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,360,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
-        <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,300,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
-        <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,420,0,0" Click="SettingsButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
-        <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="60" Visibility="Hidden"  Margin="0,480,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="MenuButton" Content="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="63" Visibility="Hidden" Click="MenuButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="ExpensesButton" Content="Nowy wydatek" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="63" Visibility="Hidden" Click="ExpensesButton_Click" Margin="0,63,0,0" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="AllExpensesButton" Content="Historia wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="63" Visibility="Hidden"  Margin="0,126,0,0" Click="AllExpensesButton_Click_1" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="MonthPlansButton" Content="Zaplanuj budżet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="63" Visibility="Hidden"  Margin="0,189,0,0" Click="MonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="HistoryMonthPlansButton" Content="Historia realizacji budżetu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="62" Visibility="Hidden"  Margin="0,252,0,0" Click="HistoryMonthPlansButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="CategoriesButton" Content="Moje kategorie wydatków" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="63" Visibility="Hidden"  Margin="0,376,0,0" Click="CategoriesButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="IrregularBudgetButton" Content="Moje wydatki nieregularne" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="62" Visibility="Hidden"  Margin="0,314,0,0" Click="IrregularBudgetButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+        <Button x:Name="SettingsButton" Content="Ustawienia użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="63" Visibility="Hidden"  Margin="0,439,0,0" Click="SettingsButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA"  />
+        <Button x:Name="LogOutButton" Content="Wyloguj się" HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="61" Visibility="Hidden"  Margin="0,502,0,0" Click="LogOutButton_Click" Background="#FF0099D5" Foreground="#FFEAEAEA" />
+
+        <Border Name="Border1" BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="185" Margin="168,71,0,0" VerticalAlignment="Top" Width="559"/>
 
         <Label x:Name="MainLabel" Content="Ustawienia użytkownika" HorizontalAlignment="Center" Margin="208,10,201,0" VerticalAlignment="Top" Width="391" Height="70" FontSize="36"/>
 
-        <Label x:Name="Info1Label" Content="Informacje o aktualnych finansach." HorizontalAlignment="Left" Margin="168,63,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="StartsSavingBoxLabel" Content="Wartość oszczędności przy pierwszym uruchomieniu:" HorizontalAlignment="Left" Margin="168,89,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="460,89,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
-        <Label x:Name="EarningsLabel" Content="Wysokość miesięcznych przychodów:" HorizontalAlignment="Left" Margin="168,112,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="460,113,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus" Background="#FFE6F2FF"/>
-        <Label x:Name="ComboBoxLabel" Content="Domyślna kategoria wydatków:" HorizontalAlignment="Left" Margin="168,137,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="23" Margin="406,139,0,0" VerticalAlignment="Top" Width="152" FontSize="18" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionChanged="CategoryComboBox_SelectionChanged"/>
+        <Label x:Name="Info1Label" Content="Ustawienia szybkiego dostępu:" HorizontalAlignment="Left" Margin="188,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="213"/>
+        <Label x:Name="StartsSavingBoxLabel" Content="Wartość oszczędności przy pierwszym uruchomieniu:" HorizontalAlignment="Left" Margin="188,107,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="StartsSavingBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="480,107,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
+        <Label x:Name="EarningsLabel" Content="Wysokość miesięcznych przychodów:" HorizontalAlignment="Left" Margin="188,130,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="EarningsBox"  HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="23" Margin="480,132,0,0" TextWrapping="NoWrap" Text="0,0" VerticalAlignment="Top" Width="98" FontSize="18" LostFocus="EarningsBox_LostFocus" Background="#FFE6F2FF"/>
+        <Label x:Name="ComboBoxLabel" Content="Domyślna kategoria wydatków:" HorizontalAlignment="Left" Margin="188,155,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="23" Margin="426,157,0,0" VerticalAlignment="Top" Width="152" FontSize="16" Background="#FFE6F2FF" BorderBrush="#FF0099D5" FontFamily="Source Sans Pro" Foreground="Black" SelectionChanged="CategoryComboBox_SelectionChanged"/>
+        <Button  x:Name="UpdateButton" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="515,204,0,0" VerticalAlignment="Top" Width="199" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="UpdateButton_Click" />
 
-        <Button  x:Name="UpdateButton" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="574,474,0,0" VerticalAlignment="Top" Width="199" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="UpdateButton_Click" />
+        <Border Name="Border2" BorderBrush="#FF0099D5" BorderThickness="1" HorizontalAlignment="Left" Height="185" Margin="168,280,0,0" VerticalAlignment="Top" Width="559"/>
+        <Label x:Name="Info2Label" Content="Ustawienia hasła:" HorizontalAlignment="Left" Margin="188,292,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="27" RenderTransformOrigin="0.5,0.5" Width="212"/>
+        <Label x:Name="OldPasswordBoxLabel" Content="Stare hasło:" HorizontalAlignment="Left" Margin="188,315,0,0" VerticalAlignment="Top" Width="119"/>
+        <PasswordBox x:Name="OldPasswordBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="25" Margin="307,315,0,0" VerticalAlignment="Top" Width="151" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
+        <Label x:Name="NewPasswordBoxLabel" Content="Nowe hasło:" HorizontalAlignment="Left" Margin="188,345,0,0" VerticalAlignment="Top" Width="119"/>
+        <PasswordBox x:Name="NewPasswordBox" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="25" Margin="307,345,0,0" VerticalAlignment="Top" Width="151" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
+        <Label x:Name="NewPasswordBoxLabel2" Content="Powtórz hasło:" HorizontalAlignment="Left" Margin="188,376,0,0" VerticalAlignment="Top" Width="119"/>
+        <PasswordBox x:Name="NewPasswordBox2" HorizontalAlignment="Left" BorderBrush="#FF0099D5" Height="25" Margin="307,376,0,0" VerticalAlignment="Top" Width="151" FontSize="18" LostFocus="StartsSavingBox_LostFocus" Background="#FFE6F2FF"/>
+
+        <Button  x:Name="UpdatePassword" Content="Zmień hasło" HorizontalAlignment="Left" Margin="515,412,0,0" VerticalAlignment="Top" Width="199" Height="36"  BorderBrush="#FF73797F" FontSize="20" FontFamily="Cambria"  Foreground="#FFEAEAEA" Background="#FF0099D5" Click="UpdatePassword_Click"  />
+
 
 
     </Grid>

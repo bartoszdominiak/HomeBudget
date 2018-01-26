@@ -32,13 +32,21 @@ namespace HomeBudget.Panels
             InterfaceFrame.NavigationService.Navigate(p1);
 
             DB db = new DB();
+            string FirstCat = db.GetUserFirstCat(UserId);
+            int CatExist = -1;
+            int temp = 0;
             List<string> categories = db.GetCategoriesName(UserId);
             foreach(string cat in categories)
             {
                 CategoryComboBox.Items.Add(cat);
+                if (cat == FirstCat) CatExist = temp;
+                temp++;
             }
-            CategoryComboBox.SelectedIndex = 0;
-            if(added==true)
+            if (CatExist < 0) CategoryComboBox.SelectedIndex = 0;
+            else CategoryComboBox.SelectedIndex = CatExist;
+
+
+            if (added==true)
             {
                 Added.Content = "Dodano wydatek";
             }

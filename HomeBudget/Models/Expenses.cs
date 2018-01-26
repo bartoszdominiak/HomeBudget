@@ -24,5 +24,9 @@ namespace HomeBudget.Models
             CategoryRecid = Convert.ToInt16(cr);
             ExpRecid = Convert.ToInt16(expRecid);
         }
+        public Expenses(string v)
+        {
+            Value = Validation.Validation.GetNumberTwoZero(v);
+        }
     }
 }

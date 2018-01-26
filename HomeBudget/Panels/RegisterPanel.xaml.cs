@@ -89,18 +89,6 @@ namespace HomeBudget.Panels
             }
             else
             {
-                string hash = null;
-                using (MD5 md5Hash = MD5.Create())
-                {
-                    hash = GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
-
-
-                    if (!VerifyMd5Hash(md5Hash, PasswordBox.Password.ToString(), hash))
-                    {
-                        MessageBox.Show("Błąd funkcji skrótu.");
-                        return;
-                    }
-                }
 
                 DB db = new DB();
                 if (db.CheckUniqueEmail(EmailBox.Text))
@@ -108,7 +96,9 @@ namespace HomeBudget.Panels
                     RegisterFail.Text = "Adres zajęty";
                     return;
                 }
-                else if (!db.InsertUser(EmailBox.Text, hash))
+                byte[] hash = Validation.Validation.Hash(PasswordBox.Password.ToString(), Validation.Validation.salt);
+                string shash = System.Text.Encoding.UTF8.GetString(hash, 0, hash.Length);
+                if (!db.InsertUser(EmailBox.Text, shash))
                 {
                     MessageBox.Show("UPS. Coś poszło nie tak :(");
                     return;
@@ -118,6 +108,36 @@ namespace HomeBudget.Panels
                     MessageBox.Show("Użytkownik został poprawnie zarejestrowany.");
                     this.NavigationService.Navigate(new LoginPanel());
                 }
+
+                //string hash = null;
+                //using (MD5 md5Hash = MD5.Create())
+                //{
+                //    hash = GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
+
+
+                //    if (!VerifyMd5Hash(md5Hash, PasswordBox.Password.ToString(), hash))
+                //    {
+                //        MessageBox.Show("Błąd funkcji skrótu.");
+                //        return;
+                //    }
+                //}
+
+                //DB db = new DB();
+                //if (db.CheckUniqueEmail(EmailBox.Text))
+                //{
+                //    RegisterFail.Text = "Adres zajęty";
+                //    return;
+                //}
+                //else if (!db.InsertUser(EmailBox.Text, hash))
+                //{
+                //    MessageBox.Show("UPS. Coś poszło nie tak :(");
+                //    return;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Użytkownik został poprawnie zarejestrowany.");
+                //    this.NavigationService.Navigate(new LoginPanel());
+                //}
 
             }
 

@@ -30,9 +30,23 @@ namespace HomeBudget.Panels
             InterfaceFrame.NavigationService.Navigate(p1);
 
             UserId = Id;
-
+            //ComboBox ustawienia
             DB db = new DB();
-            settings= db.GetAllFromSettings(UserId);
+            string FirstCat = db.GetUserFirstCat(UserId);
+            int CatExist = -1;
+            int temp = 0;
+            List<string> categories = db.GetCategoriesName(UserId);
+            foreach (string cat in categories)
+            {
+                CategoryComboBox.Items.Add(cat);
+                if (cat == FirstCat) CatExist = temp;
+                temp++;
+            }
+            if (CatExist < 0) CategoryComboBox.SelectedIndex = 0;
+            else CategoryComboBox.SelectedIndex = CatExist;
+            //
+
+            settings = db.GetAllFromSettings(UserId);
             if(settings.Count==0)
             {
                 MessageBox.Show("Brak danych z ustawieniami. Skontaktuj się z administratorem.");
@@ -131,13 +145,13 @@ namespace HomeBudget.Panels
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if(settings[0].HaveChanged(StartsSavingBox.Text, EarningsBox.Text))
+            if(settings[0].HaveChanged(StartsSavingBox.Text, EarningsBox.Text, CategoryComboBox.SelectedItem.ToString()))
             {
                 DB db = new Models.DB();
-                if (db.UpdateSettings(UserId, StartsSavingBox.Text.Replace(',','.'), EarningsBox.Text.Replace(',', '.')))
+                if (db.UpdateSettings(UserId, StartsSavingBox.Text.Replace(',','.'), EarningsBox.Text.Replace(',', '.'), CategoryComboBox.SelectedItem.ToString()))
                 {
                     settings.Clear();
-                    settings.Add(new Settings(StartsSavingBox.Text, EarningsBox.Text));
+                    settings.Add(new Settings(StartsSavingBox.Text, EarningsBox.Text, CategoryComboBox.SelectedItem.ToString()));
                     MessageBox.Show("Modyfikacja zakończona");
                 }
 
@@ -154,6 +168,41 @@ namespace HomeBudget.Panels
 
         private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void UpdatePassword_Click(object sender, RoutedEventArgs e)
+        {
+            if(NewPasswordBox.Password.Length<8)
+            {
+                MessageBox.Show("Hasło musi zawierać co najmniej osiem znaków.");
+                return;
+            }
+
+            DB db = new DB();
+            byte[] hash = Validation.Validation.Hash(OldPasswordBox.Password.ToString(), Validation.Validation.salt);
+            string shash = System.Text.Encoding.UTF8.GetString(hash, 0, hash.Length);
+            if (!db.ChechUserRecid(UserId, shash))
+            {
+                MessageBox.Show("Hasło nieprawidłowe.");
+                return;
+            }
+            if(NewPasswordBox.Password.ToString()!=NewPasswordBox2.Password.ToString())
+            {
+                MessageBox.Show("Hasła nie są identyczne.");
+                return;
+            }
+            hash = Validation.Validation.Hash(NewPasswordBox.Password.ToString(), Validation.Validation.salt);
+            shash = System.Text.Encoding.UTF8.GetString(hash, 0, hash.Length);
+            if (db.UpdateUser(UserId, shash))
+            {
+                MessageBox.Show("Hasło zmienione");
+                this.NavigationService.Navigate(new SettingsPanel(UserId));
+            }
+            else
+            {
+                MessageBox.Show("Nie udało się zmienić hasła"); 
+            }
 
         }
     }

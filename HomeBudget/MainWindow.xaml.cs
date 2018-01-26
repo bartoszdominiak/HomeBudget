@@ -29,6 +29,7 @@ namespace HomeBudget
             InitializeComponent();
             //Page p1 = new StartSettingsPanel(1);
             Page p1 = new LoginPanel();
+            //Page p1 = new IrregularBudgetPanel(2);
             myframe.NavigationService.Navigate(p1);
             DB db = new DB();
          

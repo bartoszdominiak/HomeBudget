@@ -54,28 +54,41 @@ namespace HomeBudget.Panels
             }
             else
             {
-                string hash = null;
+
+                byte[] hash = Validation.Validation.Hash(PasswordBox.Password.ToString(), Validation.Validation.salt);
+                string shash = System.Text.Encoding.UTF8.GetString(hash, 0, hash.Length);
+
                 DB db = new DB();
-                using (MD5 md5Hash = MD5.Create())
+                if(!db.ChechUserLogin(EmailBox.Text,shash))
                 {
-                    hash = GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
-
-
-                    if (!Validation.Validation.VerifyMd5Hash(md5Hash, PasswordBox.Password.ToString(), hash))
-                    {
-                        MessageBox.Show("Błąd funkcji skrótu.");
-                        return;
-                    }
+                    LoginFail.Content = "Podany dane nieprawidłowe";
+                    return;
                 }
 
-                if (db.GetUserRecid(EmailBox.Text, hash) == -2 || db.GetUserRecid(EmailBox.Text, hash) == 0)
+
+
+
+                //DB db = new DB();
+                //using (MD5 md5Hash = MD5.Create())
+                //{
+                //    hash = GetMd5Hash(md5Hash, PasswordBox.Password.ToString());
+
+
+                //    if (!Validation.Validation.VerifyMd5Hash(md5Hash, PasswordBox.Password.ToString(), hash))
+                //    {
+                //        MessageBox.Show("Błąd funkcji skrótu.");
+                //        return;
+                //    }
+                //}
+
+                if (db.GetUserRecid(EmailBox.Text, shash) == -2 || db.GetUserRecid(EmailBox.Text, shash) == 0)
                 {
                     LoginFail.Content = "Podany dane nieprawidłowe";
                     return;
                 }
                 else
                 {
-                    int UserId = db.GetUserRecid(EmailBox.Text, hash);
+                    int UserId = db.GetUserRecid(EmailBox.Text, shash);
                     if (!db.ChechUserSettings(UserId))
                         this.NavigationService.Navigate(new StartSettingsPanel(UserId));
                     else

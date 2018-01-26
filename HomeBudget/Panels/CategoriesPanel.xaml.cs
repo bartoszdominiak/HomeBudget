@@ -166,7 +166,8 @@ namespace HomeBudget.Panels
 
         private void ColorCategory1_Click(object sender, RoutedEventArgs e)
         {
-            colorList1.Visibility = Visibility.Visible;
+            if (colorList1.Visibility == Visibility.Visible) colorList1.Visibility = Visibility.Hidden;
+            else colorList1.Visibility = Visibility.Visible;
         }
         private void colorList1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -273,6 +274,26 @@ namespace HomeBudget.Panels
             
          
             
+        }
+
+        private void colorList1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            colorList1.Visibility = Visibility.Hidden;
+        }
+
+        private void NameCategory1_GotFocus(object sender, RoutedEventArgs e)
+        {
+            colorList1.Visibility = Visibility.Hidden;
+        }
+
+        private void DescriptionCategory1_GotFocus(object sender, RoutedEventArgs e)
+        {
+            colorList1.Visibility = Visibility.Hidden;
+        }
+
+        private void CategoryGrid_GotFocus(object sender, RoutedEventArgs e)
+        {
+            colorList1.Visibility = Visibility.Hidden;
         }
     }
 }

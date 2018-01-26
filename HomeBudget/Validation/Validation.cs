@@ -11,6 +11,7 @@ namespace HomeBudget.Validation
 {
     public class Validation
     {
+        public static byte[] salt= Encoding.ASCII.GetBytes("fbc5729abc24bff3caffed44f9ca6f988faae53bcf4fc88b7ee2a483b6a6ebcc");
         public static bool IsGreaterOrEqualThenZero(decimal value)
         {
             if (value >= 0)
@@ -281,6 +282,22 @@ namespace HomeBudget.Validation
 
             // Return the hexadecimal string.
             return sBuilder.ToString();
+        }
+
+        public static byte[] Hash(string value, byte[] salt)
+        {
+            return Hash(Encoding.UTF8.GetBytes(value), salt);
+        }
+
+        public static byte[] Hash(byte[] value, byte[] salt)
+        {
+            byte[] saltedValue = value.Concat(salt).ToArray();
+            // Alternatively use CopyTo.
+            //var saltedValue = new byte[value.Length + salt.Length];
+            //value.CopyTo(saltedValue, 0);
+            //salt.CopyTo(saltedValue, value.Length);
+
+            return new SHA256Managed().ComputeHash(saltedValue);
         }
 
     }
